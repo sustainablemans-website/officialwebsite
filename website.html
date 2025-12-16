@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杉蔓有限公司 |
+永續教育與地方創生顧問</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* 使用 Inter 字體 */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+/* === NEW: 平滑捲動設定 === */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Microsoft JhengHei', 'sans-serif';
+background-color: #f7f7f7;
+            color: #1f2937; /* Gray 800 */
+        }
+        /* 定義永續綠和專業藍 */
+        .color-green-primary { background-color: #059669;
+} /* Emerald 600 */
+        .color-blue-accent { background-color: #2563eb;
+} /* Blue 600 */
+        .text-green-primary { color: #059669;
+}
+        .border-green-primary { border-color: #059669;
+}
+        
+        /* 隱藏未選中的頁面 */
+        .page-content {
+            display: none;
+/* 調整 min-height 以適應正常的導航欄高度 */
+            min-height: calc(100vh - 128px);
+}
+        .page-content.active {
+            display: block;
+}
+        
+        /* Custom SDG Icon Styling */
+        .sdg-icon {
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+transition: transform 0.3s ease;
+        }
+        .sdg-icon:hover {
+            transform: translateY(-5px) scale(1.02);
+}
+
+        /* === NEW: 導航啟用狀態 (Desktop) === */
+        .nav-link.active {
+            position: relative;
+color: #059669; /* Primary Green */
+            font-weight: 600;
+}
+        .nav-link.active::after {
+            content: '';
+position: absolute;
+            bottom: -5px; /* 距離文字下方一點 */
+            left: 50%;
+/* 居中 */
+            transform: translateX(-50%);
+            width: 80%;
+            height: 3px;
+background-color: #059669;
+            border-radius: 9999px;
+        }
+        /* === NEW: 導航啟用狀態 (Mobile) === */
+        .mobile-nav-link.active {
+            background-color: #ecfdf5;
+/* Green 50 */
+            border-left: 4px solid #059669;
+font-weight: 600; /* Semibold */
+            color: #059669;
+}
+
+        /* === NEW: Carousel Container Styles === */
+        .snap-container {
+            scroll-snap-type: x mandatory;
+-webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+        }
+        .snap-item {
+            scroll-snap-align: center;
+flex-shrink: 0;
+            width: 100%; /* Each consultant card takes full width */
+        }
+        
+        /* Article specific styles */
+        .article-content h3 {
+            font-size: 1.5rem;
+/* 24px */
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+border-left: 4px solid #059669;
+            padding-left: 0.75rem;
+            color: #1f2937;
+        }
+        .article-content ul {
+            list-style-type: disc;
+margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        .article-content ol {
+            list-style-type: decimal;
+margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        .article-content p {
+            margin-bottom: 1rem;
+line-height: 1.75;
+            color: #374151; /* Gray 700 */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="sticky top-0 z-50 bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16"> 
+                <div class="flex-shrink-0">
+                    <a href="#home" onclick="navigateTo(event, 'home')" class="flex items-center space-x-2 text-xl font-bold text-green-primary hover:text-emerald-700 transition duration-300">
+                        <img src="https://drive.google.com/thumbnail?id=1wkoXppVAHdxkHEuJG5IoMDZcXhNyf906&sz=w500" 
+                             alt="杉蔓有限公司 Logo" 
+                             class="h-10"
+                             loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/40x40/059669/ffffff/png?text=L';"
+>
+                        <span>杉蔓有限公司</span>
+                    </a> </div>
+                <nav class="hidden md:flex space-x-6">
+  
+                   <a href="#home" class="nav-link font-medium text-gray-600 hover:text-green-primary transition duration-300" data-page="home" onclick="navigateTo(event, 'home')">首頁</a>
+                    <a href="#about" class="nav-link font-medium text-gray-600 hover:text-green-primary transition duration-300" data-page="about" onclick="navigateTo(event, 'about')">關於杉蔓</a>
+                    
+                    <a href="#services" class="nav-link font-medium text-gray-600 hover:text-green-primary transition duration-300" data-page="services" onclick="navigateTo(event, 'services')">服務與產品</a>
+                    <a href="#team" class="nav-link font-medium text-gray-600 hover:text-green-primary transition duration-300" data-page="team" onclick="navigateTo(event, 'team')">顧問團隊</a>
+                    <a href="#impact" class="nav-link font-medium text-gray-600 hover:text-green-primary transition duration-300" data-page="impact" onclick="navigateTo(event, 'impact')">永續承諾</a>
+            
+                    <a href="#knowledge" class="nav-link font-medium text-gray-600 hover:text-green-primary transition duration-300" data-page="knowledge" onclick="navigateTo(event, 'knowledge')">永續知識中心</a> 
+                    <button class="font-medium text-white px-4 py-2 rounded-full color-green-primary hover:bg-emerald-700 transition 
+duration-300" data-page="contact-btn" onclick="navigateTo(event, 'contact')">立即洽詢</button>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition duration-300">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+ 
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
+                <a href="#home"
+class="mobile-nav-link text-gray-700 hover:text-green-primary p-2 text-left rounded-lg" data-page="home" onclick="navigateTo(event, 'home')">首頁</a>
+                <a href="#about" class="mobile-nav-link text-gray-700 hover:text-green-primary p-2 text-left rounded-lg" data-page="about" onclick="navigateTo(event, 'about')">關於杉蔓</a>
+                <a href="#services" class="mobile-nav-link text-gray-700 hover:text-green-primary p-2 text-left rounded-lg" data-page="services" onclick="navigateTo(event, 'services')">服務與產品</a>
+                <a href="#team" class="mobile-nav-link text-gray-700 hover:text-green-primary p-2 text-left rounded-lg" data-page="team" onclick="navigateTo(event, 'team')">顧問團隊</a>
+                <a href="#impact" class="mobile-nav-link text-gray-700 hover:text-green-primary p-2 text-left rounded-lg" data-page="impact" onclick="navigateTo(event, 'impact')">永續承諾</a>
+                <a href="#knowledge" class="mobile-nav-link text-gray-700 hover:text-green-primary p-2 text-left rounded-lg" data-page="knowledge" onclick="navigateTo(event, 'knowledge')">永續知識中心</a>
+                <button class="font-medium text-white px-4 py-2 mt-2 rounded-lg color-green-primary hover:bg-emerald-700 transition duration-300 text-left" onclick="navigateTo(event, 'contact')">立即洽詢</button>
+    
+             </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto">
+
+        <section id="home" class="page-content active px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div class="text-center p-8 bg-white rounded-3xl shadow-2xl"> <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-gray-900 mb-6">
+                    淨零時代，<span class="text-green-primary">高效永續轉型策略夥伴</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-10">
+              
+                    憑藉 ISO 碳管理專業及 AI 輔導系統，加速企業數據盤查與減碳路徑規劃；
+                    <br class="hidden sm:block">
+                    並透過永續循環經濟產品與地方創生，為台灣打造完整的永續生態圈。
+                </p>
+                <div class="flex justify-center space-x-4">
+           
+                    <button class="px-8 py-4 text-lg font-semibold text-white color-green-primary rounded-xl shadow-lg hover:bg-emerald-700 transition duration-300 transform hover:scale-105" onclick="navigateTo(event, 'services')">
+                        探索我們的服務 <i data-lucide="arrow-right" class="w-5 h-5 inline ml-2"></i>
+                    </button>
+                    <button class="px-8 py-4 text-lg font-semibold border-2 border-green-primary 
+text-green-primary bg-white rounded-xl shadow-lg hover:bg-emerald-50 transition duration-300 transform hover:scale-105" onclick="navigateTo(event, 'impact')">
+                        查看永續承諾
+                    </button>
+                </div>
+            </div>
+			<br>
+		
+		<div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-lg">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-10 text-center border-b-4 pb-3 border-green-primary/50 max-w-xl mx-auto">地方創生:與馬來西亞企業的交流</h2>
+			<div class="relative w-full h-0" style="padding-top: 56.25%;">
+        
+				<iframe 
+					class="absolute top-0 left-0 w-full h-full"
+					src="https://www.youtube.com/embed/5hbls-LQgDw?si=F45N4qMO2DxeigrC" 
+					title="YouTube video player" 
+					frameborder="0" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+					referrerpolicy="strict-origin-when-cross-origin" 
+					allowfullscreen>
+				</iframe>
+			</div>
+		</div>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-8 rounded-2xl shadow-xl transition duration-500 hover:shadow-2xl border-t-4 border-green-primary">
+                    <i data-lucide="trello" class="w-10 h-10 text-green-primary mx-auto mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">環保低碳 印刷服務</h3>
+           
+                    <p class="text-gray-600">採用寶特瓶再生rPET製成，為會展與商業展覽提供低碳環保印刷服務。</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl transition duration-500 hover:shadow-2xl border-t-4 border-blue-accent">
+                    <i data-lucide="bar-chart-3" class="w-10 h-10 text-blue-accent mx-auto mb-4"></i>
+                    <h3 class="text-xl font-bold 
+mb-3">專業碳管理輔導</h3>
+                    <p class="text-gray-600">專精 ISO 14064 碳盤查，ISO 14067碳足跡，助中小企業輕鬆應對淨零轉型挑戰。</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl transition duration-500 hover:shadow-2xl border-t-4 border-yellow-500">
+                    <i data-lucide="store" class="w-10 h-10 text-yellow-500 mx-auto mb-4"></i>
+         
+                    <h3 class="text-xl font-bold mb-3">農企合作媒合</h3>
+                    <p class="text-gray-600">以地方創生為核心，建立企業與永續農產品的穩定供應鏈。</p>
+                </div>
+            </div>
+
+            <div class="bg-gray-100 py-10 
+px-4 sm:px-6 lg:px-8 mt-16 rounded-xl">
+                <h2 class="text-center text-xl font-semibold text-gray-500 mb-6">
+                    我們信賴的永續夥伴
+                </h2>
+                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-6 opacity-80">
+                    <img src="https://drive.google.com/thumbnail?id=15QcihpikGlcvnWH9z9AHTNHboY4qm6Q1&sz=w755" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="合作夥伴 LOGO" class="h-16 md:h-20" loading="lazy"> 
+					<img src="https://drive.google.com/thumbnail?id=1FHS_LvKlBuZ5sVvMzA7arh22w5qnYskP&sz=w755" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="合作夥伴 LOGO" class="h-16 md:h-20" loading="lazy">
+					<img src="https://drive.google.com/thumbnail?id=17GxmIBaYmJ0y0wksLOCYf8sE27Hq7HnU&sz=w755" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="合作夥伴 LOGO" class="h-16 md:h-20" loading="lazy">
+					<img src="https://drive.google.com/thumbnail?id=1OUAF31dga9y0eGGJC_nqPqI57iIlK6CT&sz=w755" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="合作夥伴 LOGO" class="h-16 md:h-20" loading="lazy">
+					<img src="https://drive.google.com/thumbnail?id=17_Rt78hiHvQtn7rKQGqCGzl2C9mIJGF_&sz=w755" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="合作夥伴 LOGO" class="h-16 md:h-20" loading="lazy">
+					<img src="https://drive.google.com/thumbnail?id=1g5IxYzh_di0U-3zbIt42P7BuQ3YM5MXD&sz=w755" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="合作夥伴 LOGO" class="h-16 md:h-20" loading="lazy">
+					<img src="https://drive.google.com/thumbnail?id=1RbMJo3ZXblXVEEs0iaII3ifXGiSI3I53&sz=w755" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="合作夥伴 LOGO" class="h-16 md:h-20" loading="lazy">
+					<img src="https://drive.google.com/thumbnail?id=1jB19CAkiaSHqtDwu1xbUoW4YISjKzhm7&sz=w755" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="合作夥伴 LOGO" class="h-16 md:h-20" loading="lazy">
+					<img src="https://drive.google.com/thumbnail?id=165GhDcI7l_zwkEsJEZxOqJGuipiQJd7J&sz=w755" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="合作夥伴 LOGO" class="h-16 md:h-20" loading="lazy">
+					<img src="https://drive.google.com/thumbnail?id=18YC-4TK1YoCE-9jLVZQj39PCk6rwRjX3&sz=w755" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="合作夥伴 LOGO" class="h-16 md:h-20" loading="lazy">
+</div>
+            </div>
+            </section>
+        
+        <section id="about" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+          
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-10 text-center border-b-4 pb-3 border-green-primary/50 max-w-xl mx-auto">關於杉蔓：從企業輔導到社會使命</h2>
+            
+            <div class="max-w-4xl mx-auto space-y-12">
+                
+        
+                <div> 
+                    <h3 class="text-2xl font-bold text-green-primary mb-4">我們的初衷與在地連結</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        
+杉蔓有限公司成立於高雄，深知「台灣產業，特別是南部傳統產業轉型的迫切需求」。我們以專業的顧問能力為基石，協助企業面對國際最新的淨零挑戰。
+                    </p>
+                    
+                    <h4 class="text-xl font-bold text-blue-accent mb-3">【專業輔導：掌握碳管理數據】</h4>
+                    <p class="text-gray-700 mb-6 leading-relaxed border-l-4 border-blue-accent pl-3">
+          
+我們的團隊於企業永續輔導具備豐富經驗，包括「ISO 14064 組織型碳盤查」與「ISO 14067 產品碳足跡」等。我們導入 AI 系統智慧平台，能有效解決繁瑣細碎的盤查流程，效率將提升「40%」，確保企業準確、高效盤點數據及「熱點」，為落實減碳策略奠定堅實基礎。我們致力於提供在地化、具成本效益的輔導方案，也能針對熱點提供最有效的節能解方。
+                    </p>
+                    
+                    <h4 class="text-xl font-bold text-green-primary mb-3">【綠色會展：以布代塑重塑佈置】</h4>
+               
+            <p class="text-gray-700 mb-6 leading-relaxed border-l-4 border-green-primary pl-3">
+                        針對傳統展覽佈置高污染與殘膠痛點，我們提供「低碳綠色印刷」服務。採用具備 GRS 認證的 rPET 再生材質，打造可多次重覆使用的布料貼紙，協助企業在展示品牌形象的同時，無痛達成 ESG「減塑減碳」行動。
+                    </p>
+
+                    <h4 class="text-xl font-bold text-yellow-500 mb-3">【社會使命：永續驅動地方創生】</h4>
+                  
+                <p class="text-gray-700 mb-6 leading-relaxed border-l-4 border-yellow-500 pl-3">
+                        「以地方創生為起點」，將專業顧問和教育資源帶入農村社區。透過輔導農友實施永續耕作，並搭建「農企媒合平台」，實現永續農產品穩定進入企業供應鏈，同時履行企業的社會責任。
+                    </p>
+                    
+                    <h3 class="text-2xl font-bold text-blue-accent mb-4 pt-4 border-t border-gray-200">企業社會使命承諾</h3>
+                    <div class="p-6 bg-blue-50 rounded-xl border-l-4 border-blue-accent">
+                        <p class="font-semibold text-gray-800 mb-3">
+                      
+「以地方創生為起點，深耕農業永續教育，透過循環經濟與多元培訓，將 ESG 概念普及至全民。」
+                        </p>
+                        <p class="text-sm text-gray-600">
+                            我們承諾將年度盈餘的「30% 投入社會使命」，用實際資源推動農村永續與人才培育。
+             
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="p-6 bg-white rounded-xl shadow-md border-t-4 border-blue-accent/50 mt-10">
+                    <h4 class="font-bold text-lg mb-2 text-blue-accent">我們的服務核心領域</h4>
+                    <ul class="list-disc list-inside">
+                        <li>青年參與與社會影響力</li>
+                       
+                        <li>智慧科技與創新服務</li>
+                        <li>低碳印刷與會展佈置</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 pt-6 border-t border-gray-200">
+                <a href="https://startup.sme.gov.tw/sitaiwan/Home/Org?Fid=3526" 
+                   target="_blank" 
+                   class="inline-flex items-center text-lg font-semibold text-blue-accent hover:text-green-primary transition duration-300">
+               
+                    查看杉蔓的社會創新組織資訊
+                   <i data-lucide="external-link" class="w-5 h-5 ml-2"></i>
+                </a>
+            </div>
+        </section>
+
+        <section id="services" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-gray-50">
+         
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-12 text-center border-b-4 pb-3 border-green-primary/50 max-w-2xl mx-auto">我們的核心服務與產品</h2>
+            
+            <div class="max-w-6xl mx-auto space-y-16">
+                
+                <div>
+      
+                    <h3 class="text-3xl font-extrabold text-blue-accent mb-8 border-l-4 border-blue-accent pl-4">永續策略服務</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-10">
+                        <div class="bg-white p-8 rounded-2xl shadow-xl border-t-8 border-blue-accent flex flex-col justify-between">
+                            <div>
+                                <span class="inline-block px-4 py-1 mb-4 text-sm font-semibold text-white color-blue-accent rounded-full">專業顧問</span>
+     
+                                <h4 class="text-3xl font-bold text-gray-800 mb-4">ISO 14064 組織型碳盤查輔導</h4>
+                                <p class="text-gray-600 mb-6 leading-relaxed">
+                                
+                                針對高雄與南部中小企業的需求，提供一站式碳管理服務。從數據蒐集、邊界設定到報告產出，我們的顧問團隊確保您的碳盤查流程符合國際標準，輕鬆應對 CBAM 等法規要求。
+                                </p>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700 ml-0 mb-6">
+                        
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-blue-accent mr-2"></i>服務內容：Scope 1, 2, 3 盤查、減排策略建議</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-blue-accent mr-2"></i>專案優勢：在地化經驗豐富，流程效率高</li>
+<div class="flex justify-between items-center gap-2 mt-4">
+                            <img src="https://drive.google.com/thumbnail?id=1V-F8n0bKBuqRCvEo-2DY4WSjaqjAYeBO&sz=w300" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="展覽與會議品牌"  loading="lazy">     
+                     <img src="https://drive.google.com/thumbnail?id=1uGKZSccfhRG2Nx8kYqtx3x2QSOiRHt1V&sz=w300" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="舞台與布景製作"  loading="lazy">    
+                     <img src="https://drive.google.com/thumbnail?id=1vK0c5UF27lqV-o-Siv6vish28VMP7_jL&sz=w300" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="廣告與促銷"  loading="lazy">  
+</div>  
+                                </ul>
+  
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-gray-200 flex justify-between items-center">
+                                <span class="text-3xl font-extrabold text-blue-accent">專案詢價</span>
+    
+                                <button class="px-6 py-3 font-semibold text-white color-blue-accent rounded-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105" onclick="navigateTo(event, 'contact')">
+                                    預約顧問諮詢 <i data-lucide="mail" class="w-4 h-4 inline ml-1"></i>
+                  
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+              
+                </div>
+				
+				<div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-10">
+                        <div class="bg-white p-8 rounded-2xl shadow-xl border-t-8 border-blue-accent flex flex-col justify-between">
+                            <div>
+                                <span class="inline-block px-4 py-1 mb-4 text-sm font-semibold text-white color-blue-accent rounded-full">專業顧問</span>
+     
+                                <h4 class="text-3xl font-bold text-gray-800 mb-4">ISO 14067 產品/服務碳足跡輔導</h4>
+                                <p class="text-gray-600 mb-6 leading-relaxed">
+                                
+                                針對各類產業接軌綠色供應鏈的需求，提供專業的產品碳足跡評估。從生命週期界定、數據分析到報告產出，我們的顧問團隊確保您的評估流程符合 ISO 14067 國際標準，助您精準掌握產品碳排熱點，提升市場綠色競爭力。
+                                </p>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700 ml-0 mb-6">
+                        
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-blue-accent mr-2"></i>服務內容：完整碳足跡計算報告、低碳產品設計建議</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-blue-accent mr-2"></i>專案優勢：豐富產業數據庫，精確鎖定排碳熱點</li>
+                                </ul>
+  
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-gray-200 flex justify-between items-center">
+                                <span class="text-3xl font-extrabold text-blue-accent">專案詢價</span>
+    
+                                <button class="px-6 py-3 font-semibold text-white color-blue-accent rounded-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105" onclick="navigateTo(event, 'contact')">
+                                    預約顧問諮詢 <i data-lucide="mail" class="w-4 h-4 inline ml-1"></i>
+                  
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+              
+                </div>
+			<div>
+                <div>
+
+			<h3 class="text-3xl font-extrabold text-yellow-600 mb-8 border-l-4 border-yellow-500 pl-4">創新產品與永續培訓</h3>
+
+				<div class="grid grid-cols-1 md:grid-cols-1 gap-10">
+
+					<div class="bg-white p-8 rounded-2xl shadow-xl border-t-8 border-yellow-500 flex flex-col justify-between">
+						<div>
+							
+							<span class="inline-block px-4 py-1 mb-4 text-sm font-semibold text-white bg-yellow-500 rounded-full">核心產品</span>
+							
+							<h4 class="text-3xl font-bold text-gray-800 mb-4">【玩轉永續】ESG 策略桌遊種子教師培訓</h4>
+							
+							<p class="text-gray-600 mb-6 leading-relaxed">
+								告別枯燥簡報！透過我們獨家開發的「ESG 策略桌遊」，讓您在遊戲中掌握永續知識、碳管理概念及企業社會責任策略。培訓後即可成為種子教師，將永續理念推廣至企業、校園或社區。
+							</p>
+							
+							<ul class="list-disc list-inside space-y-2 text-gray-700 ml-0 mb-6">
+								<li class="flex items-center">
+									<i data-lucide="check-circle" class="w-5 h-5 text-yellow-500 mr-2"></i>
+									適用對象：企業內訓講師、教師、永續推廣者
+								</li>
+								<li class="flex items-center">
+									<i data-lucide="check-circle" class="w-5 h-5 text-yellow-500 mr-2"></i>
+									學習效益：掌握複雜 ESG 議題、提升教學趣味性
+								</li>
+<div class="flex justify-between items-center gap-2 mt-4">
+                            <img src="https://drive.google.com/thumbnail?id=1KDch88M9x5u6gst0Wz3uS9XulwerDPlF&sz=w300" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="展覽與會議品牌"  loading="lazy">     
+                     <img src="https://drive.google.com/thumbnail?id=1QFAKX2zPN6HWX_YMYgBFU-i53zJCZn9E&sz=w300" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="舞台與布景製作"  loading="lazy">    
+                     <img src="https://drive.google.com/thumbnail?id=1sJDU5Nxa45tU0iCsNwKvO1RN9-7gE0rs&sz=w200" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="廣告與促銷"  loading="lazy">  
+</div>  
+							</ul>
+						</div>
+						
+						<div class="mt-6 pt-4 border-t border-gray-200 flex justify-between items-center">
+							<span class="text-3xl font-extrabold text-yellow-600">NT$ 3,888/人</span>
+							
+							<button class="px-6 py-3 font-semibold text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 transition duration-300 transform hover:scale-105" onclick="navigateTo(event, 'contact')">
+								立即報名 
+								<i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+                <div>
+                    <h3 class="text-3xl font-extrabold text-green-primary mb-8 border-l-4 border-green-primary pl-4">低碳印刷與綠色策展</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-10">
+        
+                        <div class="bg-white p-8 rounded-2xl shadow-xl border-t-8 border-green-primary flex flex-col justify-between">
+                            <div>
+                    
+                            <span class="inline-block px-4 py-1 mb-4 text-sm font-semibold text-white color-green-primary rounded-full">專業服務</span>
+                                <h4 class="text-3xl font-bold text-gray-800 mb-4">低碳佈置，綠色印刷暨策展整合服務</h4>
+                                <p class="text-gray-600 mb-6 leading-relaxed">
+       
+                                解決展場殘膠與一次性垃圾！將回收寶特瓶轉化為可重複黏貼的環保佈置材料。讓您在打造吸睛展位的同時，也能輕鬆達成減塑與無毒承諾，實踐真正的循環經濟。
+                                </p>
+                                <ul class="list-disc list-inside space-y-2 text-gray-700 ml-0 
+mb-6">
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-primary mr-2"></i>產品效益：解決殘膠問題、多次撕黏、可重覆使用降低長期成本</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-primary mr-2"></i>適用對象：參展企業、活動策展人、重視 ESG 形象之品牌</li>
+<div class="flex justify-between items-center gap-2 mt-4">
+                            <img src="https://drive.google.com/thumbnail?id=1C0KyHZFGugoyGfksisxoXcSJkh1ZS7oM&sz=w2000" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="展覽與會議品牌"  loading="lazy">     
+                     <img src="https://drive.google.com/thumbnail?id=11Lo6tV63oy7wO2PeR9U-kseS3BkzAWyp&sz=w2000" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="舞台與布景製作"  loading="lazy">    
+                     <img src="https://drive.google.com/thumbnail?id=1mo-twzjQpTESbrz-jvEBRzVIgSK4L6E7&sz=w2000" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/120x40/9ca3af/ffffff/png?text=LOGO';"
+alt="廣告與促銷"  loading="lazy">  
+</div>  
+                            </ul>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-gray-200 flex justify-between items-center">
+                 
+                            <span class="text-3xl font-extrabold text-green-primary">專案詢價</span>
+                                <button class="px-6 py-3 font-semibold text-white color-green-primary rounded-lg hover:bg-emerald-700 transition duration-300 transform hover:scale-105" onclick="navigateTo(event, 'contact')">
+                                    預約顧問諮詢 
+<i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+           
+                        <div class="p-8 text-center bg-gray-100 rounded-xl shadow-inner border-dashed border-2 border-gray-300 mt-6">
+                            <i data-lucide="lightbulb" class="w-8 h-8 text-gray-500 mx-auto mb-3"></i>
+              
+                            <h5 class="text-xl font-semibold text-gray-700 mb-2">未來產品開發中，敬請期待</h5>
+                            <p class="text-gray-600">我們正積極開發更多結合「智慧科技」與「地方創生」的創新產品與課程，以更豐富的方式推廣全民永續！</p>
+                        </div>
+                    </div>
+         
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-12 text-center border-b-4 pb-3 border-green-primary/50 max-w-2xl mx-auto">專業顧問團隊：永續轉型的堅實後盾</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
+      
+                向我們的核心專家群致敬。請左右滑動或點擊按鈕，查看每位顧問的專業資歷。
+            </p>
+
+            <div class="relative max-w-4xl mx-auto">
+                
+                <div id="consultant-carousel" class="flex overflow-x-scroll snap-container space-x-0 rounded-2xl shadow-2xl bg-white border border-gray-200">
+
+                    <div class="snap-item p-6 md:p-10 flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left">
+                            <div class="mb-4 overflow-hidden rounded-xl shadow-lg border-b-4 border-green-primary/50 w-full max-w-xs md:max-w-none">
+                                <img src="https://drive.google.com/thumbnail?id=16mOnqgwo2Y0Xa2qEdQZwy2Dp084qiWji&sz=w3617" 
+        
+                                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/059669/ffffff/png?text=曾偉庭';"
+alt="曾偉庭先生照片" 
+                                     class="w-full h-120 object-cover transition duration-300 hover:scale-[1.03] transform"
+                                     loading="lazy"> </div>
+                            
+                            <h3 class="text-2xl font-bold text-gray-800 mt-2">
+                                曾偉庭 
+                               
+                                <span class="block text-xl font-medium text-gray-500">(Wei-Ting Tseng)</span>
+                            </h3>
+                            <p class="text-green-primary font-semibold mb-3 text-lg">創辦人 暨 地方創生實踐家</p>
+                        </div>
+
+        
+                        <div class="md:w-2/3 pt-4 md:pt-0">
+                            <h4 class="text-xl font-bold text-gray-700 mb-4 border-b pb-2">專業領域與核心經歷</h4>
+                     
+                            <ul class="space-y-3 text-gray-600 list-disc list-outside ml-5">
+                                <li class="leading-relaxed">ISO14064-1 / ISO14067 主導查證員 (Lead Verifier)</li>
+                  
+                                <li class="leading-relaxed">GRI 準則實務</li>
+                                <li class="leading-relaxed">碳管理師 / 永續管理師</li>
+                                <li class="leading-relaxed">IPAS 淨零碳規劃管理師</li>
+               
+                                <li class="leading-relaxed">杉蔓有限公司 負責人</li>
+                                <li class="leading-relaxed">自由落腳商模有限公司 永續管理總監</li>
+                                <li class="leading-relaxed">台灣碳盤查工會 副秘書長</li>
+								<li class="leading-relaxed">新光匯盈有限公司 經理/永續講師</li>
+                                <li class="leading-relaxed">救國團永續發展研究院 執行顧問</li>
+                                <li class="leading-relaxed">商業研究發展院 講師</li>
+                                <li class="leading-relaxed">SDGs 永續教學講師</li>
+           
+                                <li class="leading-relaxed">永續桌遊培訓師</li>
+                                <li class="leading-relaxed">農業永續轉型輔導講師</li>
+                                <li class="leading-relaxed">地方創生實作坊 講師</li>
+           
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="snap-item p-6 md:p-10 flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left">
+                            <div class="mb-4 overflow-hidden rounded-xl 
+shadow-lg border-b-4 border-blue-accent/50 w-full max-w-xs md:max-w-none">
+                                <img src="https://drive.google.com/thumbnail?id=10611Bl_T3cPrtG2b5QSVREtaQJVQSn6u&sz=w3617" 
+                                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/2563eb/ffffff/png?text=李崇毅';"
+alt="碳管理專家照片" 
+                                     class="w-full h-120 object-cover transition duration-300 hover:scale-[1.03] transform"
+                                     loading="lazy"> </div>
+                            
+                            <h3 class="text-2xl font-bold text-gray-800 mt-2">李崇毅</h3>
+                            <p class="text-blue-accent font-semibold mb-3 text-lg">資深策略顧問</p>
+                        </div>
+
+                        <div class="md:w-2/3 pt-4 md:pt-0">
+                            <h4 class="text-xl font-bold text-gray-700 mb-4 border-b pb-2">專業領域與核心經歷</h4>
+                            <ul class="space-y-4 text-gray-600 list-disc list-outside ml-5">
+                                <li class="leading-relaxed">國立成功大學鳳凰新創平台新創導師</li>
+                  
+                                <li class="leading-relaxed">台灣碳盤查產業工會名譽理事長</li>
+                                <li class="leading-relaxed">奔馳科技股份有限公司執行長</li>
+                                <li class="leading-relaxed">ESG永續發展協會綠建築委員會主任委員</li>
+               
+                                <li class="leading-relaxed">國立成功大學品質與創新研究中心總顧問</li>
+                                <li class="leading-relaxed">中華民國產業聯合發展總會秘書處執行長</li>
+                                <li class="leading-relaxed">冠頡管理顧問有限公司執行長</li>
+             
+                                <li class="leading-relaxed">宏大文教事業股份有限公司董事</li>
+                                <li class="leading-relaxed">煊程科技股份有限公司顧問暨新創團隊導師</li>
+                                <li class="leading-relaxed">大員生醫科技股份有限公司新創團隊導師</li>
+           
+                                <li class="leading-relaxed">中華談判研究發展協會組織發展組副主任委員</li>
+                                <li class="leading-relaxed">加鑫管理顧問有限公司執行長</li>
+                                <li class="leading-relaxed">全珈科技股份有限公司總顧問</li>
+                            </ul>
+                        </div>
+                    </div>
+
+             
+                    <div class="snap-item p-6 md:p-10 flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left">
+      
+                            <div class="mb-4 overflow-hidden rounded-xl shadow-lg border-b-4 border-yellow-500/50 w-full max-w-xs md:max-w-none">
+                                <img src="https://drive.google.com/thumbnail?id=1EsDULLlQL2uHVyvT_TiYYl5AwttrxLRV&sz=w3617" 
+                                   
+                                   onerror="this.onerror=null;this.src='https://placehold.co/600x400/f59e0b/ffffff/png?text=鄭安姵';" 
+                                     alt="教育與科技專家照片" 
+                                     class="w-full h-120 object-cover transition duration-300 hover:scale-[1.03] transform"
+                                     loading="lazy"> </div>
+                         
+                            <h3 class="text-2xl font-bold text-gray-800 mt-2">鄭安姵</h3>
+                            <p class="text-yellow-500 font-semibold mb-3 text-lg">資深永續輔導顧問</p>
+                        </div>
+
+                        <div class="md:w-2/3 pt-4 md:pt-0">
+                            <h4 class="text-xl font-bold text-gray-700 mb-4 border-b pb-2">專業領域與核心經歷</h4>
+                            <ul class="space-y-4 text-gray-600 list-disc list-outside ml-5">
+                 
+                                <li class="leading-relaxed">曾任國際驗證主任稽核員</li>
+                                <li class="leading-relaxed">經濟部iPAS淨零碳規劃管理師</li>
+                                <li class="leading-relaxed">SRS Social Reporting Standard level 1</li>
+                
+                                <li class="leading-relaxed">ISO 14001 :2015環境管理系統主任稽核員</li>
+								<li class="leading-relaxed">ISO 14064-1: 2018溫室氣體盤查</li>
+                                <li class="leading-relaxed">ISO 14067: 2018 碳足跡主任查證員</li>
+                                <li class="leading-relaxed">ISO 14068-1: 2023 碳中和主任查證員 </li>
+                                <li class="leading-relaxed">ISO 20400: 2017 永續採購 </li>
+								<li class="leading-relaxed">ISO 32210 永續金融-企業永續風險與機會系統性管理框架</li>
+								<li class="leading-relaxed">ISO 5001:2018能源管理系統主任稽核員</li>
+                                <li class="leading-relaxed">GHG Protocol 會計法則 UCS</li>
+                                <li class="leading-relaxed">SBTi 標準指南及工具培訓  UCS </li>
+                                <li class="leading-relaxed">TTQS人才發展品質教育管理系統 </li>
+                            </ul>
+                        </div>
+                    </div>
+					
+
+                    <div class="snap-item p-6 md:p-10 flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left">
+                            <div class="mb-4 overflow-hidden rounded-xl 
+shadow-lg border-b-4 border-blue-accent/50 w-full max-w-xs md:max-w-none">
+                                <img src="https://drive.google.com/thumbnail?id=1D0g4Dwb0t4WoEPIme65ArsfDPWhP9OsI&sz=w3617" 
+                                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/2563eb/ffffff/png?text=周家豪';"
+alt="碳管理專家照片" 
+                                     class="w-full h-120 object-cover transition duration-300 hover:scale-[1.03] transform"
+                                     loading="lazy"> </div>
+                            
+                            <h3 class="text-2xl font-bold text-gray-800 mt-2">周家豪</h3>
+                            <p class="text-blue-accent font-semibold mb-3 text-lg">資深永續碳權顧問</p>
+                        </div>
+
+                        <div class="md:w-2/3 pt-4 md:pt-0">
+                            <h4 class="text-xl font-bold text-gray-700 mb-4 border-b pb-2">專業領域與核心經歷</h4>
+                            <ul class="space-y-4 text-gray-600 list-disc list-outside ml-5">
+                                <li class="leading-relaxed">益珂環能股份有限公司總經理</li>
+                  
+                                <li class="leading-relaxed">COP29 UNFCCC 特邀講者</li>
+                                <li class="leading-relaxed">Strathclyde U,UK 行銷博士</li>
+                                <li class="leading-relaxed">Loughborough U,UK 行銷碩士</li>
+               
+                                <li class="leading-relaxed">2010年參與台灣第一個太陽能整廠輸出紀錄</li>
+                                <li class="leading-relaxed">2012建置台灣第一個MW及地面型發電廠</li>
+                                <li class="leading-relaxed">企業永續競爭力分析</li>
+             
+                                <li class="leading-relaxed">商業模式創新設計</li>
+                                <li class="leading-relaxed">全球行銷活動規劃專業執行</li>
+                                <li class="leading-relaxed">再生能源暨綠能專業輔導顧問</li>
+        
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="snap-item p-6 md:p-10 flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left">
+                            <div class="mb-4 overflow-hidden rounded-xl 
+shadow-lg border-b-4 border-blue-accent/50 w-full max-w-xs md:max-w-none">
+                                <img src="https://drive.google.com/thumbnail?id=15dylbd95mXNsSrzO18UEjH7FwHR1UcYE&sz=w3617" 
+                                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/2563eb/ffffff/png?text=詹家和';"
+alt="碳管理專家照片" 
+                                     class="w-full h-120 object-cover transition duration-300 hover:scale-[1.03] transform"
+                                     loading="lazy"> </div>
+                            
+                            <h3 class="text-2xl font-bold text-gray-800 mt-2">詹家和</h3>
+                            <p class="text-blue-accent font-semibold mb-3 text-lg">資深永續輔導顧問</p>
+                        </div>
+
+                        <div class="md:w-2/3 pt-4 md:pt-0">
+                            <h4 class="text-xl font-bold text-gray-700 mb-4 border-b pb-2">專業領域與核心經歷</h4>
+                            <ul class="space-y-4 text-gray-600 list-disc list-outside ml-5">
+                                <li class="leading-relaxed">易德福國際有限公司總經理</li>
+                  
+                                <li class="leading-relaxed">國立勤益科技大學ESG永續發展中心副執行長</li>
+                                <li class="leading-relaxed">中華創新發展協會 ESG管理期刊主編</li>
+                                <li class="leading-relaxed">中華永續科技創新發展協會祕書長</li>
+               
+                                <li class="leading-relaxed">專利：用於管理交易標的碳足跡的區塊鏈會計系統(I872336)</li>
+                                <li class="leading-relaxed">專利：碳價計算管理系統(M640876)</li>
+                                <li class="leading-relaxed">專利：碳決策管理系統(M652062)</li>
+             
+                                <li class="leading-relaxed">台灣國際商貿協進會監事</li>
+                                <li class="leading-relaxed">中華永續商道聯合會創會長</li>
+                                <li class="leading-relaxed">薩摩亞商萬達環球股份有限公司總經理</li>
+        
+                            </ul>
+                        </div>
+                    </div>
+<div class="snap-item p-6 md:p-10 flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left">
+                            <div class="mb-4 overflow-hidden rounded-xl 
+shadow-lg border-b-4 border-blue-accent/50 w-full max-w-xs md:max-w-none">
+                                <img src="https://drive.google.com/thumbnail?id=1ErhH-A1DUysfpccfmKTsnC8jeqNi7XWq&sz=w3617" 
+                                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/2563eb/ffffff/png?text=陳淑真';"
+alt="碳管理專家照片" 
+                                     class="w-full h-120 object-cover transition duration-300 hover:scale-[1.03] transform"
+                                     loading="lazy"> </div>
+                            
+                            <h3 class="text-2xl font-bold text-gray-800 mt-2">陳淑真</h3>
+                            <p class="text-blue-accent font-semibold mb-3 text-lg">資深永續輔導顧問</p>
+                        </div>
+
+                        <div class="md:w-2/3 pt-4 md:pt-0">
+                            <h4 class="text-xl font-bold text-gray-700 mb-4 border-b pb-2">專業領域與核心經歷</h4>
+                            <ul class="space-y-4 text-gray-600 list-disc list-outside ml-5">
+                                <li class="leading-relaxed">始亦真永續有限公司 執行長</li>
+                  
+                                <li class="leading-relaxed">國際ESG永續發展協會 理事</li>
+                                <li class="leading-relaxed">濱川企業 永續發展管理代表</li>
+                                <li class="leading-relaxed">義守大學溫盤諮詢及授課顧問</li>
+               
+                                <li class="leading-relaxed">經濟部產業低碳化輔導計畫-顧問(I872336)</li>
+                                <li class="leading-relaxed">經濟部軟體協會國際行銷-顧問師</li>
+                                <li class="leading-relaxed">2023經濟部工業局碳盤查加值應用計畫-共同計畫主持人</li>
+             
+                                <li class="leading-relaxed">ISO 14064-1 組織溫室氣體主任查證員</li>
+                                <li class="leading-relaxed">ISO 14067 產品碳足跡主任查證員</li>
+                                <li class="leading-relaxed">勞動部大小人提-企業內聘講師</li>
+        
+                            </ul>
+                        </div>
+                    </div>
+					
+                </div>
+
+                <button onclick="scrollConsultant('prev')" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-2 rounded-full shadow-lg z-10 transition duration-300 ml-4 hidden md:block">
+                    <i data-lucide="chevron-left" class="w-8 h-8 text-gray-600"></i>
+                </button>
+   
+                <button onclick="scrollConsultant('next')" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-2 rounded-full shadow-lg z-10 transition duration-300 mr-4 hidden md:block">
+                    <i data-lucide="chevron-right" class="w-8 h-8 text-gray-600"></i>
+                </button>
+
+            </div>
+
+            <div class="text-center mt-12">
+   
+                <button class="px-6 py-3 font-semibold text-white color-blue-accent rounded-lg hover:bg-blue-700 transition duration-300 shadow-md transform hover:scale-105" onclick="navigateTo(event, 'contact')">
+                    預約團隊深度諮詢 <i data-lucide="chevron-right" class="w-4 h-4 inline ml-1"></i>
+                </button>
+            </div>
+        </section>
+
+        <section id="impact" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-gray-50">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-12 text-center border-b-4 pb-3 border-green-primary/50 max-w-2xl mx-auto">杉蔓的永續承諾：共創全民 ESG 時代</h2>
+            
+            <div class="max-w-4xl mx-auto space-y-10">
+                
+                
+                <p class="text-xl font-medium text-gray-800 leading-relaxed p-4 bg-white rounded-xl shadow-lg border-l-4 border-green-primary">
+                    杉蔓有限公司的核心使命是：「以地方創生為起點，深耕農業永續教育，透過創新桌遊與多元培訓，將 ESG 概念普及至全民。」
+                    我們致力於將永續理念從抽象口號轉化為具體、可實踐的生活方式與商業策略。
+                </p>
+
+                <div class="bg-white p-6 rounded-xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-green-primary mb-4 flex items-center">
+                        <i data-lucide="award" class="w-6 h-6 mr-3"></i> 承諾一：創新教育，培育永續人才
+                    </h3>
+                   
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        我們開發兼具趣味性與教育性的「ESG 策略桌遊」，搭配量身打造的多元培訓課程，讓不同年齡層和專業背景的民眾，都能輕鬆掌握 ESG 知識與碳管理策略。這是邁向全民 ESG 時代的關鍵一步。
+                    </p>
+                    <div class="flex items-center space-x-4 bg-green-50 p-4 rounded-lg">
+                     
+                        <i data-lucide="users" class="w-8 h-8 text-green-primary flex-shrink-0"></i>
+                        <p class="font-semibold text-gray-800">
+                            量化目標： 期許在 2030 年前，「培育 500 名」具備 ESG 知識的永續人才。
+                        </p>
+       
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-blue-accent mb-4 flex items-center">
+       
+                        <i data-lucide="store" class="w-6 h-6 mr-3"></i> 承諾二：深化在地連結，共建永續供應鏈
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        杉蔓從台灣在地農村出發，深入了解農村社區的永續需求，並提供實質幫助。我們扮演「專業媒合平台」，協助農友與重視 ESG 的企業建立穩定的合作關係，讓永續農產品能順利進入市場，同時協助企業落實社會責任。
+         
+                    </p>
+                    <div class="flex items-center space-x-4 bg-blue-50 p-4 rounded-lg">
+                        <i data-lucide="home" class="w-8 h-8 text-blue-accent flex-shrink-0"></i>
+                        <p class="font-semibold text-gray-800">
+        
+                            量化目標： 期許在 2030 年前，「協助 20 個農村社區」落實永續耕作。
+                        </p>
+                    </div>
+                </div>
+				
+                <div class="bg-white p-6 rounded-xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-blue-accent mb-4 flex items-center">
+       
+                        <i data-lucide="store" class="w-6 h-6 mr-3"></i> 承諾三：循環經濟，實踐綠色會展
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        我們推廣專利循環經濟材料，將回收寶特瓶轉化為可重複黏貼的無毒布料，取代傳統高污染的一次性 PVC 耗材。讓每一次的商業展覽與空間佈置，都能成為對環境友善的具體行動，落實展場零廢棄。
+         
+                    </p>
+                    <div class="flex items-center space-x-4 bg-blue-50 p-4 rounded-lg">
+                        <i data-lucide="home" class="w-8 h-8 text-blue-accent flex-shrink-0"></i>
+                        <p class="font-semibold text-gray-800">
+        
+                            量化目標： 期許在 2030 年前，透過綠色印刷服務協助50場低碳策展，降低二氧化碳排放量。
+                        </p>
+                    </div>
+                </div>
+               
+                <div class="pt-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 pl-3 border-green-primary">我們的 SDGs 核心貢獻</h3>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <div class="w-28 h-28 bg-green-500 rounded-2xl flex flex-col items-center justify-center text-white p-2 text-center shadow-lg sdg-icon">
+                            <span class="text-xl font-extrabold">SDG 4</span>
+                            
+                            <p class="text-xs mt-1 font-semibold">優質教育</p>
+                        </div>
+                        <div class="w-28 h-28 bg-yellow-500 rounded-2xl flex flex-col items-center justify-center text-white p-2 text-center shadow-lg sdg-icon">
+       
+                            <span class="text-xl font-extrabold">SDG 11</span>
+                            <p class="text-xs mt-1 font-semibold">永續城鄉</p>
+                        </div>
+                     
+                        <div class="w-28 h-28 bg-blue-500 rounded-2xl flex flex-col items-center justify-center text-white p-2 text-center shadow-lg sdg-icon">
+                            <span class="text-xl font-extrabold">SDG 17</span>
+                        
+                            <p class="text-xs mt-1 font-semibold">夥伴關係</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-gray-200">
+                     <h3 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 pl-3 border-green-primary">企業社會責任財務揭露</h3>
+                    <div class="p-6 bg-yellow-50 rounded-xl shadow-lg flex items-center space-x-4">
+                        <i data-lucide="wallet" class="w-8 h-8 text-yellow-600 flex-shrink-0"></i>
+         
+                        <p class="text-gray-700 leading-relaxed font-semibold">
+                            我們承諾將年度盈餘的「30% 投入社會使命」，用實際的營運成果支持農村永續與人才培育計畫，確保社會影響力的持續性與深度。
+                        </p>
+                    </div>
+         
+                </div>
+            </div>
+        </section>
+
+        <section id="knowledge" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-12 text-center border-b-4 pb-3 border-green-primary/50 max-w-2xl mx-auto">永續知識中心：淨零轉型深度解析</h2>
+            <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">
+      
+                我們提供最新的 ESG 趨勢、碳管理實務與創新教育方法論，助您掌握永續競爭力。
+            </p>
+
+            <div class="max-w-4xl mx-auto space-y-8">
+
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-blue-accent">
+             
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">【碳管理入門】ISO 14064-1 組織溫室氣體盤查的五大核心步驟</h3>
+                    <p class="text-gray-600 mb-3">
+                        ISO 14064-1 是企業邁向淨零的國際通用語言。本文詳細解析標準的核心原則、邊界界定（Scope 1, 2, 3）以及組織進行碳盤查的五大關鍵步驟，為企業建立透明且可靠的溫室氣體清冊。
+                    </p>
+                
+                    <button onclick="navigateTo(event, 'article-4')" class="text-sm font-semibold text-blue-accent hover:underline">
+                        閱讀全文 <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
+                    </button>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-green-primary">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">【資源永續】從線性到循環：台灣企業推動循環經濟的兩大核心與四大策略</h3>
+                    <p class="text-gray-600 mb-3">
+                        循環經濟是解決資源枯竭與廢棄物問題的關鍵。本文解析循環經濟與傳統線性經濟的本質差異，並探討我國行政院推動的「循環產業化」與「產業循環化」策略，為企業提供轉型參考。
+         
+                    </p>
+                    <button onclick="navigateTo(event, 'article-5')" class="text-sm font-semibold text-green-primary hover:underline">
+                        閱讀全文 <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
+                    </button>
+              
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-yellow-500">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">【智慧農業】AI 科技如何解決農業缺工、氣候挑戰並實現精準永續耕作？</h3>
+                    <p class="text-gray-600 mb-3">
+   
+                        面對農村人口高齡化和極端氣候，AI 智慧農業已是不可逆的趨勢。本文介紹 AI 在病蟲害預警、精準灌溉、產量預測等領域的應用案例與實質效益，推動農業邁向高效、低碳的未來。
+                    </p>
+                    <button onclick="navigateTo(event, 'article-6')" class="text-sm font-semibold text-yellow-500 hover:underline">
+                        閱讀全文 <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
+ 
+                    </button>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-blue-accent">
+  
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">【淨零強制時代】ISO IWA 48與CBAM如何重塑企業永續轉型路徑？</h3>
+                    <p class="text-gray-600 mb-3">
+                        全球淨零已成「強制性」議題。本文深入解析國際標準化組織（ISO）最新發布的「IWA 48 ESG 原則框架」與歐盟「CBAM 碳邊境調整機制」的影響。了解如何利用標準化的 KPI 和專業輔導，讓中小企業將碳成本轉化為合規優勢。
+                    </p>
+    
+                    <button onclick="navigateTo(event, 'article-1')" class="text-sm font-semibold text-blue-accent hover:underline">
+                        閱讀全文 <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
+                    </button>
+                </div>
+             
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-green-primary">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">【策略升級】超越漂綠：將 ESG 從成本中心轉化為創新、人才與競爭力的三大策略</h3>
+                    <p class="text-gray-600 mb-3">
+                        企業如何擺脫被動揭露？本文探討將 ESG 深度融入營運，利用高標準的「治理結構」與「員工培訓」來提升企業體質，並吸引 Z 世代永續人才。強調創新教育（如桌遊）在普及 ESG 策略中的核心價值。
+          
+                    </p>
+                    <button onclick="navigateTo(event, 'article-2')" class="text-sm font-semibold text-green-primary hover:underline">
+                        閱讀全文 <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
+                    </button>
+               
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-yellow-500">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">【永續行動方程式】中小企業如何串聯 SDGs、在地創生創造可量化的社會影響力？</h3>
+                    <p class="text-gray-600 mb-3">
+                        解構聯合國 SDGs 框架，說明企業如何將對環境和社會的承諾，透過在地「地方創生」專案具體實踐。強調透過精準的「農企媒合」機制，確保社會投入能創造出實質、可持續的經濟和環境效益。
+ 
+                    </p>
+                    <button onclick="navigateTo(event, 'article-3')" class="text-sm font-semibold text-yellow-500 hover:underline">
+                        閱讀全文 <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
+                    </button>
+      
+                </div>
+
+
+                <div class="text-center pt-4">
+                    <p class="text-gray-700 mb-4">找不到您需要的資訊嗎？</p>
+                    <button class="px-6 py-3 font-semibold text-white color-green-primary rounded-lg hover:bg-emerald-700 transition duration-300 
+shadow-md" onclick="navigateTo(event, 'contact')">
+                        直接諮詢顧問團隊
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-12 text-center border-b-4 pb-3 border-green-primary/50 max-w-2xl mx-auto">聯繫我們：啟動您的永續計畫</h2>
+            
+            <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-2xl">
+                <form id="contact-form" onsubmit="handleFormSubmit(event)">
+            
+                    <p class="text-lg text-gray-700 mb-6">請選擇您感興趣的合作類型，我們會安排專業人員與您聯繫。</p>
+
+                    <div class="mb-6">
+                        <label for="type" class="block text-sm font-medium text-gray-700 mb-2">合作類型 <span class="text-red-500">*</span></label>
+                        <select id="type" name="type" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-green-primary focus:border-green-primary transition 
+duration-200">
+                            <option value="">請選擇...</option>
+                            <option value="training">桌遊種子教師培訓報名</option>
+                            <option value="consulting">ISO 14064 碳盤查/ESG 顧問洽談</option>
+          
+                            <option value="farm_coop">農企合作/永續產品採購</option>
+                            <option value="other">其他合作或媒體洽詢</option>
+                        </select>
+                    </div>
+
+        
+                    <div class="mb-4">
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">您的姓名/單位名稱 <span class="text-red-500">*</span></label>
+                        <input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-green-primary focus:border-green-primary transition duration-200" placeholder="王小明 / XX 科技公司">
+              
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">電子郵件 <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-green-primary focus:border-green-primary transition duration-200" placeholder="your.email@example.com">
+   
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">您的需求描述</label>
+                        <textarea id="message" name="message" rows="4" class="w-full p-3 border border-gray-300 
+rounded-lg focus:ring-green-primary focus:border-green-primary transition duration-200" placeholder="請簡述您的需求，例如：想了解企業內訓的報價、農產品的種類等..."></textarea>
+                    </div>
+
+                    <button type="submit" id="submit-button" class="w-full px-4 py-3 text-lg font-semibold text-white color-green-primary rounded-lg hover:bg-emerald-700 transition duration-300 shadow-md">
+                        送出洽詢表單
+                 
+                    </button>
+                    
+                    <div id="form-message" class="mt-4 hidden p-3 rounded-lg text-center font-medium"></div>
+                </form>
+
+                <div class="mt-10 border-t pt-8 text-center">
+              
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">或直接聯繫我們</h3>
+                    <p class="text-gray-700 mb-2">聯絡人：曾偉庭</p>
+                    <p class="text-gray-700 mb-2">電子信箱：<a href="mailto:sustainablemans@gmail.com" class="text-green-primary hover:underline">sustainablemans@gmail.com</a></p>
+                
+                    <p class="text-gray-700 mb-2">聯絡電話：<a href="tel:+886971007051" class="text-green-primary hover:underline">0971-007-051</a></p>
+                    <p class="text-gray-700">公司地址：811 高雄市 楠梓區 秀群路499巷28號六樓</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="terms" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-10 text-center border-b-4 pb-3 border-blue-accent/50 max-w-xl mx-auto">服務條款 (Terms of Service)</h2>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg space-y-6 text-gray-700">
+                <p class="text-sm text-gray-500">生效日期：2024 年 11 月 11 日</p>
+                
+        
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">一、 服務範圍</h3>
+                <p>
+                    本服務由杉蔓有限公司（下稱「本公司」）提供，涵蓋「ESG 策略桌遊培訓課程」、「ISO 14064 碳盤查顧問服務」，以及「永續農企合作媒合平台」等。
+                </p>
+
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">二、 使用者義務</h3>
+         
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>使用者應確保提供之資料真實、準確。</li>
+                    <li>使用者不得利用本服務進行任何非法、侵權或損害本公司權益之行為。</li>
+                    <li>課程購買者，不得未經授權複製、散佈或販售任何課程內容及教材（包括 ESG 桌遊設計及內容），此類智慧財產權歸本公司所有。</li>
+                </ul>
+
+           
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">三、 智慧財產權</h3>
+                <p>本網站所有內容、桌遊產品、教材、課程設計及顧問方法論之智慧財產權，均屬杉蔓有限公司所有。未經本公司書面授權，嚴禁任何形式之重製、改作、公開傳輸或使用。</p>
+
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">四、 免責聲明</h3>
+                <p>本公司之碳盤查輔導與 ESG 顧問服務為提供專業建議與方法論，「不保證客戶能通過第三方最終驗證或達成所有法規要求」。使用者應自行評估並承擔使用服務後的一切風險與責任。</p>
+                
+                <h3 
+class="text-2xl font-bold text-gray-800 border-b pb-2">五、 服務變更與終止</h3>
+                <p>本公司保留隨時修改、暫停或終止部分或全部服務之權利。修改後之服務條款將公布於本網站，並自公布時生效，不另行個別通知。</p>
+            </div>
+        </section>
+
+        <section id="privacy" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-gray-50">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-10 text-center border-b-4 pb-3 border-green-primary/50 max-w-xl mx-auto">隱私權政策 (Privacy Policy)</h2>
+   
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg space-y-6 text-gray-700">
+                <p class="text-sm text-gray-500">生效日期：2024 年 11 月 11 日</p>
+                
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">一、 資料收集與類型</h3>
+                <p>本公司主要透過網站聯繫表單、課程報名及顧問服務合約收集您的個人資訊，包括：</p>
+      
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>個人識別資訊：姓名、電話、電子郵件地址。</li>
+                    <li>業務資訊：單位/公司名稱、職稱、洽詢類型、需求描述。</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">二、 資料使用目的</h3>
+        
+                <p>您的個人資料將用於以下目的：</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>回覆您的洽詢或提供所需的服務（如課程通知、顧問報價）。</li>
+                    <li>執行農企媒合服務，在獲得您的「明確同意」後，分享給潛在的合作夥伴（如企業或農村社區）。</li>
+                    <li>提供您可能感興趣的 ESG 資訊、活動通知及市場推廣。</li>
+          
+                </ul>
+
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">三、 資料保護與分享</h3>
+                <p>本公司將採取合理的技術與組織安全措施，保護您的個人資料不被未經授權的存取、使用或洩露。</p>
+                <p>您的資料不會隨意出售或出租。僅在以下情況下，我們可能與第三方分享您的資料：</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    
+                    <li>已獲得您的「明確書面同意」。</li>
+                    <li>法律要求或政府機關基於公權力要求。</li>
+                    <li>為完成農企媒合服務之必要（此時會告知您資料將被分享的對象類型）。</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">四、 Cookie 技術</h3>
+                <p>本網站使用「Cookie 技術」來記錄和分析使用者行為，以改善網站功能和提供更個人化的服務。您可以透過瀏覽器設定來拒絕或刪除 Cookie，但可能影響部分網站功能。</p>
+   
+            </div>
+        </section>
+        
+        <section id="article-1" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div class="mb-8">
+                
+                <button onclick="navigateTo(event, 'knowledge')" class="px-4 py-2 text-sm font-semibold text-blue-accent border border-blue-accent rounded-full hover:bg-blue-50 transition duration-300">
+                    <i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i> 返回知識中心
+                </button>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 text-center border-b-4 pb-3 border-blue-accent/50 max-w-4xl mx-auto">【淨零強制時代】ISO IWA 48 與 CBAM 如何重塑企業永續轉型路徑？</h2>
+      
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg article-content">
+                <p class="text-lg font-medium text-gray-800 mb-4">
+                    全球淨零已不再是企業的「加分題」，而是攸關生存的「必考題」。面對國際標準與強制性機制接踵而來，特別是資源相對有限的中小企業（SMEs），必須立即將碳管理視為核心競爭力。
+                </p>
+
+                <h3>一、 國際標準：ISO IWA 48:2024 的核心指導</h3>
+           
+                <p>
+                    國際標準化組織（ISO）於 2024 年發布了《IWA 48:2024：實施環境、社會與治理（ESG）原則的框架》。這份文件為全球所有類型與規模的組織提供了一套統一且具彈性的 ESG 管理指南，特別強調將 ESG 融入組織文化，並提升衡量與報告的可靠性。
+                </p>
+                <p>
+                    IWA 48 透過標準化的關鍵績效指標（KPI）框架，指導企業從傳統的 ESG 報告轉向成果導向的持續改進，確保 ESG 實踐的誠信與公平性。
+          
+                </p>
+
+                <h3>二、 歐盟壓力：CBAM 對供應鏈的實質衝擊</h3>
+                <p>
+                    歐盟的「碳邊境調整機制」（CBAM，Carbon Border Adjustment Mechanism）對以製造出口為導向的台灣產業構成直接的「綠色成本」挑戰。CBAM 透過對高碳排產品課徵進口碳費，有效地將歐洲的淨零壓力傳導到全球供應鏈。
+                </p>
+                <p>
+    
+                    對於南部傳統產業為主的企業，應對 CBAM 的關鍵不再是能否減碳，而是能否準確、高效地盤查並揭露「產品碳足跡」（ISO 14067）。
+                </p>
+
+                <h3>三、 高效解方：AI 系統與專業輔導的結合</h3>
+                <p>
+                    杉蔓有限公司深知傳統碳盤查流程的繁瑣，故將專業輔導與 AI 系統智慧平台結合，提供獨特的在地化解決方案：
+         
+                </p>
+                <ol>
+                    <li>**效率提升：** 透過 AI 平台自動化數據整理與分析，有效解決繁瑣的盤查流程，將效率提升「40%」。</li>
+                    <li>**數據精準化：** 確保企業準確盤點 Scope 1, 2, 3 數據及碳排放「熱點」。</li>
+                    <li>**在地化減排：** 顧問團隊不僅協助合規，更能針對盤查出的熱點，提供最符合在地產業特性的、具成本效益的節能解方與路徑規劃。</li>
+       
+                </ol>
+
+                <p class="mt-8 pt-4 border-t border-gray-200 text-sm text-gray-500 italic">
+                    <i data-lucide="book-open" class="w-4 h-4 inline mr-1"></i> 參考資料/權威來源：
+                </p>
+                <ul class="list-none space-y-1 ml-0 text-sm text-gray-500 italic">
+    
+                    <li>國際標準化組織 (ISO) - IWA 48:2024, Framework for implementing ESG principles.</li>
+                    <li>歐盟執委會 (European Commission) - Carbon Border Adjustment Mechanism (CBAM) 相關規定。</li>
+                    <li>臺灣環境部 - 2050 淨零排放路徑及策略總說明。</li>
+                </ul>
+       
+                <div class="mt-8 pt-4 border-t border-gray-200">
+                    <button onclick="navigateTo(event, 'knowledge')" class="px-4 py-2 text-sm font-semibold text-blue-accent border border-blue-accent rounded-full hover:bg-blue-50 transition duration-300">
+                        <i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i> 返回知識中心
+                    </button>
+     
+                </div>
+            </div>
+        </section>
+
+        <section id="article-2" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-gray-50">
+            <div class="mb-8">
+                <button onclick="navigateTo(event, 'knowledge')" class="px-4 py-2 text-sm font-semibold text-blue-accent border border-blue-accent rounded-full 
+hover:bg-blue-50 transition duration-300">
+                    <i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i> 返回知識中心
+                </button>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 text-center border-b-4 pb-3 border-green-primary/50 max-w-4xl mx-auto">【策略升級】超越漂綠：將 ESG 從成本中心轉化為創新、人才與競爭力的三大策略</h2>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg 
+article-content">
+                <p class="text-lg font-medium text-gray-800 mb-4">
+                    許多企業仍將 ESG 視為昂貴的「成本中心」或公關活動。然而，成功的企業已將 ESG 視為驅動「創新」、「人才磁吸」與「國際競爭力」的核心策略。關鍵在於，如何將 ESG 理念高效且有趣地滲透到組織的每一個角落。
+                </p>
+
+                <h3>一、 強化治理結構：建立信任的基礎</h3>
+                <p>
+     
+                「公司治理」（G）是所有 ESG 行動的基石。透過建立透明且負責任的治理結構，企業才能有效管理風險、避免利益衝突，並對利害關係人展現誠信。
+                </p>
+                <ul>
+                    <li>風險管理：整合氣候變遷與社會風險至董事會監督層級。</li>
+                    <li>資訊揭露：確保 ESG 報告（如永續報告書）資訊的獨立性與公正性。</li>
+         
+                </ul>
+
+                <h3>二、 創新教育：利用遊戲化普及永續知識</h3>
+                <p>
+                    知識的普及是推動永續轉型的最大挑戰。傳統的簡報式培訓效率低、參與度差。杉蔓創新的「ESG 策略桌遊」為此提供了強大的解決方案：
+                </p>
+                <ul>
+       
+                    <li>**降低門檻：** 透過遊戲的模擬和互動性，將複雜的碳管理、供應鏈責任等概念，轉化為易於理解的策略挑戰。</li>
+                    <li>**提升參與度：** 遊戲化的培訓方式，能顯著提升員工和潛在「永續人才」的學習意願與記憶深度。</li>
+                    <li>**人才磁吸：** 年輕世代（Z 世代）特別重視企業的 ESG 表現與社會回饋，創新的永續教育能有效吸引和留住這些關鍵人才。</li>
+                </ul>
+                <p>
+         
+                    我們提供的「桌遊種子教師培訓」，旨在建立企業內部的永續知識傳播鏈，讓永續理念能夠「由內而外」地驅動組織創新。
+                </p>
+
+                <h3>三、 策略性投資：鎖定綠色商機</h3>
+                <p>
+                    ESG 表現優良的公司，往往展現出更穩健的體質與更低的投資風險。企業應將 ESG 視為一項長期策略性投資，專注於開發友善環境的技術，並提升能源使用效率，從而創造國際競爭優勢，而非僅為了合規而行動。
+                </p>
+
+ 
+                <p class="mt-8 pt-4 border-t border-gray-200 text-sm text-gray-500 italic">
+                    <i data-lucide="book-open" class="w-4 h-4 inline mr-1"></i> 參考資料/權威來源：
+                </p>
+                <ul class="list-none space-y-1 ml-0 text-sm text-gray-500 italic">
+              
+                    <li>聯合國全球契約組織 (UN Global Compact) - ESG 概念與定義。</li>
+                    <li>全球永續投資聯盟 (GSIA) - 永續投資成長趨勢報告。</li>
+                    <li>學術研究 - 遊戲化學習在企業培訓中的應用與效率 (Gamification in Corporate Training)。</li>
+                </ul>
+                <div class="mt-8 pt-4 border-t border-gray-200">
+   
+                    <button onclick="navigateTo(event, 'knowledge')" class="px-4 py-2 text-sm font-semibold text-blue-accent border border-blue-accent rounded-full hover:bg-blue-50 transition duration-300">
+                        <i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i> 返回知識中心
+                    </button>
+                </div>
+     
+            </div>
+        </section>
+
+        <section id="article-3" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div class="mb-8">
+                <button onclick="navigateTo(event, 'knowledge')" class="px-4 py-2 text-sm font-semibold text-blue-accent border border-blue-accent rounded-full hover:bg-blue-50 transition duration-300">
+                
+                    <i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i> 返回知識中心
+                </button>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 text-center border-b-4 pb-3 border-yellow-500/50 max-w-4xl mx-auto">【永續行動方程式】中小企業如何串聯 SDGs、在地創生創造可量化的社會影響力？</h2>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg article-content">
+                <p class="text-lg font-medium 
+text-gray-800 mb-4">
+                    聯合國 17 項永續發展目標（SDGs）為企業提供了一個全球性的藍圖。對於杉蔓這樣以「地方創生」為核心的公司，如何將其業務與 SDGs 連結，並創造可量化的社會影響力，是社會責任的關鍵。
+                </p>
+
+                <h3>一、 從在地需求出發：對應核心 SDGs</h3>
+                <p>
+                    中小企業應專注於其能力與營運區域最相關的 SDGs，以確保資源投入的最大化效益。杉蔓的核心業務對應以下三大目標：
+    
+                </p>
+                <ul>
+                    <li>SDG 4 (優質教育)： 透過 ESG 策略桌遊與永續培訓，推廣全民永續知識。</li>
+                    <li>SDG 11 (永續城鄉)： 深入農村社區，輔導永續耕作，建立在地韌性。</li>
+                    <li>SDG 17 (夥伴關係)： 透過「農企媒合平台」，連結企業資金與農村資源。</li>
+ 
+                </ul>
+
+                <h3>二、 永續驅動地方創生：農企媒合機制</h3>
+                <p>
+                    杉蔓的創新在於將企業的 ESG 採購需求與地方農村的永續農產品供應鏈進行精準媒合，創造「共好」生態系：
+                </p>
+              
+                <ol>
+                    <li>**農友輔導：** 提供永續農業培訓，協助農友導入永續耕作模式。</li>
+                    <li>**品質保證：** 確保農產品符合永續標準，成為企業可信賴的供應源。</li>
+                    <li>**經濟效益：** 建立穩定的銷售管道，協助農友獲得更合理的利潤，目標提升「20%」的經濟收入，避免中間商剝削。</li>
+                </ol>
+                <p>
+   
+                    這種模式將企業的「社會責任」轉化為農村的「經濟動能」，是實現永續城鄉的實質路徑。
+                </p>
+
+                <h3>三、 承諾透明化：量化社會影響力</h3>
+                <p>
+                    真正的社會影響力必須是可衡量的。杉蔓承諾將年度盈餘的「30% 投入社會使命」，並設立清晰的量化目標，包括協助「20 個農村社區」轉型及培育「500 名永續人才」，這為社會夥伴和投資者提供了高度的透明度與信任。
+           
+                </p>
+
+                <p class="mt-8 pt-4 border-t border-gray-200 text-sm text-gray-500 italic">
+                    <i data-lucide="book-open" class="w-4 h-4 inline mr-1"></i> 參考資料/權威來源：
+                </p>
+                <ul class="list-none space-y-1 ml-0 text-sm text-gray-500 italic">
+        
+                    <li>聯合國 (UN) - 17項永續發展目標 (SDGs) 框架。</li>
+                    <li>政府部門 - 地方創生政策與資源引導機制。</li>
+                    <li>企業社會責任 (CSR) 與在地社區投資效益報告。</li>
+                </ul>
+                <div class="mt-8 pt-4 border-t border-gray-200">
+   
+                    <button onclick="navigateTo(event, 'knowledge')" class="px-4 py-2 text-sm font-semibold text-blue-accent border border-blue-accent rounded-full hover:bg-blue-50 transition duration-300">
+                        <i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i> 返回知識中心
+                    </button>
+                </div>
+     
+            </div>
+        </section>
+
+        <section id="article-4" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-gray-50">
+            <div class="mb-8">
+                <button onclick="navigateTo(event, 'knowledge')" class="px-4 py-2 text-sm font-semibold text-blue-accent border border-blue-accent rounded-full hover:bg-blue-50 transition duration-300">
+             
+                    <i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i> 返回知識中心
+                </button>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 text-center border-b-4 pb-3 border-blue-accent/50 max-w-4xl mx-auto">【碳管理入門】ISO 14064-1 組織溫室氣體盤查的五大核心步驟</h2>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg article-content">
+               
+                <p class="text-lg font-medium text-gray-800 mb-4">
+                    ISO 14064-1:2018 是國際間用於量化和報告組織溫室氣體（GHG）排放與移除量的權威標準。它為企業提供了一個系統化的框架，是企業應對氣候變遷、制定減碳策略和提升國際競爭力的第一步。
+                </p>
+
+                <h3>一、 組織型溫室氣體盤查的目標</h3>
+                <p>
+                    組織進行溫室氣體盤查的主要目標包括：識別排放「熱點」、評估氣候變遷風險與機會、制定減排目標、提升報告透明度，以及符合國內外供應鏈的強制性或自願性要求。
+    
+                </p>
+
+                <h3>二、 關鍵概念：三大範疇（Scope）</h3>
+                <p>
+                    ISO 14064-1 採用了 GHGP（溫室氣體盤查議定書）的分類方法，將排放源區分為三大範疇：
+                </p>
+                
+                <ul>
+                    <li>**範疇一（Scope 1）：直接排放**
+                        <p class="ml-4 mt-1">來自於組織擁有或控制的排放源，例如：固定燃料燃燒（鍋爐、發電機）、製程排放、自有車輛的移動源等。</p>
+                    </li>
+                    <li>**範疇二（Scope 2）：能源間接排放**
+            
+                        <p class="ml-4 mt-1">來自於組織外購電力、熱或蒸氣等能源所產生的排放。</p>
+                    </li>
+                    <li>**範疇三（Scope 3）：其他間接排放**
+                        <p class="ml-4 mt-1">組織價值鏈中，所有不屬於範疇一和範疇二的間接排放，如：商務旅行、員工通勤、廢棄物處理、外購原物料等（企業可依需求選擇納入）。</p>
+                   
+                    </li>
+                </ul>
+
+                <h3>三、 組織盤查的五大核心步驟</h3>
+                <p>
+                    依據標準，企業應遵循以下五個主要步驟完成盤查：
+                </p>
+              
+                <ol>
+                    <li>**設定邊界（Boundary Setting）：** 明確界定組織邊界（公司/工廠規模）和報告邊界（納入的排放源範疇）。</li>
+                    <li>**排放源鑑別：** 識別所有直接排放（範疇一）和間接排放（範疇二、三）的來源。</li>
+                    <li>**量化計算：** 收集活動數據（如用電量、燃料使用量）和對應的排放係數，並計算每種溫室氣體（CO₂, CH₄, N₂O, HFCs 等）的排放量，單位為公噸 CO₂e（二氧化碳當量）。</li>
+                    <li>**撰寫報告：** 彙整排放清冊，文件化所有過程、數據依據、計算程序，並撰寫溫室氣體盤查報告書。</li>
+        
+                    <li>**查證（Verification）：** 進行內部查證，並依規定或需求選擇合格的第三方查驗機構進行外部查證，以確保數據的準確性與可信度。</li>
+                </ol>
+
+                <p class="mt-8 pt-4 border-t border-gray-200 text-sm text-gray-500 italic">
+                    <i data-lucide="book-open" class="w-4 h-4 inline mr-1"></i> 參考資料/權威來源：
+                </p>
+      
+                <ul class="list-none space-y-1 ml-0 text-sm text-gray-500 italic">
+                    <li>環境部 (MOENV) - 溫室氣體排放量盤查作業指引 (2024年版)。</li>
+                    <li>國際標準化組織 (ISO) - ISO 14064-1:2018 組織層級溫室氣體量化及報告規範。</li>
+                    <li>SGS 台灣檢驗科技股份有限公司 - 組織型溫室氣體盤查服務介紹。</li>
+            
+                </ul>
+                <div class="mt-8 pt-4 border-t border-gray-200">
+                    <button onclick="navigateTo(event, 'knowledge')" class="px-4 py-2 text-sm font-semibold text-blue-accent border border-blue-accent rounded-full hover:bg-blue-50 transition duration-300">
+                        <i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i> 返回知識中心
+              
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="article-5" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div class="mb-8">
+                <button 
+onclick="navigateTo(event, 'knowledge')" class="px-4 py-2 text-sm font-semibold text-blue-accent border border-blue-accent rounded-full hover:bg-blue-50 transition duration-300">
+                    <i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i> 返回知識中心
+                </button>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 text-center border-b-4 pb-3 border-green-primary/50 max-w-4xl mx-auto">【資源永續】從線性到循環：台灣企業推動循環經濟的兩大核心與四大策略</h2>
+            
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg article-content">
+                <p class="text-lg font-medium text-gray-800 mb-4">
+                    循環經濟（Circular Economy）是全球應對資源枯竭和氣候變遷的重大趨勢。它挑戰了傳統「開採-製造-使用-丟棄」的線性經濟模式，強調通過設計和意圖來恢復或再生資源，實現資源利用的「最大效益」。
+                </p>
+
+                <h3>一、 核心精神：脫鉤與兩大循環</h3>
+                <p>
+   
+                    循環經濟的核心精神是實現「經濟成長與原物料的消耗脫鉤」。所有資源被視為有價值的「資產」，並被規劃在兩大循環中持續流動：
+                </p>
+                <ul>
+                    <li>**生物循環：** 針對農產品、木材等可回歸大自然的資源，透過堆肥或厭氧消化等方式，讓養分回到土壤，持續再生地力。</li>
+                    <li>**工業循環：** 針對金屬、塑膠、石化等工業原料，透過重複使用、維修、再製造和高價值回收，讓這些材料在系統中不斷循環，減少新原物料的開採。</li>
+         
+                </ul>
+
+                <h3>二、 台灣官方推動主軸：循環產業化與產業循環化</h3>
+                <p>
+                    行政院將循環經濟列為「5+2」產業創新政策之一，並通過《循環經濟推動方案》，設定了兩大主軸和四大策略，以系統性地推動國家轉型：
+                </p>
+                <ol>
+        
+                    <li>**循環產業化：** 輔導傳統「靜脈產業」（資源回收與再利用）升級，透過創新技術開發高附加價值的再生材料和產品，使其成為新的經濟增長點。</li>
+                    <li>**產業循環化：** 協助「動脈產業」（製造業與消費端）實現生產流程的封閉循環，促進產業間的廢棄物共生利用（例如 A 廠的廢棄物是 B 廠的原料），提升整體能資源效率。</li>
+                </ol>
+
+                <h3>三、 企業實踐的四大策略方向</h3>
+                <p>
+             
+                    企業無論規模大小，都可以從以下方向實踐循環經濟：
+                </p>
+                <ul>
+                    <li>**創新產品設計：** 採用「從搖籃到搖籃 (Cradle to Cradle)」的設計理念，使產品更耐用、易於修復、易於拆解和回收。</li>
+                    <li>**產品服務化（PaaS）：** 推動「以租代買」或「訂閱制」，讓生產者保留產品所有權，並負責維護與回收，延長產品壽命。</li>
+                
+                    <li>**綠色交易與消費：** 鼓勵消費者選擇無包裝、補充包、循環餐具或循環包裝，並推動政府部門優先採購再生粒料。</li>
+                    <li>**逆物流系統：** 建立高效的回收、清洗、分類系統，確保產品生命週期結束後，能將其價值最大化地回到生產循環中。</li>
+                </ul>
+
+                <p class="mt-8 pt-4 border-t border-gray-200 text-sm text-gray-500 italic">
+                    <i data-lucide="book-open" class="w-4 h-4 inline mr-1"></i> 參考資料/權威來源：
+         
+                </p>
+                <ul class="list-none space-y-1 ml-0 text-sm text-gray-500 italic">
+                    <li>行政院 - 循環經濟推動方案。</li>
+                    <li>環境部資源循環網 - 認識循環經濟。</li>
+                    <li>世界經濟論壇 (WEF) - 循環經濟定義。</li>
+    
+                </ul>
+                <div class="mt-8 pt-4 border-t border-gray-200">
+                    <button onclick="navigateTo(event, 'knowledge')" class="px-4 py-2 text-sm font-semibold text-blue-accent border border-blue-accent rounded-full hover:bg-blue-50 transition duration-300">
+                        <i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i> 返回知識中心
+      
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="article-6" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <div class="mb-8">
+       
+                <button onclick="navigateTo(event, 'knowledge')" class="px-4 py-2 text-sm font-semibold text-blue-accent border border-blue-accent rounded-full hover:bg-blue-50 transition duration-300">
+                    <i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i> 返回知識中心
+                </button>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 text-center border-b-4 pb-3 border-yellow-500/50 max-w-4xl mx-auto">【智慧農業】AI 科技如何解決農業缺工、氣候挑戰並實現精準永續耕作？</h2>
+ 
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg article-content">
+                <p class="text-lg font-medium text-gray-800 mb-4">
+                    台灣農業正面臨人口高齡化、勞動力短缺以及極端氣候帶來的雙重衝擊。導入 AI（人工智慧）、IoT（物聯網）和 Big Data 實現智慧農業，已成為提高效率、降低成本並邁向永續發展的必然趨勢。
+                </p>
+
+                <h3>一、 農業 AI 解決的核心痛點</h3>
+   
+                <p>
+                    AI 智慧農業的核心價值，是將依賴**人力與經驗**的農業生產，轉變為依賴**數據與決策**的精準管理模式：
+                </p>
+                <ul>
+                    <li>**應對缺工：** 透過自動駕駛農機、機器人、無人機等先進技術，彌補不斷萎縮的農業勞動力。</li>
+             
+                    <li>**精準管理：** 整合氣象站數據、土壤感測器、衛星及無人機影像，建立農業知識模組，實現精準灌溉、施肥。</li>
+                    <li>**風險預警：** 運用深度學習模型，即時辨識肉眼難見的微小害蟲（如薊馬）或預測極端天氣下的作物產量與病蟲害風險。</li>
+                </ul>
+
+                <h3>二、 AI 智慧農業的應用範例</h3>
+                <p>
+                    AI 
+技術的落地應用已涵蓋從「田間管理」到「品質監測」的多個環節：
+                </p>
+                <ol>
+                    <li>**病蟲害即時預警：** AI 辨識系統可比人類更快發現病蟲害跡象，並透過 Line 等通訊軟體即時示警農民，提供更充裕的防治時間，減少農藥使用量達「30%」至「40%」。</li>
+                    <li>**產量與品質預測：** 整合歷史資料與氣候模型，AI 可預測作物產量，協助農民優化收穫時程，並在收穫時透過 AI 敲擊棒等設備快速分辨優劣。</li>
+                    
+                    <li>**智慧養殖與追溯：** 在漁業和畜牧業中，AI 監控系統可用於追蹤水質、家禽體溫等，並結合區塊鏈等技術，讓消費者能輕鬆追溯產品從田間到餐桌的每一個環節，確保食品安全。</li>
+                </ol>
+
+                <h3>三、 創造的永續效益與挑戰</h3>
+                <p>
+                    AI 智慧農業帶來的效益是全面性的，包括：提升農產品質量、增加農民利潤、降低水資源和化肥的使用，以及促進農業邁向「低碳循環」的永續目標。然而，推廣也面臨挑戰，如：前期技術導入成本高昂、農場數據的共享與所有權問題，以及缺乏統一的技術標準。
+                </p>
+
+            
+                <p class="mt-8 pt-4 border-t border-gray-200 text-sm text-gray-500 italic">
+                    <i data-lucide="book-open" class="w-4 h-4 inline mr-1"></i> 參考資料/權威來源：
+                </p>
+                <ul class="list-none space-y-1 ml-0 text-sm text-gray-500 italic">
+                    <li>農業科技研究院 (ATRI) - 農業 AI 
+技術應用與產業發展中心報告。</li>
+                    <li>美國政府責任署 (GAO) - 精準農業技術使用效益與挑戰報告。</li>
+                    <li>國立清華大學黃能富教授團隊 - AI 智慧農業實務應用案例。</li>
+                </ul>
+                <div class="mt-8 pt-4 border-t border-gray-200">
+                  
+                    <button onclick="navigateTo(event, 'knowledge')" class="px-4 py-2 text-sm font-semibold text-blue-accent border border-blue-accent rounded-full hover:bg-blue-50 transition duration-300">
+                        <i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i> 返回知識中心
+                    </button>
+                </div>
+            </div>
+        
+        </section>
+
+
+        
+        <section id="terms" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-10 text-center border-b-4 pb-3 border-blue-accent/50 max-w-xl mx-auto">服務條款 (Terms of Service)</h2>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg space-y-6 text-gray-700">
+                <p class="text-sm text-gray-500">生效日期：2024 年 11 月 11 日</p>
+             
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">一、 服務範圍</h3>
+                <p>
+                    本服務由杉蔓有限公司（下稱「本公司」）提供，涵蓋「ESG 策略桌遊培訓課程」、「ISO 14064 碳盤查顧問服務」，以及「永續農企合作媒合平台」等。
+                </p>
+
+                <h3 class="text-2xl font-bold text-gray-800 
+border-b pb-2">二、 使用者義務</h3>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>使用者應確保提供之資料真實、準確。</li>
+                    <li>使用者不得利用本服務進行任何非法、侵權或損害本公司權益之行為。</li>
+                    <li>課程購買者，不得未經授權複製、散佈或販售任何課程內容及教材（包括 ESG 桌遊設計及內容），此類智慧財產權歸本公司所有。</li>
+                
+                </ul>
+
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">三、 智慧財產權</h3>
+                <p>本網站所有內容、桌遊產品、教材、課程設計及顧問方法論之智慧財產權，均屬杉蔓有限公司所有。未經本公司書面授權，嚴禁任何形式之重製、改作、公開傳輸或使用。</p>
+
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">四、 免責聲明</h3>
+                <p>本公司之碳盤查輔導與 ESG 顧問服務為提供專業建議與方法論，「不保證客戶能通過第三方最終驗證或達成所有法規要求」。使用者應自行評估並承擔使用服務後的一切風險與責任。</p>
+                
+      
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">五、 服務變更與終止</h3>
+                <p>本公司保留隨時修改、暫停或終止部分或全部服務之權利。修改後之服務條款將公布於本網站，並自公布時生效，不另行個別通知。</p>
+            </div>
+        </section>
+
+        <section id="privacy" class="page-content px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-gray-50">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 
+mb-10 text-center border-b-4 pb-3 border-green-primary/50 max-w-xl mx-auto">隱私權政策 (Privacy Policy)</h2>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg space-y-6 text-gray-700">
+                <p class="text-sm text-gray-500">生效日期：2024 年 11 月 11 日</p>
+                
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">一、 資料收集與類型</h3>
+           
+                <p>本公司主要透過網站聯繫表單、課程報名及顧問服務合約收集您的個人資訊，包括：</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>個人識別資訊：姓名、電話、電子郵件地址。</li>
+                    <li>業務資訊：單位/公司名稱、職稱、洽詢類型、需求描述。</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold 
+text-gray-800 border-b pb-2">二、 資料使用目的</h3>
+                <p>您的個人資料將用於以下目的：</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>回覆您的洽詢或提供所需的服務（如課程通知、顧問報價）。</li>
+                    <li>執行農企媒合服務，在獲得您的「明確同意」後，分享給潛在的合作夥伴（如企業或農村社區）。</li>
+                    <li>提供您可能感興趣的 
+ESG 資訊、活動通知及市場推廣。</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">三、 資料保護與分享</h3>
+                <p>本公司將採取合理的技術與組織安全措施，保護您的個人資料不被未經授權的存取、使用或洩露。</p>
+                <p>您的資料不會隨意出售或出租。僅在以下情況下，我們可能與第三方分享您的資料：</p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+         
+                    <li>已獲得您的「明確書面同意」。</li>
+                    <li>法律要求或政府機關基於公權力要求。</li>
+                    <li>為完成農企媒合服務之必要（此時會告知您資料將被分享的對象類型）。</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-gray-800 border-b pb-2">四、 Cookie 技術</h3>
+          
+                <p>本網站使用「Cookie 技術」來記錄和分析使用者行為，以改善網站功能和提供更個人化的服務。您可以透過瀏覽器設定來拒絕或刪除 Cookie，但可能影響部分網站功能。</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex flex-col md:flex-row justify-center md:justify-between items-center space-y-4 md:space-y-0">
+                <p class="text-sm">&copy;
+2024 杉蔓有限公司 (Sustainable Man). 版權所有。</p>
+                <div class="flex space-x-4">
+                    <a href="#privacy" onclick="navigateTo(event, 'privacy')" class="text-gray-400 hover:text-green-primary transition duration-300">隱私權政策</a>
+                    <a href="#terms" onclick="navigateTo(event, 'terms')" class="text-gray-400 hover:text-green-primary transition duration-300">服務條款</a>
+  
+                    <a href="#contact" onclick="navigateTo(event, 'contact')" class="text-gray-400 hover:text-green-primary transition duration-300">聯繫我們</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 初始化 Lucide Icons
+        lucide.createIcons();
+        // 頁面切換邏輯 (模擬單頁應用)
+        // UPDATED: Added new article pages to pages array
+        const pages = ['home', 'about', 'services', 'team', 'impact', 'contact', 'terms', 'privacy', 'knowledge', 'article-1', 'article-2', 'article-3', 'article-4', 'article-5', 'article-6'];
+        let currentPage = 'home';
+
+        // UPDATED: Function now accepts event object and prevents default action for <a> tags
+        function navigateTo(event, pageId) {
+            // Prevent default anchor link jump behavior for <a> tags
+            if (event && event.preventDefault) {
+                event.preventDefault();
+            }
+
+            if (pages.includes(pageId)) {
+                // 隱藏所有頁面內容
+                pages.forEach(id => {
+                    document.getElementById(id).classList.remove('active');
+                });
+                // 顯示目標頁面
+                document.getElementById(pageId).classList.add('active');
+                currentPage = pageId;
+
+                // --- NEW: Handle active navigation state ---
+                // 重置所有桌面與手機導航連結
+                document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                document.querySelectorAll('.mobile-nav-link').forEach(link => link.classList.remove('active'));
+                
+                // For sub-pages (articles), highlight the parent 'knowledge' link
+                const parentPageId = pageId.includes('article') ?
+                'knowledge' : pageId;
+
+                // 設定桌面導航連結的啟用狀態
+                const desktopLink = document.querySelector(`.nav-link[data-page="${parentPageId}"]`);
+                if (desktopLink) desktopLink.classList.add('active');
+
+                // 設定手機導航連結的啟用狀態
+                const mobileLinks = document.querySelectorAll(`.mobile-nav-link[data-page="${parentPageId}"]`);
+                mobileLinks.forEach(link => link.classList.add('active'));
+                // --- END NEW ---
+
+                // 關閉手機菜單
+                document.getElementById('mobile-menu').classList.add('hidden');
+                // 滾動到頁面頂部
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // 手機選單開關
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        /**
+         * 處理表單提交邏輯，並使用 fetch API 模擬連接後端服務 (Formspree 格式)。
+         */
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formMessage = document.getElementById('form-message');
+            const submitButton = document.getElementById('submit-button');
+            // --- CONFIGURATION ---
+            // * IMPORTANT *
+            // 請將此 URL 替換為您在 Formspree 註冊後取得的專屬 POST 網址。
+            // 範例格式: https://formspree.io/f/your_unique_id
+            const endpointUrl = 'https://formspree.io/f/mqaybojw';
+            // ---------------------
+
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            // 1. 顯示載入狀態
+            submitButton.disabled = true;
+            submitButton.innerHTML = '提交中...';
+            formMessage.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-700');
+            formMessage.innerHTML = '正在發送請求，請稍候...';
+
+            try {
+                // 2. 發送 POST 請求到 Formspree
+                const response = await fetch(endpointUrl, {
+                    method: 'POST',
+                    headers: {
+       
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                
+                });
+
+                // 3. 處理回應 (Formspree 回應狀態碼通常為 200 或 302)
+                if (response.ok || response.status === 200) {
+                    formMessage.classList.add('bg-green-100', 'text-green-700');
+                    formMessage.innerHTML = `感謝 ${data.name} 的洽詢！我們已成功收到您的需求，將盡快安排專業人員以 ${data.email} 與您聯繫。`;
+                    form.reset();
+                } else {
+                    // 處理 Formspree 返回的錯誤訊息 (如果狀態碼不是 200)
+                    console.error('API 提交失敗, 狀態碼:', response.status);
+                    formMessage.classList.add('bg-red-100', 'text-red-700');
+                    formMessage.innerHTML = '表單提交失敗，請檢查網路連線或稍後再試。您亦可直接撥打電話聯繫。';
+                }
+
+            } catch (error) {
+                console.error('表單提交錯誤:', error);
+                formMessage.classList.add('bg-red-100', 'text-red-700');
+                formMessage.innerHTML = '表單提交失敗，請檢查網路連線或直接撥打電話聯繫。';
+            } finally {
+                // 4. 恢復按鈕狀態
+                submitButton.disabled = false;
+                submitButton.innerHTML = '送出洽詢表單';
+                
+                // 5秒後隱藏訊息
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 5000);
+            }
+        }
+
+        // --- NEW: Consultant Carousel Logic ---
+        const carousel = document.getElementById('consultant-carousel');
+        const consultantCards = 3; // 總共有 3 位顧問
+
+        function scrollConsultant(direction) {
+            if (!carousel) return;
+            const scrollAmount = carousel.clientWidth; // 每次滾動一個卡片的寬度
+            
+            if (direction === 'next') {
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            } else if (direction === 'prev') {
+                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            }
+        }
+
+        // 確保初始載入正確
+        document.addEventListener('DOMContentLoaded', () => {
+            // 頁面加載完成後，立即將 'home' 頁面設為啟用狀態
+            navigateTo(null, 'home'); // Pass null for event on initial load
+        });
+        // --- END NEW ---
+    </script>
+
+</body>
+</html>
