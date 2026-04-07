@@ -1,0 +1,72 @@
+---
+const links = {
+	'關於我們': [
+		{ label: '品牌故事', href: '#about' },
+		{ label: '永續承諾', href: '#impact' },
+		{ label: '專業團隊', href: '#team' },
+		{ label: '社會使命', href: '#about' }
+	],
+	'核心服務': [
+		{ label: 'ISO 14064 碳盤查', href: '#services' },
+		{ label: 'ISO 14067 碳足跡', href: '#services' },
+		{ label: 'ESG 策略桌遊', href: '#services' },
+		{ label: '綠色印刷策展', href: '#services' }
+	],
+	'法律與隱私': [
+		{ label: '服務條款', href: '#terms' },
+		{ label: '隱私權政策', href: '#privacy' },
+		{ label: 'Cookie 政策', href: '#privacy' }
+	]
+};
+---
+
+<footer class="bg-zinc-950 border-t border-zinc-900 pt-32 pb-12 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row justify-between gap-16 mb-24">
+            <div class="max-w-sm">
+                <a href="/" class="flex items-center gap-2 mb-8 stagger-reveal">
+                    <div class="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                        <i data-lucide="leaf" class="w-7 h-7 text-black"></i>
+                    </div>
+                    <span class="text-2xl font-black uppercase tracking-tighter text-white">杉蔓有限公司</span>
+                </a>
+                <p class="text-zinc-500 font-bold uppercase tracking-widest text-[10px] leading-loose mb-10 stagger-reveal delay-200">
+                    致力於透過專業顧問與創新教育，為台灣打造完整的永續生態圈。淨零時代，高效永續轉型策略夥伴。
+                </p>
+                <div class="flex gap-4 stagger-reveal delay-400">
+                    <a href="#" class="w-10 h-10 border border-zinc-800 flex items-center justify-center hover:bg-emerald-500 transition-colors group">
+                        <i data-lucide="facebook" class="w-4 h-4 text-zinc-500 group-hover:text-black"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 border border-zinc-800 flex items-center justify-center hover:bg-emerald-500 transition-colors group">
+                        <i data-lucide="instagram" class="w-4 h-4 text-zinc-500 group-hover:text-black"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 border border-zinc-800 flex items-center justify-center hover:bg-emerald-500 transition-colors group">
+                        <i data-lucide="linkedin" class="w-4 h-4 text-zinc-500 group-hover:text-black"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-24">
+                {Object.entries(links).map(([title, items], idx) => (
+                    <div class={`stagger-reveal`} style={`transition-delay: ${idx * 150}ms`}>
+                        <h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-500 mb-8">{title}</h4>
+                        <ul class="space-y-4">
+                            {items.map(item => (
+                                <li>
+                                    <a href={item.href} class="text-xs font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">{item.label}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        <div class="pt-12 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-6 stagger-reveal delay-700">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-600">&copy; 2024 SUSTAINABLE MAN CO., LTD. ALL RIGHTS RESERVED.</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-600 flex items-center gap-2">
+                MADE BY <a href="#" class="text-zinc-500 hover:text-emerald-500 transition-colors">ANTIGRAVITY AI</a>
+            </span>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,51 @@
+---
+---
+
+<section class="min-h-screen flex flex-col justify-center items-center text-center px-6 md:px-12 bg-gradient-to-br from-black to-emerald-950/20 pt-20 overflow-hidden relative" id="home">
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <div class="grid grid-cols-12 gap-4 h-full w-full">
+            {Array.from({ length: 48 }).map(() => (
+                <div class="border-[0.5px] border-emerald-500/20"></div>
+            ))}
+        </div>
+    </div>
+
+    <div class="z-10 max-w-5xl">
+        <h1 class="text-5xl md:text-8xl lg:text-[10rem] font-black uppercase text-white leading-[0.85] tracking-tighter mb-8 stagger-reveal translate-y-20 opacity-0 transition-all duration-1000 ease-out">
+            <span class="block">淨零時代</span>
+            <span class="text-emerald-500">永續轉型</span>
+            <span class="block text-4xl md:text-6xl lg:text-7xl mt-4 text-emerald-300">策略夥伴</span>
+        </h1>
+        
+        <p class="text-lg md:text-2xl text-zinc-400 max-w-3xl mx-auto mb-12 stagger-reveal delay-300 translate-y-10 opacity-0 transition-all duration-1000">
+            憑藉 ISO 碳管理專業及 AI 輔導系統，加速企業數據盤查與減碳路徑規劃。為台灣打造完整的永續生態圈。
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center stagger-reveal delay-500">
+            <a href="#services" class="huemor-btn-primary group relative overflow-hidden">
+                <span class="relative z-10 flex items-center gap-2">
+                    探索服務
+                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </span>
+            </a>
+            <a href="#impact" class="huemor-btn-outline">
+                查看永續承諾
+            </a>
+        </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-30">
+        <i data-lucide="chevron-down" class="w-8 h-8"></i>
+    </div>
+</section>
+
+<script is:inline>
+    // Trigger reveals on mount
+    setTimeout(() => {
+        document.querySelectorAll('.stagger-reveal').forEach((el, index) => {
+            setTimeout(() => {
+                el.classList.add('active');
+            }, index * 200);
+        });
+    }, 100);
+</script>

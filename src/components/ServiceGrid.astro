@@ -1,0 +1,54 @@
+---
+import ServiceCard from './ServiceCard.astro';
+
+const services = [
+	{
+		title: "ISO 14064 碳盤查輔導",
+		description: "針對中小企業提供一站式碳管理服務。從數據蒐集、邊界設定到報告產出，確保流程符合國際標準。",
+		icon: "bar-chart-3",
+		accent: "emerald"
+	},
+	{
+		title: "ISO 14067 產品碳足跡",
+		description: "精準評估產品生命週期碳排放。協助企業接軌綠色供應鏈，提升產品全球綠色競爭力。",
+		icon: "layers",
+		accent: "blue"
+	},
+	{
+		title: "ESG 策略桌遊培訓",
+		description: "透過遊戲化方式普及永續知識。培訓種子教師將永續理念推廣至企業、校園與社區。",
+		icon: "gamepad-2",
+		accent: "yellow"
+	},
+	{
+		title: "綠色策展與低碳印刷",
+		description: "使用 rPET 再生布料取代傳統耗材。解決展場殘膠問題，實現循環經濟與無毒場域。",
+		icon: "printer",
+		accent: "purple"
+	}
+];
+---
+
+<section class="py-32 px-6 bg-black" id="services">
+    <div class="max-w-7xl mx-auto">
+        <div class="mb-24 flex flex-col md:flex-row justify-between items-end gap-8">
+            <div class="max-w-2xl">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-4 stagger-reveal">我們的核心服務</h2>
+                <h3 class="text-5xl md:text-7xl font-black uppercase tracking-tighter stagger-reveal delay-200">
+                    永續策略 <br/> <span class="text-zinc-500">轉型引路人</span>
+                </h3>
+            </div>
+            <div class="md:text-right max-w-sm stagger-reveal delay-400">
+                <p class="text-zinc-500 font-bold uppercase tracking-widest text-sm">
+                    致力於透過專業顧問與創新教育，為台灣打造完整的永續生態圈。
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {services.map(service => (
+                <ServiceCard {...service} />
+            ))}
+        </div>
+    </div>
+</section>

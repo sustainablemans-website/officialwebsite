@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "杉蔓有限公司 - 永續教育與地方創生顧問" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-TW">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<script src="https://unpkg.com/lucide@latest"></script>
+	</head>
+	<body class="bg-black text-white selection:bg-emerald-500 selection:text-black">
+		<slot />
+		<script is:inline>
+			// Initialize Lucide Icons
+			lucide.createIcons();
+			
+			// Intersection Observer for Staggered Reveal
+			const observerOptions = {
+				threshold: 0.1
+			};
+			
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('active');
+					}
+				});
+			}, observerOptions);
+			
+			document.querySelectorAll('.stagger-reveal').forEach(el => observer.observe(el));
+		</script>
+	</body>
+</html>

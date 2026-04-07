@@ -1,0 +1,75 @@
+---
+const goals = [
+	{
+		id: '01',
+		title: '培育永續人才',
+		description: '2030 年前，培育 500 名具備 ESG 知識的永續人才。',
+		icon: 'users',
+		color: 'emerald'
+	},
+	{
+		id: '02',
+		title: '深化在地連結',
+		description: '2030 年前，協助 20 個農村社區落實永續耕作。',
+		icon: 'map-pin',
+		color: 'blue'
+	},
+	{
+		id: '03',
+		title: '綠色策展實踐',
+		description: '協助 50 場低碳策展，顯著降低二氧化碳排放量。',
+		icon: 'heart',
+		color: 'yellow'
+	}
+];
+
+const sdgs = [
+	{ id: 4, name: '優質教育', color: 'bg-emerald-500' },
+	{ id: 11, name: '永續城鄉', color: 'bg-yellow-500' },
+	{ id: 17, name: '夥伴關係', color: 'bg-blue-500' }
+];
+---
+
+<section class="py-32 bg-black px-6" id="impact">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div>
+                <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-4 stagger-reveal">永續承諾</h2>
+                <h3 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 stagger-reveal delay-200">
+                    共創全民 <br/> <span class="text-zinc-500">ESG 時代</span>
+                </h3>
+                <p class="text-xl text-zinc-400 mb-12 stagger-reveal delay-400 leading-relaxed max-w-lg">
+                    杉蔓的核心使命是：「以地方創生為起點，深耕農業永續教育，透過創新桌遊與多元培訓，將 ESG 概念普及至全民。」
+                </p>
+
+                <div class="flex gap-4 stagger-reveal delay-500">
+                    {sdgs.map(sdg => (
+                        <div class={`w-28 h-24 ${sdg.color} p-4 flex flex-col justify-between group hover:-translate-y-2 transition-transform`}>
+                            <span class="text-black font-black text-xl italic uppercase">SDG {sdg.id}</span>
+                            <span class="text-black font-bold text-[10px] uppercase tracking-widest">{sdg.name}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                {goals.map((goal, index) => (
+                    <div class={`flex gap-8 p-10 bg-zinc-900 border-l-4 border-${goal.color}-500 stagger-reveal`} style={`transition-delay: ${600 + index * 100}ms`}>
+                        <span class="text-4xl font-black text-zinc-800 italic">{goal.id}</span>
+                        <div>
+                            <h4 class="text-2xl font-black uppercase tracking-tighter mb-4 text-emerald-500">{goal.title}</h4>
+                            <p class="text-zinc-400 font-bold uppercase tracking-widest text-xs leading-loose">{goal.description}</p>
+                        </div>
+                    </div>
+                ))}
+
+                <div class="p-10 bg-emerald-500 text-black flex items-center gap-6 stagger-reveal delay-900">
+                    <i data-lucide="wallet" class="w-12 h-12 flex-shrink-0"></i>
+                    <p class="font-black uppercase tracking-tighter text-xl">
+                        年度盈餘 30% 投入社會使命，用營運成果支持農村永續與人才培育。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

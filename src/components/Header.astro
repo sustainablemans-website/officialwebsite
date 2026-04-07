@@ -1,0 +1,57 @@
+---
+const { navItems = [
+	{ label: '首頁', href: '#home' },
+	{ label: '關於杉蔓', href: '#about' },
+	{ label: '服務', href: '#services' },
+	{ label: '團隊', href: '#team' },
+	{ label: '知識', href: '#knowledge' }
+] } = Astro.props;
+---
+
+<header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 px-6 py-4" id="main-header">
+	<div class="max-w-7xl mx-auto flex justify-between items-center">
+		<!-- Logo Section -->
+		<a href="/" class="flex items-center gap-2 group">
+			<div class="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
+				<i data-lucide="leaf" class="w-6 h-6 text-black"></i>
+			</div>
+			<span class="text-xl font-black uppercase tracking-tighter hover:text-emerald-500 transition-colors duration-300">杉蔓有限公司</span>
+		</a>
+
+		<!-- Desktop Navigation -->
+		<nav class="hidden md:flex items-center gap-8">
+			{navItems.map(item => (
+				<a href={item.href} class="text-xs font-bold uppercase tracking-widest hover:text-emerald-500 transition-colors duration-300">
+					{item.label}
+				</a>
+			))}
+			<a href="#contact" class="px-6 py-2 bg-emerald-500 text-black text-xs font-black uppercase tracking-widest hover:bg-white transition-colors duration-300">
+				立即洽詢
+			</a>
+		</nav>
+
+		<!-- Mobile Menu Toggle -->
+		<button class="md:hidden p-2 hover:bg-emerald-500 transition-colors duration-300 group" aria-label="Toggle Menu" id="menu-btn">
+			<i data-lucide="menu" class="w-6 h-6 group-hover:text-black"></i>
+		</button>
+	</div>
+</header>
+
+<script is:inline>
+	const header = document.getElementById('main-header');
+	window.addEventListener('scroll', () => {
+		if (window.scrollY > 50) {
+			header.classList.add('bg-black/90', 'backdrop-blur-md', 'shadow-2xl', 'py-2');
+			header.classList.remove('py-4');
+		} else {
+			header.classList.remove('bg-black/90', 'backdrop-blur-md', 'shadow-2xl', 'py-2');
+			header.classList.add('py-4');
+		}
+	});
+
+	// Mobile menu logic (can be expanded)
+	const menuBtn = document.getElementById('menu-btn');
+	menuBtn?.addEventListener('click', () => {
+		// Just a simple toggle for now as requested by Huemor (keep it minimal)
+	});
+</script>
