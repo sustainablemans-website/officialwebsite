@@ -1,0 +1,79 @@
+---
+import Layout from './Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const { title, description, category } = Astro.props;
+---
+
+<Layout title={`${title} | 杉蔓有限公司`} description={description}>
+	<Header isDark={true} />
+	
+	<main class="pt-32 pb-20 bg-black min-h-screen text-white">
+		<article class="max-w-4xl mx-auto px-6">
+			<!-- Breadcrumb -->
+			<nav class="mb-12 stagger-reveal">
+				<a href="/#knowledge" class="text-xs font-bold uppercase tracking-widest text-emerald-400 hover:text-white transition-colors flex items-center gap-2">
+					<i data-lucide="arrow-left" class="w-4 h-4"></i> 返回知識中心
+				</a>
+			</nav>
+
+			<!-- Header Section -->
+			<header class="mb-16 stagger-reveal delay-200">
+				<span class="text-[10px] font-black uppercase tracking-widest text-emerald-400 mb-4 inline-block">
+					【{category}】
+				</span>
+				<h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-tight mb-8 text-white">
+					{title}
+				</h1>
+				<p class="text-xl text-white font-bold uppercase tracking-widest leading-relaxed border-l-4 border-emerald-500 pl-6">
+					{description}
+				</p>
+			</header>
+
+			<!-- Content Section -->
+			<div class="prose prose-invert prose-emerald max-w-none 
+				prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tighter
+				prose-h3:text-3xl prose-h3:mt-16 prose-h3:mb-8 prose-h3:text-emerald-400
+				prose-p:text-white! prose-p:text-lg prose-p:leading-relaxed prose-p:mb-8
+				prose-li:text-white! prose-li:text-lg prose-li:mb-4
+				prose-strong:text-white! prose-strong:font-black
+				prose-hr:border-zinc-800 prose-hr:my-16
+				stagger-reveal delay-400 font-bold">
+				<slot />
+			</div>
+
+			<!-- Footer CTA -->
+			<footer class="mt-24 pt-12 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-8 stagger-reveal">
+				<div>
+					<h4 class="text-xl font-black uppercase tracking-tighter mb-2">對此主題有更多疑問？</h4>
+					<p class="text-zinc-500 text-sm font-bold uppercase tracking-widest">我們的顧問團隊隨時為您服務。</p>
+				</div>
+				<a href="/#contact" class="huemor-btn-primary">
+					立即諮詢
+				</a>
+			</footer>
+		</article>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style is:global>
+	@reference "../styles/global.css";
+
+	/* Custom styles for article content for high contrast Huemor feel */
+	.prose h3 {
+		@apply border-b-4 border-emerald-500/20 pb-4;
+	}
+	.prose ul, .prose ol {
+		@apply list-none pl-0;
+	}
+	.prose li {
+		@apply relative pl-8;
+	}
+	.prose li::before {
+		content: '';
+		@apply absolute left-0 top-3 w-4 h-[2px] bg-emerald-500;
+	}
+</style>

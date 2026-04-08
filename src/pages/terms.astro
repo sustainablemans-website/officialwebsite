@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = "服務條款 | 杉蔓有限公司";
+const description = "杉蔓有限公司服務條款，涵蓋服務範圍、使用者義務、智慧財產權與免責聲明。";
+---
+
+<Layout title={title} description={description}>
+    <Header isDark={true} />
+    
+    <main class="pt-32 pb-20 bg-black min-h-screen">
+        <article class="max-w-4xl mx-auto px-6">
+            <header class="mb-16 stagger-reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-4 inline-block">
+                    Legal / 法律資訊
+                </span>
+                <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-tight mb-8 text-white">
+                    服務條款 <br/> <span class="text-zinc-500">Terms of Service</span>
+                </h1>
+                <p class="text-xs text-zinc-600 font-bold uppercase tracking-widest mb-12">生效日期：2024 年 11 月 11 日</p>
+            </header>
+
+            <div class="prose prose-invert prose-emerald max-w-none text-white!
+                prose-h3:text-3xl prose-h3:font-black prose-h3:uppercase prose-h3:tracking-tighter prose-h3:mb-8 prose-h3:mt-16 prose-h3:text-emerald-400 prose-h3:border-b-4 prose-h3:border-emerald-500/20 prose-h3:pb-4
+                prose-p:text-white! prose-p:text-lg prose-p:leading-relaxed prose-p:mb-8
+                prose-li:text-white! prose-li:text-lg prose-li:mb-4
+                prose-strong:text-white prose-strong:font-black
+                stagger-reveal delay-200">
+                
+                <h3>一、 服務範圍</h3>
+                <p>本服務由杉蔓有限公司（下稱「本公司」）提供，涵蓋「ESG 策略桌遊培訓課程」、「ISO 14064 碳盤查顧問服務」，以及「永續農企合作媒合平台」等。</p>
+
+                <h3>二、 使用者義務</h3>
+                <ul>
+                    <li>使用者應確保提供之資料真實、準確。</li>
+                    <li>使用者不得利用本服務進行任何非法、侵權或損害本公司權益之行為。</li>
+                    <li>課程購買者，不得未經授權複製、散佈或販售任何課程內容及教材（包括 ESG 桌遊設計及內容），此類智慧財產權歸本公司所有。</li>
+                </ul>
+
+                <h3>三、 智慧財產權</h3>
+                <p>本網站所有內容、桌遊產品、教材、課程設計及顧問方法論之智慧財產權，均屬杉蔓有限公司所有。未經本公司書面授權，嚴禁任何形式之重製、改作、公開傳輸或使用。</p>
+
+                <h3>四、 免責聲明</h3>
+                <p>本公司之碳盤查輔導與 ESG 顧問服務為提供專業建議與方法論，「不保證客戶能通過第三方最終驗證或達成所有法規要求」。使用者應自行評估並承擔使用服務後的一切風險與責任。</p>
+
+                <h3>五、 服務變更與終止</h3>
+                <p>本公司保留隨時修改、暫停或終止部分或全部服務之權利。修改後之服務條款將公布於本網站，並自公布時生效，不另行個別通知。</p>
+            </div>
+        </article>
+    </main>
+
+    <Footer />
+</Layout>
+
+<style is:global>
+	@reference "../styles/global.css";
+
+	.prose ul, .prose ol {
+		@apply list-none pl-0;
+	}
+	.prose li {
+		@apply relative pl-8;
+	}
+	.prose li::before {
+		content: '';
+		@apply absolute left-0 top-3 w-4 h-[2px] bg-emerald-500;
+	}
+</style>

@@ -1,0 +1,37 @@
+[
+	{
+		"title": "空調專利節能解決方案 (MS-RDK)",
+		"description": "獨家日本專利 6366832。透過 AI 精準模擬與陶瓷遠紅外線技術，一分鐘免工地安裝，實現 15%~25% 的 Scope 2 實質減碳與電力成本優化。",
+		"icon": "wind",
+		"accent": "emerald",
+		"isFlagship": true
+	},
+	{
+		"title": "ISO 14064 碳盤查輔導",
+		"description": "針對中小企業提供一站式碳管理服務。從數據蒐集、邊界設定到報告產出，確保流程符合國際標準。",
+		"icon": "bar-chart-3",
+		"accent": "emerald",
+		"image": "/images/services/iso14064.png"
+	},
+	{
+		"title": "ISO 14067 產品碳足跡",
+		"description": "精準評估產品生命週期碳排放。協助企業接軌綠色供應鏈，提升產品全球綠色競爭力。",
+		"icon": "layers",
+		"accent": "blue",
+		"image": "/images/services/iso14067.png"
+	},
+	{
+		"title": "ESG 策略桌遊培訓",
+		"description": "透過遊戲化方式普及永續知識。培訓種子教師將永續理念推廣至企業、校園與社區。",
+		"icon": "gamepad-2",
+		"accent": "yellow",
+		"image": "/images/services/esg_game.png"
+	},
+	{
+		"title": "綠色策展與低碳印刷",
+		"description": "使用 rPET 再生布料取代傳統耗材。解決展場殘膠問題，實現循環經濟與無毒場域。",
+		"icon": "printer",
+		"accent": "purple",
+		"image": "/images/services/green_expo.png"
+	}
+]

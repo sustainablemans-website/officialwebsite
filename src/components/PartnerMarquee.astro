@@ -1,20 +1,13 @@
 ---
-const partners = [
-	{ name: 'Partner 1', logo: 'https://placehold.co/200x80/10b981/ffffff/png?text=PARTNER+1' },
-	{ name: 'Partner 2', logo: 'https://placehold.co/200x80/2563eb/ffffff/png?text=PARTNER+2' },
-	{ name: 'Partner 3', logo: 'https://placehold.co/200x80/f59e0b/ffffff/png?text=PARTNER+3' },
-	{ name: 'Partner 4', logo: 'https://placehold.co/200x80/db2777/ffffff/png?text=PARTNER+4' },
-	{ name: 'Partner 5', logo: 'https://placehold.co/200x80/7c3aed/ffffff/png?text=PARTNER+5' },
-	{ name: 'Partner 6', logo: 'https://placehold.co/200x80/059669/ffffff/png?text=PARTNER+6' },
-];
+import partners from '../data/partners.json';
 
 const duplicatedPartners = [...partners, ...partners];
 ---
 
-<section class="py-20 bg-zinc-900 overflow-hidden border-y border-zinc-800">
-	<div class="max-w-7xl mx-auto px-6 mb-12">
-		<h2 class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-2">我們信賴的永續夥伴</h2>
-		<div class="w-20 h-1 bg-emerald-500"></div>
+<section class="py-20 bg-gradient-to-r from-stone-100 via-white to-stone-100 overflow-hidden border-y border-stone-200 relative shadow-inner">
+	<div class="max-w-7xl mx-auto px-6 mb-12 relative z-10">
+		<h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-600 mb-4 stagger-reveal">Trusted Ecosystem Partners / 合作夥伴</h2>
+		<div class="w-12 h-[2px] bg-yellow-400"></div>
 	</div>
 
 	<div class="relative flex items-center overflow-hidden">

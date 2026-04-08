@@ -7,12 +7,6 @@ const team = [
 		image: 'https://drive.google.com/thumbnail?id=16mOnqgwo2Y0Xa2qEdQZwy2Dp084qiWji&sz=w500'
 	},
 	{
-		name: '李崇毅',
-		role: '資深策略顧問',
-		specialties: ['成大鳳凰新創導師', '台灣碳盤查工會名譽理事長', '奔馳科技執行長', 'ESG 永續協會主委'],
-		image: 'https://drive.google.com/thumbnail?id=10611Bl_T3cPrtG2b5QSVREtaQJVQSn6u&sz=w500'
-	},
-	{
 		name: '鄭安姵',
 		role: '資深永續輔導顧問',
 		specialties: ['iPAS 淨零碳規劃管理師', 'ISO 14064 / 14067 / 14068 主導查證員', 'ISO 50001 能源管理', 'TTQS 人才培訓'],
@@ -23,54 +17,181 @@ const team = [
 		role: '資深永續碳權顧問',
 		specialties: ['益珂環能總經理', 'COP29 UNFCCC 特邀講者', '行銷博士', '再生能源輔導'],
 		image: 'https://drive.google.com/thumbnail?id=1D0g4Dwb0t4WoEPIme65ArsfDPWhP9OsI&sz=w500'
+	},
+    {
+		name: '詹家和',
+		role: '資深永續輔導顧問',
+		specialties: [
+            '國立勤益科大 ESG 中心副執行長', 
+            '碳足跡/碳價計算專利 (I872336/M640876)', 
+            '中華永續商道聯合會 創會長', 
+            '中華創新發展協會 ESG 指導/主編',
+            '薩摩亞商萬達環球 總經理'
+        ],
+		image: '/images/team/zhan.jpg'
+	},
+    {
+		name: '陳淑真',
+		role: '資深永續輔導顧問',
+		specialties: [
+            '始亦真永續有限公司 執行長', 
+            'ISO 14064-1 / 14067 主任查證員', 
+            '經濟部產業低碳化輔導計畫 顧問', 
+            '國際 ESG 永續發展協會 理事',
+            '濱川企業 永續發展管理代表'
+        ],
+		image: '/images/team/chen.jpg'
 	}
 ];
 ---
 
-<section class="py-32 bg-zinc-900 overflow-hidden" id="team">
-    <div class="max-w-7xl mx-auto px-6 mb-20">
-        <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-4 stagger-reveal">專業顧問團隊</h2>
-        <h3 class="text-5xl md:text-7xl font-black uppercase tracking-tighter stagger-reveal delay-200">
-            永續轉型 <br/> <span class="text-zinc-500">堅實後盾</span>
-        </h3>
+<section class="py-12 md:py-20 bg-zinc-950 overflow-hidden relative min-h-[80vh] flex flex-col justify-center" id="team">
+    <!-- Premium Background Layers -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/5 blur-[120px] rounded-full animate-pulse-slow"></div>
+        <div class="absolute inset-0 opacity-[0.02]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
     </div>
 
-    <div class="flex overflow-x-auto snap-x snap-mandatory gap-8 px-6 pb-20 no-scrollbar">
-        {team.map((member) => (
-            <div class="snap-center flex-shrink-0 w-80 md:w-[28rem] bg-black border border-zinc-800 p-8 group hover:border-emerald-500 transition-all duration-500">
-                <div class="relative w-full aspect-[3/4] mb-8 overflow-hidden">
+    <!-- Background Watermark -->
+    <div class="absolute top-1/2 left-0 w-full text-[15vw] font-black text-white/[0.01] tracking-tighter leading-none select-none pointer-events-none -translate-y-1/2 whitespace-nowrap uppercase">
+        Consultants
+    </div>
+
+    <div class="max-w-7xl mx-auto w-full px-6 mb-8 flex justify-between items-end relative z-10">
+        <div>
+            <h2 class="text-[10px] font-black uppercase tracking-[0.5em] text-emerald-500 mb-3 stagger-reveal">Elite Experts</h2>
+            <h3 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none stagger-reveal delay-200">
+                專業顧問 <span class="text-zinc-800">團隊</span>
+            </h3>
+        </div>
+        
+        <!-- Premium Navigation Buttons (Compact) -->
+        <div class="hidden md:flex gap-4">
+            <button id="prevTeam" class="w-12 h-12 flex items-center justify-center border border-zinc-800 text-zinc-500 hover:border-emerald-500 hover:text-white transition-all rounded-full group bg-black/50 backdrop-blur-md">
+                <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+            </button>
+            <button id="nextTeam" class="w-12 h-12 flex items-center justify-center bg-zinc-100 text-black hover:bg-emerald-500 hover:text-white transition-all rounded-full shadow-xl group">
+                <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Scrolling Container (Compact Height) -->
+    <div id="teamCarousel" class="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 md:px-[calc((100vw-80rem)/2)] pb-10 scroll-smooth relative z-10 no-scrollbar">
+        {team.map((member, index) => (
+            <div 
+                class="team-card snap-center flex-shrink-0 w-64 md:w-80 group relative"
+                style={`--stagger: ${index}`}
+            >
+                <!-- Image Wrapper with Reveal Effect -->
+                <div class="relative w-full aspect-[4/5] overflow-hidden bg-zinc-900 shadow-2xl transition-all duration-500 group-hover:shadow-emerald-500/10">
+                    <!-- Hover Aura Glow -->
+                    <div class="absolute -inset-2 bg-emerald-500/0 group-hover:bg-emerald-500/5 blur-2xl transition-all duration-700"></div>
+                    
                     <img 
                         src={member.image} 
                         alt={member.name} 
-                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
+                        class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out" 
                         loading="lazy"
                         onerror="this.src='https://placehold.co/600x800/059669/ffffff/png?text='+member.name"
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-60"></div>
-                </div>
+                    
+                    <!-- Top Gradient Shadow -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80"></div>
 
-                <h4 class="text-2xl font-black uppercase tracking-tighter mb-1 text-emerald-500 group-hover:text-white transition-colors">{member.name}</h4>
-                <p class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-6">{member.role}</p>
-                
-                <ul class="space-y-3">
-                    {member.specialties.map(spec => (
-                        <li class="flex items-start gap-2 text-xs font-bold uppercase tracking-widest text-zinc-400 group-hover:text-zinc-200 transition-colors">
-                            <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0"></i>
-                            {spec}
-                        </li>
-                    ))}
-                </ul>
+                    <!-- Compact Info (Name/Role) -->
+                    <div class="absolute bottom-0 left-0 right-0 p-5 z-20 transition-all duration-500 group-hover:translate-y-[-120px]">
+                        <p class="text-[9px] font-black uppercase tracking-[0.3em] text-emerald-500 mb-1">{member.role}</p>
+                        <h4 class="text-xl font-black uppercase tracking-tighter text-white">{member.name}</h4>
+                    </div>
+
+                    <!-- Hover Reveal: Specialties (Glass Overlay) -->
+                    <div class="absolute inset-x-0 bottom-0 p-6 bg-black/80 backdrop-blur-xl border-t border-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-30 h-[140px] flex flex-col justify-center">
+                        <p class="text-[8px] font-black uppercase tracking-widest text-zinc-500 mb-3">核心專長 / Expertise</p>
+                        <ul class="space-y-1.5">
+                            {member.specialties.slice(0, 3).map(spec => (
+                                <li class="flex items-center gap-2 text-[10px] font-bold text-zinc-300">
+                                    <div class="w-1 h-1 rounded-full bg-emerald-500"></div>
+                                    <span class="truncate">{spec}</span>
+                                </li>
+                            ))}
+                            {member.specialties.length > 3 && (
+                                <li class="text-[9px] text-zinc-600 italic pl-3">+ 更多專業背景</li>
+                            )}
+                        </ul>
+                    </div>
+                </div>
             </div>
         ))}
+        <!-- Spacer for the end -->
+        <div class="flex-shrink-0 w-px h-full md:w-48"></div>
     </div>
 </section>
 
-<style>
-    .no-scrollbar::-webkit-scrollbar {
-        display: none;
+<script>
+    const carousel = document.getElementById('teamCarousel');
+    const nextBtn = document.getElementById('nextTeam');
+    const prevBtn = document.getElementById('prevTeam');
+
+    if (carousel && nextBtn && prevBtn) {
+        const cardWidth = 450; 
+        nextBtn.addEventListener('click', () => carousel.scrollBy({ left: cardWidth, behavior: 'smooth' }));
+        prevBtn.addEventListener('click', () => carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' }));
     }
-    .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
+
+    // Staggered Entry Animation (Using Native Web Animations API for zero-dependency spring feel)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const cards = entry.target.querySelectorAll('.team-card');
+                cards.forEach((card, i) => {
+                    const el = card as HTMLElement;
+                    
+                    // Native Web Animations API (WAAPI)
+                    el.animate(
+                        [
+                            { transform: 'translateY(60px)', opacity: 0 },
+                            { transform: 'translateY(0)', opacity: 1 }
+                        ], 
+                        {
+                            duration: 1200,
+                            delay: i * 150,
+                            easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                            fill: 'forwards'
+                        }
+                    );
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    const teamSection = document.getElementById('team');
+    if (teamSection) {
+        // Initial setup
+        const cards = teamSection.querySelectorAll('.team-card');
+        cards.forEach(card => {
+            const el = card as HTMLElement;
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(60px)';
+        });
+        observer.observe(teamSection);
+    }
+</script>
+
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    @keyframes pulse-slow {
+        0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.05; }
+        50% { transform: scale(1.1) translate(20px, -20px); opacity: 0.08; }
+    }
+    .animate-pulse-slow {
+        animation: pulse-slow 12s ease-in-out infinite;
+    }
+
+    .team-card {
+        will-change: transform, opacity;
     }
 </style>

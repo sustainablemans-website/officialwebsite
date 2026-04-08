@@ -1,65 +1,75 @@
 ---
-const articles = [
-	{
-		title: 'ISO 14064-1 組織溫室氣體盤查的五大核心步驟',
-		category: '碳管理入門',
-		description: '本文解析標準的核心原則、邊界界定以及組織進行碳盤查的五大關鍵步驟，為企業建立透明且可靠的溫室氣體清冊。',
-		accent: 'emerald'
-	},
-	{
-		title: '從線性到循環：台灣企業推動循環經濟的兩大核心與四大策略',
-		category: '資源永續',
-		description: '本文解析循環經濟與傳統線性經濟的本質差異，並探討我國行政院推動的策略，為企業提供轉型參考。',
-		accent: 'blue'
-	},
-	{
-		title: 'AI 科技如何解決農業缺工、氣候挑戰並實現精準永續耕作？',
-		category: '智慧農業',
-		description: '面對農村人口高齡化和極端氣候，本文介紹 AI 在預警、灌溉、產量預測等領域的應用案例與實質效益。',
-		accent: 'yellow'
-	}
-];
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles');
+
+// Debug: Log article count - this will show up in the terminal
+console.log(`[KnowledgeCenter] Found ${allArticles.length} articles in collection.`);
+
+// Sort by date or id if needed, for now just as is
+const articles = allArticles.map(article => {
+    // Robust slug generation that strips any directory prefix or extension
+    const cleanId = article.id
+        .split('/')
+        .pop()
+        .replace(/\.(md|mdx)$/, '')
+        .replace(/^\.\//, '');
+        
+    return {
+        id: cleanId,
+        title: article.data.title,
+        category: article.data.category,
+        description: article.data.description,
+        accent: article.data.accent || 'emerald'
+    };
+});
 
 const categoryColors = {
 	emerald: "text-emerald-500",
 	blue: "text-blue-500",
-	yellow: "text-yellow-500"
+	yellow: "text-yellow-500",
+    "green-primary": "text-emerald-500",
+    "blue-accent": "text-blue-400"
 };
 ---
 
-<section class="py-32 bg-zinc-950 px-6" id="knowledge">
+<section class="py-32 bg-stone-50 px-6" id="knowledge">
     <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-24">
             <div class="max-w-xl">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-4 stagger-reveal">永續知識中心</h2>
-                <h3 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 stagger-reveal delay-200">
-                    淨零轉型 <br/> <span class="text-zinc-500">深度解析</span>
+                <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-4 stagger-reveal">永續知識中心</h2>
+                <h3 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 stagger-reveal delay-200 text-stone-900">
+                    淨零轉型 <br/> <span class="text-emerald-700">深度解析</span>
                 </h3>
             </div>
             <div class="md:text-right stagger-reveal delay-400">
-                <button class="px-8 py-4 bg-emerald-500 text-black font-black uppercase text-xs tracking-widest hover:bg-white transition-colors">
+                <a href="#knowledge" class="px-8 py-4 bg-emerald-600 text-white font-black uppercase text-xs tracking-widest hover:bg-yellow-400 hover:text-stone-900 transition-colors shadow-md">
                     查看全部文章
-                </button>
+                </a>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {articles.map((article, index) => (
-                <article class={`group p-10 bg-zinc-900 border border-zinc-800 hover:border-emerald-500 transition-all duration-500 stagger-reveal`} style={`transition-delay: ${500 + index * 100}ms`}>
-                    <span class={`text-[10px] uppercase font-black tracking-widest mb-4 inline-block ${categoryColors[article.accent]}`}>
+            {articles.length > 0 ? articles.map((article, index) => (
+                <article class={`group p-10 bg-white border border-stone-200 hover:border-emerald-500 hover:shadow-xl transition-all duration-500 stagger-reveal`} style={`transition-delay: ${500 + index * 100}ms`}>
+                    <span class={`text-[10px] uppercase font-black tracking-widest mb-4 inline-block ${categoryColors[article.accent || 'emerald']}`}>
                         【{article.category}】
                     </span>
-                    <h4 class="text-2xl font-black uppercase tracking-tighter mb-6 group-hover:text-emerald-500 transition-colors leading-tight">
+                    <h4 class="text-2xl font-black uppercase tracking-tighter mb-6 text-stone-900 group-hover:text-emerald-700 transition-colors leading-tight">
                         {article.title}
                     </h4>
-                    <p class="text-zinc-400 font-bold uppercase tracking-widest text-[11px] leading-loose mb-10 group-hover:text-zinc-200 transition-colors">
+                    <p class="text-stone-600 font-bold uppercase tracking-widest text-[11px] leading-loose mb-10 group-hover:text-stone-800 transition-colors">
                         {article.description}
                     </p>
-                    <a href={`#article-${index + 1}`} class="text-xs font-black uppercase tracking-widest flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                    <a href={`/knowledge/${article.id}/`} class="text-xs font-black uppercase tracking-widest flex items-center gap-2 text-stone-800 group-hover:text-emerald-600 group-hover:translate-x-2 transition-all">
                         閱讀全文 <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </article>
-            ))}
+            )) : (
+                <div class="col-span-full py-20 text-center border-2 border-dashed border-zinc-900 rounded-xl bg-zinc-950/50">
+                    <p class="text-white font-black uppercase tracking-widest text-sm animate-pulse">正在載入專刊內容...</p>
+                </div>
+            )}
         </div>
     </div>
 </section>

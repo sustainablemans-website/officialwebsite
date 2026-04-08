@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = "隱私權政策 | 杉蔓有限公司";
+const description = "杉蔓有限公司隱私權政策，說明資料收集類型、使用目的與保護措施。";
+---
+
+<Layout title={title} description={description}>
+    <Header isDark={true} />
+    
+    <main class="pt-32 pb-20 bg-black min-h-screen">
+        <article class="max-w-4xl mx-auto px-6">
+            <header class="mb-16 stagger-reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 mb-4 inline-block">
+                    Privacy / 法律資訊
+                </span>
+                <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-tight mb-8 text-white">
+                    隱私權政策 <br/> <span class="text-zinc-500">Privacy Policy</span>
+                </h1>
+                <p class="text-xs text-zinc-600 font-bold uppercase tracking-widest mb-12">生效日期：2024 年 11 月 11 日</p>
+            </header>
+
+            <div class="prose prose-invert prose-emerald max-w-none text-white!
+                prose-h3:text-3xl prose-h3:font-black prose-h3:uppercase prose-h3:tracking-tighter prose-h3:mb-8 prose-h3:mt-16 prose-h3:text-emerald-400 prose-h3:border-b-4 prose-h3:border-emerald-500/20 prose-h3:pb-4
+                prose-p:text-white! prose-p:text-lg prose-p:leading-relaxed prose-p:mb-8
+                prose-li:text-white! prose-li:text-lg prose-li:mb-4
+                prose-strong:text-white prose-strong:font-black
+                stagger-reveal delay-200">
+                
+                <h3>一、 資料收集與類型</h3>
+                <p>本公司主要透過網站聯繫表單、課程報名及顧問服務合約收集您的個人資訊，包括：</p>
+                <ul>
+                    <li>個人識別資訊：姓名、電話、電子郵件地址。</li>
+                    <li>業務資訊：單位/公司名稱、職稱、洽詢類型、需求描述。</li>
+                </ul>
+
+                <h3>二、 資料使用目的</h3>
+                <p>您的個人資料將用於以下目的：</p>
+                <ul>
+                    <li>回覆您的洽詢或提供所需的服務（如課程通知、顧問報價）。</li>
+                    <li>執行農企媒合服務，在獲得您的「明確同意」後，分享給潛在的合作夥伴。</li>
+                    <li>提供您可能感興趣的 ESG 資訊、活動通知及市場推廣。</li>
+                </ul>
+
+                <h3>三、 資料保護與分享</h3>
+                <p>本公司將採取合理的技術與組織安全措施，保護您的個人資料不被未經授權的存取、使用或洩露。</p>
+                <p>您的資料不會隨意出售或出租。僅在獲得書面同意、法律要求或完成媒合服務必要時分享。</p>
+
+                <h3>四、 Cookie 技術</h3>
+                <p>本網站使用「Cookie 技術」來記錄和分析使用者行為，以改善網站功能。您可以透過瀏覽器設定來拒絕，但可能影響部分功能。</p>
+            </div>
+        </article>
+    </main>
+
+    <Footer />
+</Layout>
+
+<style is:global>
+	@reference "../styles/global.css";
+
+	.prose ul, .prose ol {
+		@apply list-none pl-0;
+	}
+	.prose li {
+		@apply relative pl-8;
+	}
+	.prose li::before {
+		content: '';
+		@apply absolute left-0 top-3 w-4 h-[2px] bg-emerald-500;
+	}
+</style>

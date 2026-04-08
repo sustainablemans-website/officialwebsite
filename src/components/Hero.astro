@@ -1,40 +1,46 @@
 ---
 ---
 
-<section class="min-h-screen flex flex-col justify-center items-center text-center px-6 md:px-12 bg-gradient-to-br from-black to-emerald-950/20 pt-20 overflow-hidden relative" id="home">
-    <div class="absolute inset-0 opacity-10 pointer-events-none">
-        <div class="grid grid-cols-12 gap-4 h-full w-full">
-            {Array.from({ length: 48 }).map(() => (
-                <div class="border-[0.5px] border-emerald-500/20"></div>
-            ))}
-        </div>
+<section class="min-h-screen flex flex-col justify-center items-center text-center px-6 md:px-12 pt-20 overflow-hidden relative" id="home">
+    <!-- Hero Background with Light Beam Overlay -->
+    <div class="absolute inset-0 z-0 bg-transparent">
+        <img src="/images/hero_2026.png" alt="2026 ESG AI Vision" class="w-full h-full object-cover opacity-25 mix-blend-multiply" />
+        <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#f0fdfa] to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[#effaf5] via-[#effaf5]/80 to-transparent"></div>
+        <div class="absolute inset-0 bg-emerald-500/10 mix-blend-color-burn pointer-events-none"></div>
     </div>
 
     <div class="z-10 max-w-5xl">
-        <h1 class="text-5xl md:text-8xl lg:text-[10rem] font-black uppercase text-white leading-[0.85] tracking-tighter mb-8 stagger-reveal translate-y-20 opacity-0 transition-all duration-1000 ease-out">
-            <span class="block">淨零時代</span>
-            <span class="text-emerald-500">永續轉型</span>
-            <span class="block text-4xl md:text-6xl lg:text-7xl mt-4 text-emerald-300">策略夥伴</span>
+        <div class="mb-6 inline-block py-2 px-6 bg-emerald-100 border border-emerald-200 rounded-full shadow-sm stagger-reveal">
+            <span class="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-emerald-700">
+                2026 數位與綠色雙軸轉型領航者
+            </span>
+        </div>
+        
+        <h1 class="text-5xl md:text-8xl lg:text-[9rem] font-black uppercase text-stone-900 leading-[0.85] tracking-tighter mb-8 stagger-reveal delay-200">
+            <span class="block">AI 驅動</span>
+            <span class="text-emerald-600">淨零未來</span>
+            <span class="block text-3xl md:text-5xl lg:text-6xl mt-6 text-stone-400 font-bold tracking-widest italic">
+                Accelerating the Twin Transition
+            </span>
         </h1>
         
-        <p class="text-lg md:text-2xl text-zinc-400 max-w-3xl mx-auto mb-12 stagger-reveal delay-300 translate-y-10 opacity-0 transition-all duration-1000">
-            憑藉 ISO 碳管理專業及 AI 輔導系統，加速企業數據盤查與減碳路徑規劃。為台灣打造完整的永續生態圈。
+        <p class="text-lg md:text-2xl text-stone-600 max-w-3xl mx-auto mb-16 font-bold uppercase tracking-widest leading-relaxed stagger-reveal delay-400">
+            結合 ISO 碳盤查專業與 AI 輔導系統，<br class="hidden md:block"/>
+            為企業量身打造具備數據確信的減碳路徑，接軌全球綠色供應鏈。
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center stagger-reveal delay-500">
-            <a href="#services" class="huemor-btn-primary group relative overflow-hidden">
-                <span class="relative z-10 flex items-center gap-2">
-                    探索服務
-                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                </span>
+        <div class="flex flex-col sm:flex-row gap-8 justify-center items-center stagger-reveal delay-600">
+            <a href="#services" class="px-10 py-5 bg-yellow-400 text-stone-900 font-black uppercase text-sm tracking-[0.2em] hover:bg-emerald-500 hover:text-white transition-all duration-500 shadow-xl hover:scale-105 active:scale-95">
+                啟動數位轉型
             </a>
-            <a href="#impact" class="huemor-btn-outline">
-                查看永續承諾
+            <a href="#knowledge" class="px-10 py-5 border-2 border-stone-300 text-stone-600 font-black uppercase text-sm tracking-[0.2em] hover:border-emerald-600 hover:text-emerald-600 transition-all duration-500 bg-white/50 backdrop-blur-sm">
+                探索知識專刊
             </a>
         </div>
     </div>
 
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-30">
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-30 z-10">
         <i data-lucide="chevron-down" class="w-8 h-8"></i>
     </div>
 </section>
