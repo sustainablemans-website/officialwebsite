@@ -1,83 +1,41 @@
 ---
-const activities = [
-	{
-		title: '碳健檢培訓課程',
-		date: '2025.06.27',
-		image: '/images/activities/LINE_ALBUM_2025627碳健檢培訓課程_250913_11.jpg'
-	},
-	{
-		title: '2025 高雄創新創業永續展',
-		date: '2025.01.15',
-		image: '/images/activities/2025高雄創新創業永續展.jpg'
-	},
-	{
-		title: '文化大學產碩專班節能課程',
-		date: '2024.12.10',
-		image: '/images/activities/文化大學產碩專班節能課程.jpg'
-	},
-	{
-		title: '國立政治大學永續課程講座',
-		date: '2024.11.20',
-		image: '/images/activities/受邀政治大學講授永續課程.jpg'
-	},
-	{
-		title: '林業及自然保育署 TNFD 講座',
-		date: '2024.10.05',
-		image: '/images/activities/嘉義林保署TNFD講座.jpg'
-	},
-	{
-		title: '桌遊種子教師班',
-		date: '2024.06.25',
-		image: '/images/activities/LINE_ALBUM_20240625桌遊種子教師班_240629_1.jpg'
-	},
-	{
-		title: '桌遊種子教師班',
-		date: '2024.06.18',
-		image: '/images/activities/LINE_ALBUM_20240618桌遊種子教師班_240629_6.jpg'
-	},
-	{
-		title: '桌遊種子教師班 (台北場)',
-		date: '2024.06.12',
-		image: '/images/activities/LINE_ALBUM_20240612桌遊種子教師班（台北場）_240629_2.jpg'
-	},
-	{
-		title: '碳健檢培訓課程記錄',
-		date: '2025.06.27',
-		image: '/images/activities/LINE_ALBUM_2025627碳健檢培訓課程_250913_4.jpg'
-	},
-	{
-		title: '日本九州企業永續商談',
-		date: '2024.05.15',
-		image: '/images/activities/日本九州企業商談.jpg'
-	}
-];
+import activities from '../data/activities.json';
 ---
 
-<section class="py-32 bg-transparent px-6 relative overflow-hidden" id="activities">
+<section class="py-40 px-6 relative overflow-hidden" id="activities">
     <!-- Subtle Background Glow -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto relative z-10">
-        <div class="mb-20">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-4 stagger-reveal">精彩活動紀錄 / Real Impact</h2>
-            <h3 class="text-5xl md:text-7xl font-black uppercase tracking-tighter stagger-reveal delay-200 text-stone-900">
-                永續種子 <br/> <span class="text-stone-400">遍地開花</span>
-            </h3>
+        <div class="mb-32 flex flex-col md:flex-row justify-between items-end gap-12">
+            <div class="max-w-3xl">
+                <h2 class="text-xs font-black uppercase tracking-[0.4em] text-emerald-500 mb-6 stagger-reveal">Real Impact / 行動紀錄</h2>
+                <h3 class="text-6xl md:text-8xl font-black uppercase tracking-tighter stagger-reveal delay-200 text-white leading-none">
+                    永續種子 <br/> <span class="text-emerald-300/50">遍地開花</span>
+                </h3>
+            </div>
+            <div class="md:text-right max-w-sm stagger-reveal delay-400">
+                <p class="text-zinc-300 font-medium uppercase tracking-widest text-sm leading-relaxed">
+                    見證我們在全台企業與校園中，<br/>播下的一顆顆永續種子。
+                </p>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {activities.map((activity, index) => (
-                <div class="group relative overflow-hidden bg-white border border-stone-200 shadow-md hover:shadow-2xl transition-shadow duration-500 stagger-reveal" style={`transition-delay: ${index * 200}ms`}>
-                    <div class="aspect-[4/3] overflow-hidden">
+                <div class="group relative overflow-hidden bg-zinc-900/80 border border-white/5 hover:border-emerald-500/30 transition-all duration-500 stagger-reveal" style={`transition-delay: ${index * 100}ms`}>
+                    <div class="aspect-[4/3] overflow-hidden relative">
                         <img 
                             src={activity.image} 
                             alt={activity.title} 
-                            class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                            class="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                            loading="lazy"
                         />
+                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent"></div>
                     </div>
-                    <div class="p-8">
-                        <span class="text-[10px] font-black uppercase tracking-widest text-emerald-600 mb-2 block">{activity.date}</span>
-                        <h4 class="text-2xl font-black uppercase tracking-tighter group-hover:text-emerald-700 transition-colors text-stone-800">{activity.title}</h4>
+                    <div class="p-10">
+                        <span class="text-[9px] font-black uppercase tracking-[0.3em] text-emerald-500 mb-4 block">{activity.date}</span>
+                        <h4 class="text-2xl font-black uppercase tracking-tighter group-hover:text-emerald-400 transition-colors text-white leading-tight">{activity.title}</h4>
                     </div>
                 </div>
             ))}

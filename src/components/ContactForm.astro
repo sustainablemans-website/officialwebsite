@@ -1,83 +1,157 @@
 ---
 ---
 
-<section class="py-32 bg-[#fafaf9] px-6" id="contact">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-20 items-stretch">
+<section class="py-24 px-6 relative overflow-hidden" id="contact">
+    <!-- Background Decor -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 items-center relative z-10">
         <div class="flex-1 flex flex-col justify-center">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-4 stagger-reveal">聯繫我們</h2>
-            <h3 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-12 stagger-reveal delay-200 text-stone-900">
-                啟動您的 <br/> <span class="text-stone-400">永續計畫</span>
+            <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-500 mb-8 stagger-reveal flex items-center gap-4">
+                <span class="w-12 h-[1px] bg-emerald-500/30"></span>
+                Connect With Us / 聯絡我們
+            </h2>
+            <h3 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-12 stagger-reveal delay-200 text-white leading-[0.8]">
+                啟動您的 <br/> <span class="text-emerald-300/60">永續計畫</span>
             </h3>
             
-            <div class="space-y-10 stagger-reveal delay-400">
-                <div class="flex gap-6 items-center group">
-                    <div class="w-12 h-12 border border-stone-200 flex items-center justify-center group-hover:bg-emerald-100 transition-colors bg-white shadow-sm">
-                        <i data-lucide="mail" class="w-5 h-5 text-stone-600 group-hover:text-emerald-700 transition-colors"></i>
+            <div class="space-y-12 stagger-reveal delay-400">
+                <div class="flex gap-8 items-center group">
+                    <div class="w-14 h-14 border border-white/5 flex items-center justify-center group-hover:bg-emerald-500 transition-all duration-500 bg-zinc-900/50 rounded-full shadow-2xl">
+                        <i data-lucide="mail" class="w-6 h-6 text-zinc-400 group-hover:text-black transition-colors"></i>
                     </div>
                     <div>
-                        <span class="text-[10px] font-black uppercase tracking-widest text-stone-400">電子信箱</span>
-                        <a href="mailto:sustainablemans@gmail.com" class="block text-xl font-bold text-stone-800 hover:text-emerald-600 transition-colors">sustainablemans@gmail.com</a>
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-1 block">電子信箱 / EMAIL</span>
+                        <a href="mailto:sustainablemans@gmail.com" class="block text-2xl font-black text-white hover:text-emerald-500 transition-colors tracking-tighter italic">sustainablemans@gmail.com</a>
                     </div>
                 </div>
                 
-                <div class="flex gap-6 items-center group">
-                    <div class="w-12 h-12 border border-stone-200 flex items-center justify-center group-hover:bg-emerald-100 transition-colors bg-white shadow-sm">
-                        <i data-lucide="phone" class="w-5 h-5 text-stone-600 group-hover:text-emerald-700 transition-colors"></i>
+                <div class="flex gap-8 items-center group">
+                    <div class="w-14 h-14 border border-white/5 flex items-center justify-center group-hover:bg-emerald-500 transition-all duration-500 bg-zinc-900/50 rounded-full shadow-2xl">
+                        <i data-lucide="phone" class="w-6 h-6 text-zinc-400 group-hover:text-black transition-colors"></i>
                     </div>
                     <div>
-                        <span class="text-[10px] font-black uppercase tracking-widest text-stone-400">聯絡電話</span>
-                        <a href="tel:+886971007051" class="block text-xl font-bold text-stone-800 hover:text-emerald-600 transition-colors">0971-007-051</a>
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-1 block">聯絡電話 / PHONE</span>
+                        <a href="tel:+886971007051" class="block text-2xl font-black text-white hover:text-emerald-500 transition-colors tracking-tighter italic">0971-007-051</a>
                     </div>
                 </div>
                 
-                <div class="flex gap-6 items-center group">
-                    <div class="w-12 h-12 border border-stone-200 flex items-center justify-center group-hover:bg-emerald-100 transition-colors bg-white shadow-sm">
-                        <i data-lucide="map-pin" class="w-5 h-5 text-stone-600 group-hover:text-emerald-700 transition-colors"></i>
+                <div class="flex gap-8 items-center group">
+                    <div class="w-14 h-14 border border-white/5 flex items-center justify-center group-hover:bg-emerald-500 transition-all duration-500 bg-zinc-900/50 rounded-full shadow-2xl">
+                        <i data-lucide="map-pin" class="w-6 h-6 text-zinc-400 group-hover:text-black transition-colors"></i>
                     </div>
                     <div>
-                        <span class="text-[10px] font-black uppercase tracking-widest text-stone-400">公司地址</span>
-                        <p class="text-xl font-bold text-stone-800">811 高雄市 楠梓區 秀群路499巷28號六樓</p>
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-1 block">公司地址 / ADDRESS</span>
+                        <p class="text-2xl font-black text-white tracking-tighter italic">高雄市 楠梓區 秀群路499巷28號</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="flex-1 bg-white p-10 md:p-16 border-t-8 border-yellow-400 shadow-[0_20px_50px_rgba(0,0,0,0.05)] stagger-reveal delay-600">
-            <form class="space-y-8">
-                <div class="space-y-2">
-                    <label class="text-[10px] font-black uppercase tracking-widest text-stone-500">合作類型 / Type</label>
+        <div class="flex-1 w-full bg-zinc-900/40 backdrop-blur-3xl p-12 md:p-16 border border-white/5 border-t-4 border-t-emerald-500 shadow-3xl stagger-reveal delay-600">
+            <form id="contact-form" class="space-y-10">
+                <div class="space-y-3">
+                    <label class="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500">合作類型 / Project Type</label>
                     <div class="relative group">
-                        <select class="w-full bg-[#fafaf9] border border-stone-200 p-5 font-bold text-sm uppercase tracking-widest text-stone-800 focus:border-yellow-400 focus:bg-white outline-none appearance-none cursor-pointer hover:border-stone-300 transition-colors">
-                            <option value="">請選擇合作項目...</option>
+                        <select name="project_type" required class="w-full bg-zinc-950/50 border border-white/5 p-5 font-black text-xs uppercase tracking-[0.2em] text-white focus:border-emerald-500 focus:bg-zinc-950 outline-none appearance-none cursor-pointer hover:border-white/10 transition-all decoration-none">
+                            <option value="">請選擇合作項目 / Select...</option>
                             <option value="msrdk">空調專利節能解決方案 (MS-RDK)</option>
                             <option value="training">桌遊種子教師培訓</option>
                             <option value="carbon">ISO 碳盤查/ESG 顧問</option>
                             <option value="agri">農企合作/永續採購</option>
                             <option value="other">其他合作洽詢</option>
                         </select>
-                        <i data-lucide="chevron-down" class="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400 pointer-events-none group-hover:text-emerald-500"></i>
+                        <i data-lucide="chevron-down" class="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500 pointer-events-none group-hover:text-emerald-500"></i>
                     </div>
                 </div>
 
-                <div class="space-y-2">
-                    <label class="text-[10px] font-black uppercase tracking-widest text-stone-500">單位名稱 / Organization</label>
-                    <input type="text" placeholder="王小明 / XX 科技公司" class="w-full bg-[#fafaf9] border border-stone-200 p-5 font-bold text-stone-800 text-sm uppercase tracking-widest focus:border-yellow-400 focus:bg-white outline-none transition-colors hover:border-stone-300" />
+                <div class="space-y-3">
+                    <label class="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500">單位名稱 / Organization</label>
+                    <input type="text" name="organization" required placeholder="王小明 / XX 科技公司" class="w-full bg-zinc-950/50 border border-white/5 p-5 font-black text-white text-xs uppercase tracking-[0.2em] focus:border-emerald-500 focus:bg-zinc-950 outline-none transition-all hover:border-white/10" />
                 </div>
 
-                <div class="space-y-2">
-                    <label class="text-[10px] font-black uppercase tracking-widest text-stone-500">電子郵件 / Email</label>
-                    <input type="email" placeholder="your.email@example.com" class="w-full bg-[#fafaf9] border border-stone-200 p-5 font-bold text-stone-800 text-sm uppercase tracking-widest focus:border-yellow-400 focus:bg-white outline-none transition-colors hover:border-stone-300" />
+                <div class="space-y-3">
+                    <label class="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500">聯絡信箱 / Email (Optional)</label>
+                    <input type="email" name="email" placeholder="your@email.com" class="w-full bg-zinc-950/50 border border-white/5 p-5 font-black text-white text-xs uppercase tracking-[0.2em] focus:border-emerald-500 focus:bg-zinc-950 outline-none transition-all hover:border-white/10" />
                 </div>
 
-                <div class="space-y-2">
-                    <label class="text-[10px] font-black uppercase tracking-widest text-stone-500">需求描述 / Message</label>
-                    <textarea rows="4" placeholder="請簡述您的需求..." class="w-full bg-[#fafaf9] border border-stone-200 p-5 font-bold text-stone-800 text-sm uppercase tracking-widest focus:border-yellow-400 focus:bg-white outline-none transition-colors hover:border-stone-300"></textarea>
+                <div class="space-y-3">
+                    <label class="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500">需求描述 / Message</label>
+                    <textarea name="message" required rows="4" placeholder="請簡述您的需求內容 / Describe your goals..." class="w-full bg-zinc-950/50 border border-white/5 p-5 font-black text-white text-xs uppercase tracking-[0.2em] focus:border-emerald-500 focus:bg-zinc-950 outline-none transition-all hover:border-white/10 resize-none"></textarea>
                 </div>
 
-                <button type="submit" class="huemor-btn-primary w-full shadow-lg">
-                    送出洽詢表單
+                <!-- Web3Forms Config -->
+                <input type="hidden" name="subject" value="【官網通知】您有一封新的合作洽詢">
+                <input type="hidden" name="from_name" value="永續行動官方網站">
+
+                <button id="submit-button" type="submit" class="w-full py-6 bg-emerald-500 text-black font-black uppercase text-xs tracking-[0.3em] hover:bg-white transition-all duration-500 shadow-3xl shadow-emerald-500/20 active:scale-95 flex items-center justify-center gap-3">
+                    <span id="btn-text">送出洽詢表單 / SEND MESSAGE</span>
+                    <i data-lucide="loader-2" id="btn-spinner" class="w-4 h-4 animate-spin hidden"></i>
                 </button>
+
+                <div id="form-result" class="text-xs font-black tracking-widest text-center min-h-[24px]"></div>
             </form>
         </div>
     </div>
 </section>
+
+<script>
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const result = document.getElementById('form-result');
+    const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
+    const btnText = document.getElementById('btn-text');
+    const btnSpinner = document.getElementById('btn-spinner');
+
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            
+            // API Key 從環境變數讀取（儲存在 .env，不會進入 git）
+            object.access_key = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+            
+            const json = JSON.stringify(object);
+
+            if (result && btnText && btnSpinner && submitButton) {
+                result.innerHTML = '<span class="text-zinc-400">正在發送訊息... / SENDING...</span>';
+                submitButton.disabled = true;
+                btnText.textContent = "SENDING...";
+                btnSpinner.classList.remove('hidden');
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        result.innerHTML = `<span class="text-emerald-500">✅ 訊息已成功送出！我們會盡快與您聯繫。</span>`;
+                    } else {
+                        console.log(response);
+                        result.innerHTML = `<span class="text-red-500">❌ 送出失敗：${json.message}</span>`;
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    result.innerHTML = `<span class="text-red-500">❌ 發生系統錯誤，請稍後再試。</span>`;
+                })
+                .finally(() => {
+                    form.reset();
+                    submitButton.disabled = false;
+                    btnText.textContent = "送出洽詢表單 / SEND MESSAGE";
+                    btnSpinner.classList.add('hidden');
+                    
+                    setTimeout(() => {
+                        result.innerHTML = "";
+                    }, 5000);
+                });
+            }
+        });
+    }
+</script>

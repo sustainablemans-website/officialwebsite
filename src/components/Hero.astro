@@ -1,47 +1,68 @@
 ---
 ---
 
-<section class="min-h-screen flex flex-col justify-center items-center text-center px-6 md:px-12 pt-20 overflow-hidden relative" id="home">
-    <!-- Hero Background with Light Beam Overlay -->
-    <div class="absolute inset-0 z-0 bg-transparent">
-        <img src="/images/hero_2026.png" alt="2026 ESG AI Vision" class="w-full h-full object-cover opacity-25 mix-blend-multiply" />
-        <div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#f0fdfa] to-transparent"></div>
-        <div class="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[#effaf5] via-[#effaf5]/80 to-transparent"></div>
-        <div class="absolute inset-0 bg-emerald-500/10 mix-blend-color-burn pointer-events-none"></div>
+<section class="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 pt-40 pb-20 overflow-hidden relative" id="home">
+    <!-- AI Portal Background Cover -->
+    <div class="absolute inset-0 z-0">
+        <img src="/images/bg-ai.png" alt="" role="presentation" class="w-full h-full object-cover opacity-25" fetchpriority="high" />
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#064e3b]/80 to-[#022c22]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(16,185,129,0.3),transparent_70%)]"></div>
     </div>
 
-    <div class="z-10 max-w-5xl">
-        <div class="mb-6 inline-block py-2 px-6 bg-emerald-100 border border-emerald-200 rounded-full shadow-sm stagger-reveal">
-            <span class="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-emerald-700">
-                2026 數位與綠色雙軸轉型領航者
-            </span>
-        </div>
-        
-        <h1 class="text-5xl md:text-8xl lg:text-[9rem] font-black uppercase text-stone-900 leading-[0.85] tracking-tighter mb-8 stagger-reveal delay-200">
-            <span class="block">AI 驅動</span>
-            <span class="text-emerald-600">淨零未來</span>
-            <span class="block text-3xl md:text-5xl lg:text-6xl mt-6 text-stone-400 font-bold tracking-widest italic">
-                Accelerating the Twin Transition
-            </span>
-        </h1>
-        
-        <p class="text-lg md:text-2xl text-stone-600 max-w-3xl mx-auto mb-16 font-bold uppercase tracking-widest leading-relaxed stagger-reveal delay-400">
-            結合 ISO 碳盤查專業與 AI 輔導系統，<br class="hidden md:block"/>
-            為企業量身打造具備數據確信的減碳路徑，接軌全球綠色供應鏈。
-        </p>
+    <!-- Main Glass Card Container -->
+    <div class="z-10 max-w-7xl w-full bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[3rem] p-8 md:p-16 lg:p-24 shadow-2xl stagger-reveal active">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Left Side: Content -->
+            <div class="space-y-10 text-left">
+                <div class="inline-flex items-center gap-3 py-2 px-5 bg-emerald-500/10 border border-emerald-400/20 rounded-full">
+                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                    <span class="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">Next-Gen ESG X AI Portal 2026</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-black uppercase text-white leading-[0.9] tracking-tighter">
+                    Empowering <br/> <span class="text-emerald-400">Future</span> ESG <br/> with AI
+                </h1>
+                
+                <p class="text-lg md:text-xl text-zinc-300 max-w-xl font-medium tracking-tight leading-relaxed">
+                    結合數位工具與專業顧問，為企業打造透明、高效且具備數據驗證能力的永續轉型路徑。
+                </p>
 
-        <div class="flex flex-col sm:flex-row gap-8 justify-center items-center stagger-reveal delay-600">
-            <a href="#services" class="px-10 py-5 bg-yellow-400 text-stone-900 font-black uppercase text-sm tracking-[0.2em] hover:bg-emerald-500 hover:text-white transition-all duration-500 shadow-xl hover:scale-105 active:scale-95">
-                啟動數位轉型
-            </a>
-            <a href="#knowledge" class="px-10 py-5 border-2 border-stone-300 text-stone-600 font-black uppercase text-sm tracking-[0.2em] hover:border-emerald-600 hover:text-emerald-600 transition-all duration-500 bg-white/50 backdrop-blur-sm">
-                探索知識專刊
-            </a>
+                <div class="flex flex-wrap gap-5">
+                    <a href="/services/" class="px-10 py-5 bg-emerald-500 text-black font-black uppercase text-[10px] tracking-[0.2em] hover:bg-white transition-all duration-500 rounded-xl shadow-xl shadow-emerald-500/20">
+                        Explore Platform
+                    </a>
+                    <a href="/about/" class="px-10 py-5 border border-white/10 text-white font-black uppercase text-[10px] tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500 rounded-xl flex items-center gap-3">
+                        <i data-lucide="play-circle" class="w-4 h-4"></i> Watch Demo
+                    </a>
+                </div>
+
+                <div class="pt-10 border-t border-white/5 space-y-4">
+                    <p class="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500 font-bold">Trusted By Industry Leaders</p>
+                    <div class="flex gap-8 opacity-40 grayscale filter invert">
+                         <img src="/images/partners/EKO.jpg" alt="Partner EKO" class="h-6 w-auto object-contain" />
+                         <img src="/images/partners/PLAB.jpg" alt="Partner PLAB" class="h-6 w-auto object-contain" />
+                         <img src="/images/partners/願景logo-new.png" alt="Partner 願景" class="h-6 w-auto object-contain" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Image -->
+            <div class="relative group hidden lg:block">
+                <div class="absolute -inset-4 bg-emerald-500/10 blur-3xl rounded-[3rem] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                <div class="aspect-square rounded-[2rem] overflow-hidden border border-white/10 shadow-3xl relative">
+                    <img src="/images/about.png" alt="ESG Team Vision" class="w-full h-full object-cover grayscale brightness-75 transition-all duration-1000 group-hover:scale-110 group-hover:grayscale-0 group-hover:brightness-100" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 right-8 text-white p-6 bg-white/10 backdrop-blur-xl border border-white/10 rounded-2xl">
+                         <p class="text-[10px] font-black uppercase tracking-[0.2em] mb-2 text-emerald-400 font-serif italic font-bold">Expert Insights</p>
+                         <p class="text-lg font-black tracking-tighter leading-tight">Empowering leaders with data-driven sustainability.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-30 z-10">
-        <i data-lucide="chevron-down" class="w-8 h-8"></i>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-20 text-emerald-500">
+        <i data-lucide="chevron-down" class="w-10 h-10"></i>
     </div>
 </section>
 

@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import site from '../data/site.json';
 
@@ -27,6 +28,11 @@ const {
     <meta name="theme-color" content="#10b981" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
+    <!-- Google Fonts: preconnect to avoid render-blocking -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;500;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;500;700&display=swap" media="print" onload="this.media='all'" />
 		<title>{title}</title>
 
 		<!-- Open Graph / Facebook -->
@@ -56,7 +62,9 @@ const {
 		})}>
 		</script>
 
-		<script src="https://unpkg.com/lucide@latest"></script>
+		<!-- Lucide: async/defer to avoid render-blocking -->
+		<script src="https://unpkg.com/lucide@latest" defer></script>
+        <ClientRouter />
 	</head>
 	<body class="selection:bg-emerald-200 selection:text-emerald-900 bg-transparent flex flex-col min-h-screen">
 		<slot />
@@ -67,25 +75,30 @@ const {
 				}
 			}
 
-			// Initialize Lucide Icons
-			document.addEventListener('DOMContentLoaded', initIcons);
+			function initReveals() {
+				const observerOptions = { threshold: 0.1 };
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('active');
+						}
+					});
+				}, observerOptions);
+				
+				document.querySelectorAll('.stagger-reveal').forEach(el => observer.observe(el));
+			}
+
+			// Initialize on first load and subsequent navigation
+			document.addEventListener('astro:page-load', () => {
+				initIcons();
+				initReveals();
+			});
+			
 			// Fallback for fast loading environments
-			setTimeout(initIcons, 500);
-			
-			// Intersection Observer for Staggered Reveal
-			const observerOptions = {
-				threshold: 0.1
-			};
-			
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add('active');
-					}
-				});
-			}, observerOptions);
-			
-			document.querySelectorAll('.stagger-reveal').forEach(el => observer.observe(el));
+			setTimeout(() => {
+				initIcons();
+				initReveals();
+			}, 500);
 		</script>
 	</body>
 </html>

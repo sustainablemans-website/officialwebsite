@@ -10,10 +10,8 @@ console.log(`[KnowledgeCenter] Found ${allArticles.length} articles in collectio
 const articles = allArticles.map(article => {
     // Robust slug generation that strips any directory prefix or extension
     const cleanId = article.id
-        .split('/')
-        .pop()
-        .replace(/\.(md|mdx)$/, '')
-        .replace(/^\.\//, '');
+        ? article.id.split('/').pop()?.replace(/\.(md|mdx)$/, '').replace(/^\.\//, '') || 'unknown'
+        : 'unknown';
         
     return {
         id: cleanId,
@@ -24,7 +22,7 @@ const articles = allArticles.map(article => {
     };
 });
 
-const categoryColors = {
+const categoryColors: Record<string, string> = {
 	emerald: "text-emerald-500",
 	blue: "text-blue-500",
 	yellow: "text-yellow-500",
@@ -33,41 +31,46 @@ const categoryColors = {
 };
 ---
 
-<section class="py-32 bg-stone-50 px-6" id="knowledge">
-    <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-24">
-            <div class="max-w-xl">
-                <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-4 stagger-reveal">永續知識中心</h2>
-                <h3 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 stagger-reveal delay-200 text-stone-900">
-                    淨零轉型 <br/> <span class="text-emerald-700">深度解析</span>
+<section class="py-40 px-6 relative overflow-hidden" id="knowledge">
+    <!-- Background Decor -->
+    <div class="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-end gap-12 mb-32">
+            <div class="max-w-3xl">
+                <h2 class="text-xs font-black uppercase tracking-[0.4em] text-emerald-500 mb-6 stagger-reveal">Insight Center / 永續知識專刊</h2>
+                <h3 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-8 stagger-reveal delay-200 text-white leading-none">
+                    淨零轉型 <br/> <span class="text-emerald-300/50">深度解析</span>
                 </h3>
             </div>
             <div class="md:text-right stagger-reveal delay-400">
-                <a href="#knowledge" class="px-8 py-4 bg-emerald-600 text-white font-black uppercase text-xs tracking-widest hover:bg-yellow-400 hover:text-stone-900 transition-colors shadow-md">
-                    查看全部文章
+                <a href="#knowledge" class="px-10 py-5 bg-emerald-500 text-black font-black uppercase text-xs tracking-[0.2em] hover:bg-white transition-all duration-500 shadow-3xl shadow-emerald-500/10 rounded-full">
+                    查看全部文章 / VIEW ALL
                 </a>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {articles.length > 0 ? articles.map((article, index) => (
-                <article class={`group p-10 bg-white border border-stone-200 hover:border-emerald-500 hover:shadow-xl transition-all duration-500 stagger-reveal`} style={`transition-delay: ${500 + index * 100}ms`}>
-                    <span class={`text-[10px] uppercase font-black tracking-widest mb-4 inline-block ${categoryColors[article.accent || 'emerald']}`}>
-                        【{article.category}】
-                    </span>
-                    <h4 class="text-2xl font-black uppercase tracking-tighter mb-6 text-stone-900 group-hover:text-emerald-700 transition-colors leading-tight">
-                        {article.title}
-                    </h4>
-                    <p class="text-stone-600 font-bold uppercase tracking-widest text-[11px] leading-loose mb-10 group-hover:text-stone-800 transition-colors">
-                        {article.description}
-                    </p>
-                    <a href={`/knowledge/${article.id}/`} class="text-xs font-black uppercase tracking-widest flex items-center gap-2 text-stone-800 group-hover:text-emerald-600 group-hover:translate-x-2 transition-all">
-                        閱讀全文 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                <article class="group p-12 bg-zinc-900/40 backdrop-blur-xl border border-white/5 hover:border-emerald-500/30 transition-all duration-700 stagger-reveal flex flex-col justify-between" style={`transition-delay: ${400 + index * 100}ms`}>
+                    <div>
+                        <span class={`text-[9px] uppercase font-black tracking-[0.3em] mb-8 inline-block ${categoryColors[article.accent || 'emerald']}`}>
+                            # {article.category}
+                        </span>
+                        <h4 class="text-3xl font-black uppercase tracking-tighter mb-8 text-white group-hover:text-emerald-400 transition-colors leading-tight">
+                            {article.title}
+                        </h4>
+                        <p class="text-zinc-300 font-medium tracking-wide text-md leading-relaxed mb-12 line-clamp-3">
+                            {article.description}
+                        </p>
+                    </div>
+                    <a href={`/knowledge/${article.id}/`} class="text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-4 text-emerald-500 group-hover:text-white group-hover:translate-x-3 transition-all duration-500">
+                        Read Full Article <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </article>
             )) : (
-                <div class="col-span-full py-20 text-center border-2 border-dashed border-zinc-900 rounded-xl bg-zinc-950/50">
-                    <p class="text-white font-black uppercase tracking-widest text-sm animate-pulse">正在載入專刊內容...</p>
+                <div class="col-span-full py-20 text-center border border-white/5 bg-zinc-900/20 rounded-xl">
+                    <p class="text-zinc-500 font-black uppercase tracking-widest text-sm animate-pulse">正在載入專刊內容...</p>
                 </div>
             )}
         </div>
