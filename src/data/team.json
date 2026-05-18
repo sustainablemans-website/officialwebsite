@@ -1,59 +1,61 @@
-[
-	{
-		"name": "曾偉庭 (Wei-Ting Tseng)",
-		"role": "創辦人 暨 地方創生實踐家",
-		"specialties": [
-			"ISO 14064-1 / 14067 主導查證員",
-			"IPAS 淨零碳規劃管理師",
-			"永續桌遊培訓師",
-			"農業永續轉型輔導"
-		],
-		"image": "https://drive.google.com/thumbnail?id=16mOnqgwo2Y0Xa2qEdQZwy2Dp084qiWji&sz=w500"
-	},
-	{
-		"name": "鄭安姵",
-		"role": "資深永續輔導顧問",
-		"specialties": [
-			"iPAS 淨零碳規劃管理師",
-			"ISO 14064 / 14067 / 14068 主導查證員",
-			"ISO 50001 能源管理",
-			"TTQS 人才培訓"
-		],
-		"image": "https://drive.google.com/thumbnail?id=1EsDULLlQL2uHVyvT_TiYYl5AwttrxLRV&sz=w500"
-	},
-	{
-		"name": "周家豪",
-		"role": "資深永續碳權顧問",
-		"specialties": [
-			"益珂環能總經理",
-			"COP29 UNFCCC 特邀講者",
-			"行銷博士",
-			"再生能源輔導"
-		],
-		"image": "https://drive.google.com/thumbnail?id=1D0g4Dwb0t4WoEPIme65ArsfDPWhP9OsI&sz=w500"
-	},
-	{
-		"name": "詹家和",
-		"role": "資深永續輔導顧問",
-		"specialties": [
-			"國立勤益科大 ESG 中心副執行長",
-			"碳足跡/碳價計算專利 (I872336/M640876)",
-			"中華永續商道聯合會 創會長",
-			"中華創新發展協會 ESG 指導/主編",
-			"薩摩亞商萬達環球 總經理"
-		],
-		"image": "/images/team/zhan.jpg"
-	},
-	{
-		"name": "陳淑真",
-		"role": "資深永續輔導顧問",
-		"specialties": [
-			"始亦真永續有限公司 執行長",
-			"ISO 14064-1 / 14067 主任查證員",
-			"經濟部產業低碳化輔導計畫 顧問",
-			"國際 ESG 永續發展協會 理事",
-			"濱川企業 永續發展管理代表"
-		],
-		"image": "/images/team/chen.jpg"
-	}
-]
+{
+  "team": [
+    {
+      "name": "曾偉庭 (Wei-Ting Tseng)",
+      "role": "創辦人 暨 地方創生實踐家",
+      "specialties": [
+        "ISO 14064-1 / 14067 主導查證員",
+        "IPAS 淨零碳規劃管理師",
+        "永續桌遊培訓師",
+        "農業永續轉型輔導"
+      ],
+      "image": "https://drive.google.com/thumbnail?id=16mOnqgwo2Y0Xa2qEdQZwy2Dp084qiWji&sz=w500"
+    },
+    {
+      "name": "鄭安姵",
+      "role": "資深永續輔導顧問",
+      "specialties": [
+        "iPAS 淨零碳規劃管理師",
+        "ISO 14064 / 14067 / 14068 主導查證員",
+        "ISO 50001 能源管理",
+        "TTQS 人才培訓"
+      ],
+      "image": "https://drive.google.com/thumbnail?id=1EsDULLlQL2uHVyvT_TiYYl5AwttrxLRV&sz=w500"
+    },
+    {
+      "name": "周家豪",
+      "role": "資深永續碳權顧問",
+      "specialties": [
+        "益珂環能總經理",
+        "COP29 UNFCCC 特邀講者",
+        "行銷博士",
+        "再生能源輔導"
+      ],
+      "image": "https://drive.google.com/thumbnail?id=1D0g4Dwb0t4WoEPIme65ArsfDPWhP9OsI&sz=w500"
+    },
+    {
+      "name": "詹家和",
+      "role": "資深永續輔導顧問",
+      "specialties": [
+        "國立勤益科大 ESG 中心副執行長",
+        "碳足跡/碳價計算專利 (I872336/M640876)",
+        "中華永續商道聯合會 創會長",
+        "中華創新發展協會 ESG 指導/主編",
+        "薩摩亞商萬達環球 總經理"
+      ],
+      "image": "/images/team/zhan.jpg"
+    },
+    {
+      "name": "陳淑真",
+      "role": "資深永續輔導顧問",
+      "specialties": [
+        "始亦真永續有限公司 執行長",
+        "ISO 14064-1 / 14067 主任查證員",
+        "經濟部產業低碳化輔導計畫 顧問",
+        "國際 ESG 永續發展協會 理事",
+        "濱川企業 永續發展管理代表"
+      ],
+      "image": "/images/team/chen.jpg"
+    }
+  ]
+}

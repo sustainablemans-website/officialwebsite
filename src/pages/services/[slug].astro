@@ -2,7 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import services from '../../data/services.json';
+import servicesData from '../../data/services.json';
+const services = servicesData.services;
 
 export function getStaticPaths() {
     return services.map(s => ({

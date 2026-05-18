@@ -1,7 +1,8 @@
 ---
 import ServiceCard from './ServiceCard.astro';
 import FlagshipMSRDK from './FlagshipMSRDK.astro';
-import services from '../data/services.json';
+import servicesData from '../data/services.json';
+const services = servicesData.services;
 
 const otherServices = services.filter(s => !s.title.includes('MS-RDK'));
 ---
