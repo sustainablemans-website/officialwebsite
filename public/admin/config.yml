@@ -10,8 +10,8 @@ backend:
   name: github
   repo: sustainablemans-website/officialwebsite
   branch: main
-  auth_type: pkce
-  app_id: Ov23liUklcSzjWJ2nhJg
+  base_url: https://www.sustainablemans.com
+  auth_endpoint: api/auth
 
 # 本地開發模式（開發時使用，上線後可移除）
 # local_backend: true
