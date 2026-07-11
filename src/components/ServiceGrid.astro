@@ -3,38 +3,34 @@ import ServiceCard from './ServiceCard.astro';
 import FlagshipMSRDK from './FlagshipMSRDK.astro';
 import servicesData from '../data/services.json';
 const services = servicesData.services;
-
 const otherServices = services.filter(s => !s.title.includes('MS-RDK'));
 ---
 
-<section class="py-40 px-6 relative overflow-hidden" id="services">
-    <!-- Sophisticated Decor -->
+<section class="py-28 px-6 relative overflow-hidden" id="services">
     <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[300px] bg-emerald-500/10 blur-[120px] rounded-full"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[300px] rounded-full" style="background: var(--wing-glow); filter: blur(120px);"></div>
     </div>
 
     <div class="max-w-7xl mx-auto relative z-10">
-        <div class="mb-32 text-center flex flex-col items-center">
-            <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-400 mb-6 stagger-reveal">Our ESG Solutions</h2>
-            <h3 class="text-6xl md:text-8xl font-black uppercase tracking-tighter stagger-reveal delay-200 text-white leading-none mb-10">
-                精準永續 <span class="text-emerald-400/50">驅動價值</span>
-            </h3>
-            <div class="w-16 h-[1px] bg-emerald-500/20 mb-10"></div>
-            <p class="text-zinc-300 font-medium uppercase tracking-[0.2em] text-xs max-w-lg leading-relaxed stagger-reveal delay-400">
-                透過數位化治理與專業技術支援，<br/>為各類型規模企業提供最全面的永續解決方案。
+        <div class="mb-16 text-center flex flex-col items-center">
+            <p class="eyebrow mb-4 stagger-reveal">永續解決方案</p>
+            <h2 class="text-4xl md:text-5xl font-semibold ink leading-tight mb-5 stagger-reveal">
+                精準永續，<span class="text-wing">驅動企業價值</span>
+            </h2>
+            <p class="ink-muted max-w-xl leading-relaxed stagger-reveal">
+                透過數位化治理與專業技術支援，為各類型規模企業提供全面的永續轉型解決方案。
             </p>
         </div>
 
-        <!-- MSRDK Flagship Horizontal Section -->
-        <div class="mb-12 stagger-reveal delay-600 active">
+        <div class="mb-12 stagger-reveal active">
             <FlagshipMSRDK />
         </div>
 
-        <!-- Other Services Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {otherServices.map(service => (
-                <ServiceCard {...service} />
+                <ServiceCard {...service} base="/green/services" />
             ))}
         </div>
     </div>
 </section>
+<style>@reference "../styles/global.css";</style>

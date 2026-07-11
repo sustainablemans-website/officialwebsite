@@ -1,0 +1,35 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import ServiceCard from '../../../components/ServiceCard.astro';
+import Footer from '../../../components/Footer.astro';
+import digitalData from '../../../data/digital-services.json';
+const services = digitalData.services;
+---
+
+<Layout
+	wing="digital"
+	title="數位服務項目 | 杉蔓有限公司 Sustainable Man"
+	description="AI 導入顧問、數位建置（官網／系統開發）、企業自動化——杉蔓數位轉型服務總覽。">
+	<Header wing="digital" />
+	<main class="pt-32 pb-20">
+		<section class="max-w-7xl mx-auto px-6">
+			<div class="mb-14 text-center flex flex-col items-center">
+				<p class="eyebrow mb-4 stagger-reveal active">數位轉型</p>
+				<h1 class="text-4xl md:text-5xl font-semibold ink leading-tight mb-5">數位服務項目</h1>
+				<p class="ink-muted max-w-xl leading-relaxed">
+					以精密的軟體工藝，協助企業導入 AI、打造數位資產並讓流程自動運作。
+				</p>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				{services.map(s => (
+					<ServiceCard slug={s.slug} title={s.title} description={s.description} icon={s.icon} base="/digital/services" />
+				))}
+			</div>
+		</section>
+	</main>
+	<Footer wing="digital" />
+</Layout>
+<script is:inline>
+	setTimeout(() => document.querySelectorAll('.stagger-reveal').forEach(el => el.classList.add('active')), 100);
+</script>

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/services", "destination": "/green/services/", "statusCode": 301 },
+    { "source": "/services/", "destination": "/green/services/", "statusCode": 301 },
+    { "source": "/services/msrdk", "destination": "/green/services/msrdk/", "statusCode": 301 },
+    { "source": "/services/msrdk/", "destination": "/green/services/msrdk/", "statusCode": 301 },
+    { "source": "/services/iso14064", "destination": "/green/services/iso14064/", "statusCode": 301 },
+    { "source": "/services/iso14064/", "destination": "/green/services/iso14064/", "statusCode": 301 },
+    { "source": "/services/iso14067", "destination": "/green/services/iso14067/", "statusCode": 301 },
+    { "source": "/services/iso14067/", "destination": "/green/services/iso14067/", "statusCode": 301 },
+    { "source": "/services/esg-game", "destination": "/green/services/esg-game/", "statusCode": 301 },
+    { "source": "/services/esg-game/", "destination": "/green/services/esg-game/", "statusCode": 301 },
+    { "source": "/services/green-expo", "destination": "/green/services/green-expo/", "statusCode": 301 },
+    { "source": "/services/green-expo/", "destination": "/green/services/green-expo/", "statusCode": 301 },
+    { "source": "/services/:slug*", "destination": "/green/services/:slug*", "statusCode": 301 }
+  ]
+}

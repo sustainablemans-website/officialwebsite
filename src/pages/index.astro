@@ -1,16 +1,251 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import PartnerMarquee from '../components/PartnerMarquee.astro';
-import Footer from '../components/Footer.astro';
+import site from '../data/site.json';
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	"name": `${site.companyName} (${site.companyEnglishName})`,
+	"description": site.description,
+	"url": "https://www.sustainablemans.com/",
+	"logo": "https://www.sustainablemans.com/images/logo.png",
+	"email": site.contact.email,
+	"telephone": site.contact.phone,
+	"address": { "@type": "PostalAddress", "addressLocality": "高雄市", "addressCountry": "TW", "streetAddress": site.contact.address }
+};
 ---
 
-<Layout title="杉蔓有限公司 Sustainable Man | 淨零時代，高效永續轉型策略夥伴">
-	<Header />
-	<main>
-		<Hero />
-		<PartnerMarquee />
+<Layout
+	wing="green"
+	title="杉蔓有限公司 Sustainable Man | 永續 × 數位，雙軸轉型策略夥伴"
+	description="杉蔓有限公司——永續轉型（碳管理、節能、綠色印刷）與數位轉型（AI導入、數位建置、企業自動化）的雙軸轉型策略夥伴。">
+
+	<main class="portal" role="main">
+		<!-- 純文字導覽（供爬蟲與無 JS 環境） -->
+		<nav class="sr-links" aria-label="主要入口">
+			<a href="/green/">永續轉型</a>
+			<a href="/digital/">數位轉型</a>
+		</nav>
+
+		<!-- 永續翼 -->
+		<a href="/green/" class="panel panel-green" data-wing-choice="green" aria-label="進入永續轉型">
+			<div class="panel-inner">
+				<span class="panel-eyebrow">Sustainable</span>
+				<h2 class="panel-title">永續轉型</h2>
+				<p class="panel-sub">碳管理 · 節能 · 綠色印刷</p>
+				<span class="panel-cta">進入永續翼 <span aria-hidden="true">→</span></span>
+			</div>
+		</a>
+
+		<!-- 數位翼 -->
+		<a href="/digital/" class="panel panel-digital" data-wing-choice="digital" aria-label="進入數位轉型">
+			<div class="panel-inner">
+				<span class="panel-eyebrow">Digital</span>
+				<h2 class="panel-title">數位轉型</h2>
+				<p class="panel-sub">AI導入 · 數位建置 · 企業自動化</p>
+				<span class="panel-cta">進入數位翼 <span aria-hidden="true">→</span></span>
+			</div>
+		</a>
+
+		<!-- 中央 Logo -->
+		<div class="portal-brand" aria-hidden="true">
+			<img src="/images/logo.png" alt="" class="portal-logo" />
+			<span class="portal-name">SUSTAINABLE MAN</span>
+		</div>
+
+		<!-- 繼續上次瀏覽 -->
+		<a href="#" id="resume" class="resume" hidden></a>
 	</main>
-	<Footer />
 </Layout>
+
+<style>
+	.portal {
+		position: fixed;
+		inset: 0;
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+		background: #010102;
+	}
+	@media (min-width: 768px) { .portal { flex-direction: row; } }
+
+	.sr-links {
+		position: absolute;
+		width: 1px; height: 1px;
+		overflow: hidden; clip: rect(0 0 0 0);
+	}
+
+	.panel {
+		position: relative;
+		flex: 1 1 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		overflow: hidden;
+		transition: flex-grow 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
+		opacity: 0;
+		animation: panel-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	}
+	.panel-green {
+		background: radial-gradient(circle at 40% 40%, #064e3b, #022c22 70%, #021a15);
+		animation-delay: 0.35s;
+		transform: translateX(-4%);
+	}
+	.panel-digital {
+		background: radial-gradient(circle at 60% 40%, #1a1d3d, #06060f 62%, #010102);
+		animation-delay: 0.45s;
+		transform: translateX(4%);
+	}
+	@keyframes panel-in {
+		to { opacity: 1; transform: translateX(0); }
+	}
+
+	/* Hover：滑入側擴張、另一側收縮變暗（desktop） */
+	@media (min-width: 768px) {
+		.portal:hover .panel { flex-grow: 0.75; filter: brightness(0.55) saturate(0.7); }
+		.portal .panel:hover { flex-grow: 1.6; filter: brightness(1.05) saturate(1.05); }
+	}
+
+	.panel-inner {
+		position: relative;
+		z-index: 2;
+		text-align: center;
+		padding: 2rem;
+		transform: translateY(10px);
+		transition: transform 0.5s ease;
+	}
+	.panel:hover .panel-inner { transform: translateY(0); }
+
+	.panel-eyebrow {
+		display: block;
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.28em;
+		text-transform: uppercase;
+		margin-bottom: 1rem;
+	}
+	.panel-green .panel-eyebrow { color: #3ecf8e; }
+	.panel-digital .panel-eyebrow { color: #828fff; }
+
+	.panel-title {
+		font-family: 'Inter', system-ui, sans-serif;
+		font-size: clamp(2.25rem, 6vw, 4rem);
+		font-weight: 600;
+		letter-spacing: -0.03em;
+		color: #f7f8f8;
+		line-height: 1.05;
+		margin-bottom: 0.75rem;
+	}
+	.panel-sub {
+		font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+		color: #d0d6e0;
+		margin-bottom: 1.75rem;
+	}
+	.panel-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		padding: 0.6rem 1.3rem;
+		border-radius: 0.5rem;
+		opacity: 0;
+		transform: translateY(6px);
+		transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease;
+	}
+	.panel-green .panel-cta { background: #3ecf8e; color: #04140d; }
+	.panel-digital .panel-cta { background: #5e6ad2; color: #fff; }
+	.panel:hover .panel-cta, .panel:focus-visible .panel-cta { opacity: 1; transform: translateY(0); }
+	@media (max-width: 767px) { .panel-cta { opacity: 1; transform: none; } }
+
+	/* 中央 Logo */
+	.portal-brand {
+		position: absolute;
+		top: 50%; left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 5;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+		pointer-events: none;
+		opacity: 0;
+		animation: brand-in 0.8s ease 0.05s forwards;
+	}
+	.portal:hover .portal-brand { opacity: 0.15; transition: opacity 0.5s ease; }
+	@keyframes brand-in { to { opacity: 1; } }
+	.portal-logo {
+		width: 64px; height: 64px; object-fit: contain;
+		filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));
+		animation: logo-float 4s ease-in-out infinite;
+	}
+	@keyframes logo-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+	.portal-name {
+		font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3em;
+		color: rgba(247,248,248,0.7);
+	}
+	@media (max-width: 767px) {
+		.portal-brand { top: 50%; }
+		.portal-logo { width: 48px; height: 48px; }
+	}
+
+	/* 中央分隔線微光 */
+	.portal::after {
+		content: '';
+		position: absolute;
+		top: 0; bottom: 0; left: 50%;
+		width: 1px;
+		background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.15), transparent);
+		z-index: 4;
+		pointer-events: none;
+	}
+	@media (max-width: 767px) {
+		.portal::after { top: 50%; left: 0; right: 0; bottom: auto; width: auto; height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent); }
+	}
+
+	.resume {
+		position: absolute;
+		bottom: 1.5rem; left: 50%;
+		transform: translateX(-50%);
+		z-index: 6;
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: rgba(247,248,248,0.85);
+		background: rgba(255,255,255,0.06);
+		border: 1px solid rgba(255,255,255,0.14);
+		padding: 0.45rem 1rem;
+		border-radius: 9999px;
+		text-decoration: none;
+		backdrop-filter: blur(10px);
+	}
+	.resume:hover { background: rgba(255,255,255,0.12); }
+
+	@media (prefers-reduced-motion: reduce) {
+		.panel, .portal-brand { animation: none; opacity: 1; transform: none; }
+		.portal-logo { animation: none; }
+	}
+</style>
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>
+
+<script is:inline>
+	// 記憶使用者選擇的翼
+	document.querySelectorAll('[data-wing-choice]').forEach((el) => {
+		el.addEventListener('click', () => {
+			try { localStorage.setItem('sm-wing', el.getAttribute('data-wing-choice')); } catch (e) {}
+		});
+	});
+	// 繼續上次瀏覽提示
+	try {
+		const last = localStorage.getItem('sm-wing');
+		if (last === 'green' || last === 'digital') {
+			const r = document.getElementById('resume');
+			if (r) {
+				r.setAttribute('href', last === 'digital' ? '/digital/' : '/green/');
+				r.textContent = (last === 'digital' ? '繼續瀏覽數位翼' : '繼續瀏覽永續翼') + ' →';
+				r.hidden = false;
+			}
+		}
+	} catch (e) {}
+</script>

@@ -1,0 +1,21 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import ServiceDetail from '../../../components/ServiceDetail.astro';
+import digitalData from '../../../data/digital-services.json';
+
+export function getStaticPaths() {
+    return digitalData.services.map(s => ({
+        params: { slug: s.slug },
+        props: { service: s }
+    }));
+}
+const { service } = Astro.props;
+---
+
+<Layout wing="digital" title={`${service.title} | 杉蔓有限公司`} description={service.description}>
+    <Header wing="digital" />
+    <ServiceDetail service={service} base="/digital/services" backLabel="返回數位服務" />
+    <Footer wing="digital" />
+</Layout>

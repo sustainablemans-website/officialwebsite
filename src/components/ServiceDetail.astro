@@ -1,0 +1,156 @@
+---
+// 共用服務內頁 — 綠翼與數位翼共用，隨 data-wing 換膚
+interface Faq { q: string; a: string; }
+interface Service {
+    slug: string; title: string; description: string; icon: string;
+    longDescription: string; features?: string[];
+    stats?: { label: string; value: string }[]; faqs?: Faq[]; image?: string;
+}
+interface Props { service: Service; base: string; backLabel: string; }
+const { service, base, backLabel } = Astro.props;
+
+// 自動讀取 public/images/services/{slug}/ 內的圖片（永續服務用）
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+    '/public/images/services/**/*.{jpg,jpeg,png,webp}', { eager: true }
+);
+const galleryImages = Object.entries(allImages)
+    .filter(([path]) => path.includes(`/services/${service.slug}/`))
+    .map(([path]) => path.replace('/public', ''))
+    .sort();
+const coverImage = service.image || galleryImages[0] || null;
+const carouselImages = galleryImages.filter(img => img !== coverImage);
+
+const faqLd = service.faqs && service.faqs.length ? {
+    "@context": "https://schema.org", "@type": "FAQPage",
+    "mainEntity": service.faqs.map(f => ({
+        "@type": "Question", "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+} : null;
+---
+
+<main class="pt-28 pb-20 min-h-screen">
+    <!-- Breadcrumb -->
+    <div class="max-w-6xl mx-auto px-6 mb-10">
+        <a href={base + '/'} class="inline-flex items-center gap-2 text-sm ink-subtle hover:text-wing transition-colors">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> {backLabel}
+        </a>
+    </div>
+
+    <!-- Hero -->
+    <section class="max-w-6xl mx-auto px-6 mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="chip-wing mb-6">
+                    <i data-lucide={service.icon} class="w-4 h-4 text-wing"></i>
+                    服務項目
+                </div>
+                <h1 class="text-4xl md:text-5xl font-semibold ink leading-tight mb-6">
+                    {service.title}
+                </h1>
+                <p class="text-lg ink-muted leading-relaxed mb-8 pl-5 border-l-2 border-wing">
+                    {service.description}
+                </p>
+                <a href="/contact/" class="btn-wing">立即洽詢 <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+            </div>
+            <div>
+                {coverImage ? (
+                    <div class="relative aspect-[4/3] overflow-hidden rounded-2xl card-wing">
+                        <img src={coverImage} alt={service.title} class="w-full h-full object-cover" loading="eager" />
+                    </div>
+                ) : service.stats ? (
+                    <div class="grid grid-cols-3 gap-4">
+                        {service.stats.map((stat) => (
+                            <div class="p-5 card-wing text-center">
+                                <p class="text-2xl md:text-3xl font-semibold text-wing mb-1.5">{stat.value}</p>
+                                <p class="text-xs ink-subtle">{stat.label}</p>
+                            </div>
+                        ))}
+                    </div>
+                ) : null}
+            </div>
+        </div>
+    </section>
+
+    {coverImage && service.stats && (
+        <section class="max-w-6xl mx-auto px-6 mb-14">
+            <div class="grid grid-cols-3 gap-4 p-6 card-wing">
+                {service.stats.map((stat) => (
+                    <div class="text-center">
+                        <p class="text-2xl md:text-3xl font-semibold text-wing mb-1">{stat.value}</p>
+                        <p class="text-xs ink-subtle">{stat.label}</p>
+                    </div>
+                ))}
+            </div>
+        </section>
+    )}
+
+    <!-- Overview + Features -->
+    <section class="max-w-6xl mx-auto px-6 mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div>
+                <p class="eyebrow mb-4">服務說明 · Overview</p>
+                <p class="text-lg ink-muted leading-relaxed">{service.longDescription}</p>
+            </div>
+            {service.features && (
+                <div>
+                    <p class="eyebrow mb-5">核心特色 · Features</p>
+                    <ul class="space-y-3">
+                        {service.features.map((f) => (
+                            <li class="flex items-start gap-3 p-4 card-wing">
+                                <div class="w-1.5 h-1.5 rounded-full bg-wing mt-2 flex-shrink-0"></div>
+                                <span class="ink-muted text-sm leading-relaxed">{f}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </div>
+    </section>
+
+    <!-- Gallery (永續服務照片) -->
+    {carouselImages.length > 0 && (
+        <section class="max-w-6xl mx-auto px-6 mb-16">
+            <p class="eyebrow mb-6">實際案例 · Gallery</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {carouselImages.map((src, i) => (
+                    <div class="aspect-[4/3] overflow-hidden rounded-xl card-wing">
+                        <img src={src} alt={`${service.title} 案例 ${i + 1}`} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+                    </div>
+                ))}
+            </div>
+        </section>
+    )}
+
+    <!-- FAQ -->
+    {service.faqs && service.faqs.length > 0 && (
+        <section class="max-w-3xl mx-auto px-6 mb-16">
+            <p class="eyebrow mb-6">常見問題 · FAQ</p>
+            <div class="space-y-3">
+                {service.faqs.map((f) => (
+                    <details class="group card-wing p-5">
+                        <summary class="flex items-center justify-between cursor-pointer list-none">
+                            <span class="ink font-medium text-base pr-4">{f.q}</span>
+                            <i data-lucide="plus" class="w-5 h-5 text-wing flex-shrink-0 transition-transform group-open:rotate-45"></i>
+                        </summary>
+                        <p class="ink-muted text-sm leading-relaxed mt-4">{f.a}</p>
+                    </details>
+                ))}
+            </div>
+        </section>
+    )}
+
+    <!-- CTA -->
+    <section class="max-w-6xl mx-auto px-6">
+        <div class="p-10 md:p-14 card-wing flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <h3 class="text-2xl md:text-3xl font-semibold ink mb-2">準備好啟動您的轉型計畫了嗎？</h3>
+                <p class="ink-muted text-sm">我們的顧問團隊隨時為您服務。</p>
+            </div>
+            <a href="/contact/" class="btn-wing flex-shrink-0">立即聯繫我們 <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        </div>
+    </section>
+</main>
+
+{faqLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(faqLd)}></script>}
+<style>@reference "../styles/global.css";</style>

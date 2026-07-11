@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import Footer from '../../components/Footer.astro';
+import digitalData from '../../data/digital-services.json';
+const services = digitalData.services;
+
+const steps = [
+	{ icon: 'search', title: '盤點診斷', desc: '深入了解現況流程與痛點，鎖定投資報酬率最高的切入場景。' },
+	{ icon: 'pen-tool', title: '方案設計', desc: '規劃可落地的導入藍圖、技術選型與階段性里程碑。' },
+	{ icon: 'boxes', title: '導入建置', desc: '以試點驗證成效，逐步擴大到正式營運環境。' },
+	{ icon: 'trending-up', title: '陪跑優化', desc: '教育訓練與持續調校，讓數位能力內化為長期資產。' },
+];
+---
+
+<Layout
+	wing="digital"
+	title="數位轉型 | 杉蔓有限公司 Sustainable Man"
+	description="AI 導入顧問、數位建置與企業自動化——杉蔓以精密的軟體工藝，協助企業邁向智慧營運。">
+	<Header wing="digital" />
+	<main>
+		<!-- Hero -->
+		<section class="min-h-screen flex flex-col justify-center px-6 md:px-12 pt-36 pb-24 relative overflow-hidden">
+			<div class="absolute inset-0 z-0 pointer-events-none">
+				<div class="absolute inset-0" style="background: radial-gradient(circle at 50% 30%, var(--wing-glow), transparent 65%);"></div>
+				<div class="absolute inset-0 opacity-[0.15]" style="background-image: linear-gradient(var(--wing-hairline) 1px, transparent 1px), linear-gradient(90deg, var(--wing-hairline) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(circle at 50% 30%, black, transparent 70%);"></div>
+			</div>
+			<div class="max-w-4xl mx-auto text-center relative z-10 stagger-reveal active">
+				<div class="chip-wing mx-auto mb-7">
+					<span class="w-1.5 h-1.5 bg-wing rounded-full animate-pulse"></span>
+					數位轉型 · AI導入 · 數位建置 · 企業自動化
+				</div>
+				<h1 class="text-4xl md:text-6xl lg:text-[4.5rem] font-semibold ink leading-[1.05] mb-7">
+					用 <span class="text-wing">AI 與自動化</span><br/>重構企業的營運方式
+				</h1>
+				<p class="text-lg ink-muted max-w-2xl mx-auto leading-relaxed mb-9">
+					從 AI 導入、官網與系統建置到企業流程自動化，杉蔓以精密的軟體工藝，
+					把重複、低效的作業轉為可衡量、可持續的智慧營運。
+				</p>
+				<div class="flex flex-wrap gap-3 justify-center">
+					<a href="/digital/services/" class="btn-wing">探索數位服務 <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+					<a href="/contact/" class="btn-wing-ghost">預約免費諮詢</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Services -->
+		<section id="services" class="py-24 px-6 relative">
+			<div class="max-w-7xl mx-auto">
+				<div class="mb-14 text-center flex flex-col items-center">
+					<p class="eyebrow mb-4 stagger-reveal">數位解決方案</p>
+					<h2 class="text-4xl md:text-5xl font-semibold ink leading-tight mb-5 stagger-reveal">
+						三條路徑，<span class="text-wing">一次到位的數位轉型</span>
+					</h2>
+					<p class="ink-muted max-w-xl leading-relaxed stagger-reveal">
+						無論是導入 AI、打造數位資產，還是讓流程自動運作，我們都能陪您走完最後一哩路。
+					</p>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+					{services.map(s => (
+						<ServiceCard slug={s.slug} title={s.title} description={s.description} icon={s.icon} base="/digital/services" />
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Process -->
+		<section id="process" class="py-24 px-6 relative">
+			<div class="max-w-6xl mx-auto">
+				<div class="mb-14 text-center flex flex-col items-center">
+					<p class="eyebrow mb-4 stagger-reveal">合作流程</p>
+					<h2 class="text-4xl md:text-5xl font-semibold ink leading-tight stagger-reveal">
+						務實落地的<span class="text-wing">四步驟</span>
+					</h2>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+					{steps.map((step, i) => (
+						<div class="p-7 card-wing stagger-reveal" style={`transition-delay: ${i * 80}ms`}>
+							<div class="flex items-center justify-between mb-6">
+								<div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background: var(--wing-surface-2); border: 1px solid var(--wing-hairline);">
+									<i data-lucide={step.icon} class="w-5 h-5 text-wing"></i>
+								</div>
+								<span class="text-3xl font-semibold" style="color: var(--wing-hairline-strong);">0{i + 1}</span>
+							</div>
+							<h3 class="text-lg font-semibold ink mb-2">{step.title}</h3>
+							<p class="ink-muted text-sm leading-relaxed">{step.desc}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA -->
+		<section class="py-20 px-6">
+			<div class="max-w-6xl mx-auto p-10 md:p-16 card-wing text-center relative overflow-hidden">
+				<div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, var(--wing-glow), transparent 60%);"></div>
+				<div class="relative z-10">
+					<h2 class="text-3xl md:text-4xl font-semibold ink mb-4">讓數位轉型，從一次對話開始</h2>
+					<p class="ink-muted max-w-xl mx-auto mb-8 leading-relaxed">
+						告訴我們您的營運痛點，我們會給您一份務實、可落地的數位轉型建議。
+					</p>
+					<a href="/contact/" class="btn-wing mx-auto">預約免費諮詢 <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+				</div>
+			</div>
+		</section>
+	</main>
+	<Footer wing="digital" />
+</Layout>
+
+<script is:inline>
+	setTimeout(() => {
+		document.querySelectorAll('.stagger-reveal').forEach((el, i) => {
+			setTimeout(() => el.classList.add('active'), i * 100);
+		});
+	}, 100);
+</script>

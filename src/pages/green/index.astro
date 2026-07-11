@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import ServiceGrid from '../../components/ServiceGrid.astro';
+import PartnerMarquee from '../../components/PartnerMarquee.astro';
+import KnowledgeCenter from '../../components/KnowledgeCenter.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+	wing="green"
+	title="永續轉型 | 杉蔓有限公司 Sustainable Man"
+	description="碳管理、節能減碳、綠色印刷與 ESG 教育——杉蔓以數據驅動的專業顧問，陪伴企業邁向淨零永續。">
+	<Header wing="green" />
+	<main>
+		<Hero />
+		<PartnerMarquee />
+		<ServiceGrid />
+		<KnowledgeCenter limit={3} />
+	</main>
+	<Footer wing="green" />
+</Layout>

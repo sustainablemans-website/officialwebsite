@@ -1,78 +1,61 @@
 ---
 import { getCollection } from 'astro:content';
 
+const { limit } = Astro.props;
 const allArticles = await getCollection('articles');
 
-// Debug: Log article count - this will show up in the terminal
-console.log(`[KnowledgeCenter] Found ${allArticles.length} articles in collection.`);
-
-// Sort by date or id if needed, for now just as is
-const articles = allArticles.map(article => {
-    // Robust slug generation that strips any directory prefix or extension
+let articles = allArticles.map(article => {
     const cleanId = article.id
         ? article.id.split('/').pop()?.replace(/\.(md|mdx)$/, '').replace(/^\.\//, '') || 'unknown'
         : 'unknown';
-        
     return {
         id: cleanId,
         title: article.data.title,
         category: article.data.category,
         description: article.data.description,
-        accent: article.data.accent || 'emerald'
     };
 });
-
-const categoryColors: Record<string, string> = {
-	emerald: "text-emerald-500",
-	blue: "text-blue-500",
-	yellow: "text-yellow-500",
-    "green-primary": "text-emerald-500",
-    "blue-accent": "text-blue-400"
-};
+if (limit) articles = articles.slice(0, limit);
 ---
 
-<section class="py-40 px-6 relative overflow-hidden" id="knowledge">
-    <!-- Background Decor -->
-    <div class="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent pointer-events-none"></div>
-
+<section class="py-28 px-6 relative overflow-hidden" id="knowledge">
     <div class="max-w-7xl mx-auto relative z-10">
-        <div class="flex flex-col md:flex-row justify-between items-end gap-12 mb-32">
-            <div class="max-w-3xl">
-                <h2 class="text-xs font-black uppercase tracking-[0.4em] text-emerald-500 mb-6 stagger-reveal">Insight Center / 永續知識專刊</h2>
-                <h3 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-8 stagger-reveal delay-200 text-white leading-none">
-                    淨零轉型 <br/> <span class="text-emerald-300/50">深度解析</span>
-                </h3>
+        <div class="flex flex-col md:flex-row justify-between md:items-end gap-8 mb-14">
+            <div class="max-w-2xl">
+                <p class="eyebrow mb-4 stagger-reveal">Insight Center · 永續知識專刊</p>
+                <h2 class="text-4xl md:text-5xl font-semibold ink leading-tight stagger-reveal">
+                    淨零轉型，<span class="text-wing">深度解析</span>
+                </h2>
             </div>
-            <div class="md:text-right stagger-reveal delay-400">
-                <a href="#knowledge" class="px-10 py-5 bg-emerald-500 text-black font-black uppercase text-xs tracking-[0.2em] hover:bg-white transition-all duration-500 shadow-3xl shadow-emerald-500/10 rounded-full">
-                    查看全部文章 / VIEW ALL
+            {limit && (
+                <a href="/knowledge/" class="btn-wing-ghost stagger-reveal flex-shrink-0">
+                    查看全部文章 <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </a>
-            </div>
+            )}
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {articles.length > 0 ? articles.map((article, index) => (
-                <article class="group p-12 bg-zinc-900/40 backdrop-blur-xl border border-white/5 hover:border-emerald-500/30 transition-all duration-700 stagger-reveal flex flex-col justify-between" style={`transition-delay: ${400 + index * 100}ms`}>
+                <article class="group p-8 card-wing flex flex-col justify-between stagger-reveal" style={`transition-delay: ${index * 80}ms`}>
                     <div>
-                        <span class={`text-[9px] uppercase font-black tracking-[0.3em] mb-8 inline-block ${categoryColors[article.accent || 'emerald']}`}>
-                            # {article.category}
-                        </span>
-                        <h4 class="text-3xl font-black uppercase tracking-tighter mb-8 text-white group-hover:text-emerald-400 transition-colors leading-tight">
+                        <span class="eyebrow mb-4 inline-block"># {article.category}</span>
+                        <h4 class="text-xl font-semibold ink mb-4 group-hover:text-wing transition-colors leading-snug">
                             {article.title}
                         </h4>
-                        <p class="text-zinc-300 font-medium tracking-wide text-md leading-relaxed mb-12 line-clamp-3">
+                        <p class="ink-muted text-sm leading-relaxed mb-8 line-clamp-3">
                             {article.description}
                         </p>
                     </div>
-                    <a href={`/knowledge/${article.id}/`} class="text-[10px] font-black uppercase tracking-[0.3em] flex items-center gap-4 text-emerald-500 group-hover:text-white group-hover:translate-x-3 transition-all duration-500">
-                        Read Full Article <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    <a href={`/knowledge/${article.id}/`} class="text-sm font-medium inline-flex items-center gap-2 text-wing group-hover:gap-3 transition-all">
+                        閱讀全文 <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </article>
             )) : (
-                <div class="col-span-full py-20 text-center border border-white/5 bg-zinc-900/20 rounded-xl">
-                    <p class="text-zinc-500 font-black uppercase tracking-widest text-sm animate-pulse">正在載入專刊內容...</p>
+                <div class="col-span-full py-16 text-center card-wing">
+                    <p class="ink-subtle text-sm">正在載入專刊內容...</p>
                 </div>
             )}
         </div>
     </div>
 </section>
+<style>@reference "../styles/global.css";</style>
