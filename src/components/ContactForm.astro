@@ -1,4 +1,8 @@
 ---
+import site from '../data/site.json';
+
+// 電話轉為國際格式 tel: 連結（0971-007-051 → +886971007051）
+const telHref = `tel:+886${site.contact.phone.replace(/-/g, '').replace(/^0/, '')}`;
 ---
 
 <section class="py-24 px-6 relative overflow-hidden" id="contact">
@@ -22,7 +26,7 @@
                     </div>
                     <div>
                         <span class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-1 block">電子信箱 / EMAIL</span>
-                        <a href="mailto:sustainablemans@gmail.com" class="block text-2xl font-black text-white hover:text-emerald-500 transition-colors tracking-tighter italic">sustainablemans@gmail.com</a>
+                        <a href={`mailto:${site.contact.email}`} class="block text-2xl font-black text-white hover:text-emerald-500 transition-colors tracking-tighter italic">{site.contact.email}</a>
                     </div>
                 </div>
                 
@@ -32,7 +36,7 @@
                     </div>
                     <div>
                         <span class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-1 block">聯絡電話 / PHONE</span>
-                        <a href="tel:+886971007051" class="block text-2xl font-black text-white hover:text-emerald-500 transition-colors tracking-tighter italic">0971-007-051</a>
+                        <a href={telHref} class="block text-2xl font-black text-white hover:text-emerald-500 transition-colors tracking-tighter italic">{site.contact.phone}</a>
                     </div>
                 </div>
                 
@@ -42,7 +46,7 @@
                     </div>
                     <div>
                         <span class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-1 block">公司地址 / ADDRESS</span>
-                        <p class="text-2xl font-black text-white tracking-tighter italic">高雄市 楠梓區 秀群路499巷28號</p>
+                        <p class="text-2xl font-black text-white tracking-tighter italic">{site.contact.address}</p>
                     </div>
                 </div>
             </div>

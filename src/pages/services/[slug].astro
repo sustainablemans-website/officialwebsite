@@ -6,7 +6,9 @@ import servicesData from '../../data/services.json';
 const services = servicesData.services;
 
 export function getStaticPaths() {
-    return services.map(s => ({
+    // 注意：getStaticPaths 於模組層級執行，只能取用 import 的值，
+    // 不能取用 frontmatter 的 const（會 ReferenceError）
+    return servicesData.services.map(s => ({
         params: { slug: s.slug },
         props: { service: s }
     }));
