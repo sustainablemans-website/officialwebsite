@@ -1,11 +1,15 @@
 # ============================================================
-# Decap CMS 設定檔
-# 後台路徑：https://your-site.vercel.app/admin/
-# 文件：https://decapcms.org/docs/
+# 杉蔓官網 後台設定檔（Sveltia CMS）
+# 後台網址：https://www.sustainablemans.com/admin/
+# Sveltia 文件：https://sveltiacms.app/
+# 設定格式與 Decap CMS 相容：https://decapcms.org/docs/
+#
+# ⚠️ 重要：此檔的欄位定義必須與 src/data/*.json 及
+#    src/content/articles/*.md 的實際欄位 100% 對齊，
+#    缺欄位會導致後台存檔時把該欄位從檔案中刪除！
 # ============================================================
 
-# ── 後台設定 ──────────────────────────────────────────────
-# 使用 GitHub 作為 Git 後端
+# ── 後端設定：GitHub（線上後台登入用；本機模式不需要）──
 backend:
   name: github
   repo: sustainablemans-website/officialwebsite
@@ -13,20 +17,17 @@ backend:
   base_url: https://www.sustainablemans.com
   auth_endpoint: api/auth
 
-# 本地開發模式（開發時使用，上線後可移除）
-# local_backend: true
-
 # 媒體檔案上傳路徑
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
-# 後台語言
-locale: zh_Hant
+# 後台語言（繁體中文）
+locale: zh-Hant
 
 # ── 內容集合定義 ──────────────────────────────────────────
 collections:
 
-  # ── 1. 知識專刊文章 ────────────────────────────────────
+  # ══ 1. 📰 文章 ═══════════════════════════════════════════
   - name: "articles"
     label: "📰 知識專刊文章"
     folder: "src/content/articles"
@@ -36,39 +37,156 @@ collections:
     extension: "md"
     format: "frontmatter"
     fields:
-      - { label: "文章標題", name: "title", widget: "string" }
-      - { label: "分類", name: "category", widget: "string", hint: "例如：碳管理, ESG策略, 淨零技術" }
-      - { label: "文章摘要", name: "description", widget: "text" }
+      - { label: "文章標題", name: "title", widget: "string",
+          hint: "範例：【淨零強制時代】ISO IWA 48 與 CBAM 如何重塑企業永續轉型路徑？" }
+      - { label: "分類", name: "category", widget: "string",
+          hint: "範例：碳管理入門、策略升級、永續行動、資源永續、智慧農業、旗艦技術" }
+      - { label: "文章摘要", name: "description", widget: "text",
+          hint: "顯示在文章列表卡片上的簡短介紹，約 50~100 字" }
+      - { label: "發布日期", name: "pubDate", widget: "datetime",
+          required: false, format: "YYYY-MM-DD", time_format: false,
+          hint: "選填。用於文章排序，範例：2025-06-27" }
+      - { label: "設為精選文章", name: "isFeatured", widget: "boolean",
+          required: false, default: false,
+          hint: "開啟後此文章會顯示在專刊頁最上方的大圖區（建議只設 1 篇）" }
       - { label: "強調色", name: "accent", widget: "select",
           options: ["emerald", "blue", "yellow", "green-primary", "blue-accent"],
-          default: "emerald" }
-      - { label: "文章內容", name: "body", widget: "markdown" }
+          default: "emerald", required: false,
+          hint: "文章卡片的主題色。emerald=綠、blue=藍、yellow=黃" }
+      - { label: "封面圖片", name: "image", widget: "image", required: false,
+          hint: "文章列表與內頁的封面圖，範例：/images/articles/article-1.png" }
+      - { label: "文章內容", name: "body", widget: "markdown",
+          hint: "文章正文，支援標題、粗體、圖片、連結等格式" }
 
-  # ── 2. 服務項目 ────────────────────────────────────────
+  # ══ 2. 🌿 永續服務 ═══════════════════════════════════════
   - name: "services"
-    label: "🌿 服務項目"
+    label: "🌿 永續服務"
     files:
       - name: "services_list"
-        label: "服務項目列表"
+        label: "永續服務列表"
         file: "src/data/services.json"
         fields:
           - label: "服務列表"
             name: "services"
+            label_singular: "服務"
             widget: "list"
+            summary: "{{fields.title}}"
             fields:
-              - { label: "網址代號 (slug)", name: "slug", widget: "string", hint: "英文小寫，例如：iso14064" }
-              - { label: "服務名稱", name: "title", widget: "string" }
-              - { label: "簡短說明", name: "description", widget: "text" }
-              - { label: "圖示名稱 (Lucide)", name: "icon", widget: "string" }
+              - { label: "網址代號 (slug)", name: "slug", widget: "string",
+                  hint: "英文小寫，會成為網址的一部分。範例：iso14064（網址即 /services/iso14064）。建立後請勿隨意更改" }
+              - { label: "服務名稱", name: "title", widget: "string",
+                  hint: "範例：ISO 14064 碳盤查輔導" }
+              - { label: "簡短說明", name: "description", widget: "text",
+                  hint: "顯示在服務卡片上的一段話，約 40~60 字" }
+              - { label: "圖示名稱 (Lucide)", name: "icon", widget: "string",
+                  hint: "到 lucide.dev 查詢圖示英文名。範例：wind、bar-chart-3、layers、gamepad-2、printer" }
               - { label: "強調色", name: "accent", widget: "select",
-                  options: ["emerald", "blue", "yellow", "purple"], default: "emerald" }
-              - { label: "服務詳細說明", name: "longDescription", widget: "text" }
-              - label: "核心特色 (每項一行)"
+                  options: ["emerald", "blue", "yellow", "purple"],
+                  default: "emerald",
+                  hint: "服務卡片與內頁的主題色" }
+              - { label: "設為旗艦服務", name: "isFlagship", widget: "boolean",
+                  required: false, default: false,
+                  hint: "開啟後此服務會以放大版卡片呈現（目前旗艦：MS-RDK）" }
+              - { label: "服務主圖", name: "image", widget: "image", required: false,
+                  hint: "服務內頁的形象圖片，範例：/images/services/iso14064.png" }
+              - { label: "服務詳細說明", name: "longDescription", widget: "text",
+                  hint: "服務內頁的完整介紹文字，約 150~250 字" }
+              - label: "核心特色"
                 name: "features"
+                label_singular: "特色"
                 widget: "list"
+                hint: "每項一句話，建議 4~6 項。範例：免工地施工，一分鐘完成安裝"
                 field: { label: "特色描述", name: "feature", widget: "string" }
+              - label: "重點數據 (stats)"
+                name: "stats"
+                label_singular: "數據"
+                widget: "list"
+                required: false
+                summary: "{{fields.label}}：{{fields.value}}"
+                hint: "服務內頁展示的 3 個重點數字。範例：標題「Carbon Reduction」、數值「-25%」"
+                fields:
+                  - { label: "數據標題", name: "label", widget: "string",
+                      hint: "範例：適用標準、培訓時數、Carbon Reduction" }
+                  - { label: "數據數值", name: "value", widget: "string",
+                      hint: "範例：ISO 14064、3-6 小時、-25%" }
+              - label: "常見問題 (FAQ)"
+                name: "faqs"
+                label_singular: "問答"
+                widget: "list"
+                required: false
+                summary: "{{fields.q}}"
+                hint: "服務內頁下方的 Q&A 區塊，建議 3~4 題"
+                fields:
+                  - { label: "問題", name: "q", widget: "string",
+                      hint: "範例：碳盤查和碳足跡有什麼不同？" }
+                  - { label: "回答", name: "a", widget: "text",
+                      hint: "用客戶聽得懂的話回答，約 50~80 字" }
 
-  # ── 3. 團隊成員 ────────────────────────────────────────
+  # ══ 3. 💻 數位服務 ═══════════════════════════════════════
+  - name: "digital_services"
+    label: "💻 數位服務"
+    files:
+      - name: "digital_services_list"
+        label: "數位服務列表"
+        file: "src/data/digital-services.json"
+        fields:
+          - label: "服務列表"
+            name: "services"
+            label_singular: "服務"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "網址代號 (slug)", name: "slug", widget: "string",
+                  hint: "英文小寫。範例：ai-consulting（網址即 /digital/ai-consulting）。建立後請勿隨意更改" }
+              - { label: "服務名稱", name: "title", widget: "string",
+                  hint: "範例：AI 導入顧問" }
+              - { label: "簡短說明", name: "description", widget: "text",
+                  hint: "顯示在服務卡片上的一段話，約 40~60 字" }
+              - { label: "圖示名稱 (Lucide)", name: "icon", widget: "string",
+                  hint: "到 lucide.dev 查詢圖示英文名。範例：brain-circuit、layout-panel-left、workflow" }
+              - { label: "強調色", name: "accent", widget: "select",
+                  options: ["indigo", "violet", "blue", "emerald", "yellow", "purple"],
+                  default: "indigo",
+                  hint: "服務卡片與內頁的主題色。數位翼建議用 indigo / violet / blue" }
+              - { label: "設為旗艦服務", name: "isFlagship", widget: "boolean",
+                  required: false, default: false,
+                  hint: "開啟後此服務會以放大版卡片呈現（目前旗艦：AI 導入顧問）" }
+              - { label: "服務主圖", name: "image", widget: "image", required: false,
+                  hint: "服務內頁的形象圖片（目前數位服務未使用圖片，可留空）" }
+              - { label: "服務詳細說明", name: "longDescription", widget: "text",
+                  hint: "服務內頁的完整介紹文字，約 150~250 字" }
+              - label: "核心特色"
+                name: "features"
+                label_singular: "特色"
+                widget: "list"
+                hint: "每項一句話，建議 4~6 項。範例：AI 成熟度評估與場景盤點，鎖定高效益切入點"
+                field: { label: "特色描述", name: "feature", widget: "string" }
+              - label: "重點數據 (stats)"
+                name: "stats"
+                label_singular: "數據"
+                widget: "list"
+                required: false
+                summary: "{{fields.label}}：{{fields.value}}"
+                hint: "服務內頁展示的 3 個重點數字。範例：標題「導入週期」、數值「4-12 週」"
+                fields:
+                  - { label: "數據標題", name: "label", widget: "string",
+                      hint: "範例：服務模式、導入週期、適用對象" }
+                  - { label: "數據數值", name: "value", widget: "string",
+                      hint: "範例：顧問陪跑、4-12 週、中小企業" }
+              - label: "常見問題 (FAQ)"
+                name: "faqs"
+                label_singular: "問答"
+                widget: "list"
+                required: false
+                summary: "{{fields.q}}"
+                hint: "服務內頁下方的 Q&A 區塊，建議 3~4 題"
+                fields:
+                  - { label: "問題", name: "q", widget: "string",
+                      hint: "範例：我們公司規模不大，也適合導入 AI 嗎？" }
+                  - { label: "回答", name: "a", widget: "text",
+                      hint: "用客戶聽得懂的話回答，約 50~80 字" }
+
+  # ══ 4. 👥 團隊 ═══════════════════════════════════════════
   - name: "team"
     label: "👥 專業顧問團隊"
     files:
@@ -78,17 +196,24 @@ collections:
         fields:
           - label: "團隊成員"
             name: "team"
+            label_singular: "成員"
             widget: "list"
+            summary: "{{fields.name}}（{{fields.role}}）"
             fields:
-              - { label: "姓名", name: "name", widget: "string" }
-              - { label: "職稱", name: "role", widget: "string" }
-              - { label: "照片網址", name: "image", widget: "image", required: false }
-              - label: "專長 (最多顯示 3 項)"
+              - { label: "姓名", name: "name", widget: "string",
+                  hint: "範例：曾偉庭 (Wei-Ting Tseng)" }
+              - { label: "職稱", name: "role", widget: "string",
+                  hint: "範例：創辦人 暨 地方創生實踐家、資深永續輔導顧問" }
+              - { label: "照片", name: "image", widget: "image", required: false,
+                  hint: "可上傳圖片或貼上網址。建議正方形照片，範例：/images/team/zhan.jpg" }
+              - label: "專長列表"
                 name: "specialties"
+                label_singular: "專長"
                 widget: "list"
-                field: { label: "專長描述", name: "specialty", widget: "string" }
+                hint: "每項一行，範例：ISO 14064-1 / 14067 主導查證員"
+                field: { label: "專長", name: "specialty", widget: "string" }
 
-  # ── 4. 活動紀錄 ────────────────────────────────────────
+  # ══ 5. 🌱 活動 ═══════════════════════════════════════════
   - name: "activities"
     label: "🌱 行動紀錄"
     files:
@@ -98,40 +223,18 @@ collections:
         fields:
           - label: "活動列表"
             name: "activities"
+            label_singular: "活動"
             widget: "list"
+            summary: "{{fields.date}}｜{{fields.title}}"
             fields:
-              - { label: "活動名稱", name: "title", widget: "string" }
-              - { label: "日期", name: "date", widget: "string", hint: "格式：YYYY.MM.DD" }
-              - { label: "活動照片", name: "image", widget: "image" }
+              - { label: "活動名稱", name: "title", widget: "string",
+                  hint: "範例：碳健檢培訓課程、桌遊種子教師班" }
+              - { label: "日期", name: "date", widget: "string",
+                  hint: "格式：YYYY.MM.DD，範例：2025.06.27" }
+              - { label: "活動照片", name: "image", widget: "image",
+                  hint: "活動現場照片，建議橫式" }
 
-  # ── 5. 公司基本資訊 ────────────────────────────────────
-  - name: "site_settings"
-    label: "⚙️ 公司基本設定"
-    files:
-      - name: "site"
-        label: "公司資訊與社群連結"
-        file: "src/data/site.json"
-        fields:
-          - { label: "公司中文名稱", name: "companyName", widget: "string" }
-          - { label: "公司英文名稱", name: "companyEnglishName", widget: "string" }
-          - { label: "品牌標語", name: "slogan", widget: "string" }
-          - { label: "公司簡介", name: "description", widget: "text" }
-          - label: "聯絡資訊"
-            name: "contact"
-            widget: "object"
-            fields:
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "電話", name: "phone", widget: "string" }
-              - { label: "地址", name: "address", widget: "string" }
-          - label: "社群連結"
-            name: "social"
-            widget: "object"
-            fields:
-              - { label: "Facebook", name: "facebook", widget: "string" }
-              - { label: "Instagram", name: "instagram", widget: "string" }
-              - { label: "LinkedIn", name: "linkedin", widget: "string" }
-
-  # ── 6. 合作夥伴 ────────────────────────────────────────
+  # ══ 6. 🤝 夥伴 ═══════════════════════════════════════════
   - name: "partners"
     label: "🤝 合作夥伴"
     files:
@@ -139,9 +242,61 @@ collections:
         label: "合作夥伴列表"
         file: "src/data/partners.json"
         fields:
+          # 注意：partners.json 是「最外層即陣列」的格式，
+          # root: true 是 Sveltia 專屬功能，讓列表直接存在檔案最外層。
           - label: "合作夥伴"
             name: "partners"
+            label_singular: "夥伴"
             widget: "list"
+            root: true
+            summary: "{{fields.name}}"
             fields:
-              - { label: "夥伴名稱", name: "name", widget: "string" }
-              - { label: "Logo 圖片", name: "logo", widget: "image" }
+              - { label: "夥伴名稱", name: "name", widget: "string",
+                  hint: "範例：綠探索 Green Puzzle" }
+              - { label: "Logo 圖片", name: "logo", widget: "image",
+                  hint: "夥伴商標圖片，建議白底或透明底" }
+
+  # ══ 7. ⚙️ 設定 ═══════════════════════════════════════════
+  - name: "site_settings"
+    label: "⚙️ 公司基本設定"
+    files:
+      - name: "site"
+        label: "公司資訊與社群連結"
+        file: "src/data/site.json"
+        fields:
+          - { label: "公司中文名稱", name: "companyName", widget: "string",
+              hint: "範例：杉蔓有限公司" }
+          - { label: "公司英文名稱", name: "companyEnglishName", widget: "string",
+              hint: "範例：SUSTAINABLE MAN CO., LTD." }
+          - { label: "品牌標語", name: "slogan", widget: "string",
+              hint: "範例：淨零時代，高效永續轉型策略夥伴" }
+          - { label: "公司簡介", name: "description", widget: "text",
+              hint: "一段話介紹公司，用於首頁與 SEO 描述" }
+          - label: "聯絡資訊"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Email", name: "email", widget: "string",
+                  hint: "範例：sustainablemans@gmail.com" }
+              - { label: "電話", name: "phone", widget: "string",
+                  hint: "範例：0971-007-051" }
+              - { label: "地址", name: "address", widget: "string",
+                  hint: "範例：高雄市 楠梓區 秀群路499巷28號" }
+          - label: "社群連結"
+            name: "social"
+            widget: "object"
+            fields:
+              - { label: "Facebook", name: "facebook", widget: "string",
+                  hint: "完整網址，範例：https://www.facebook.com/sustainablemanco" }
+              - { label: "Instagram", name: "instagram", widget: "string",
+                  hint: "完整網址，範例：https://www.instagram.com/sustainableman.tw" }
+              - { label: "LinkedIn", name: "linkedin", widget: "string",
+                  hint: "完整網址，範例：https://www.linkedin.com/company/sustainableman" }
+          - label: "頁尾資訊"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "版權宣告", name: "copyright", widget: "string",
+                  hint: "範例：SUSTAINABLE MAN CO., LTD. ALL RIGHTS RESERVED." }
+              - { label: "製作者署名", name: "madeBy", widget: "string",
+                  hint: "範例：ANTIGRAVITY AI" }
