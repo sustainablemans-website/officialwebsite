@@ -3,7 +3,7 @@ title: "【空調專利節能解決方案】MS-RDK：一分鐘免工事安裝，
 category: "旗艦技術"
 description: "面臨電費漲價與 ESG 減碳指標的雙重挑戰，空調節能已成為企業最快速降本增效的手段。MS-RDK 以專利物理整流技術，為台灣企業提供數位轉型下的綠色硬體解方。"
 accent: "emerald"
-image: "/images/articles/article-msrdk.png"
+image: "/images/articles/article-msrdk.webp"
 ---
 
 在企業面臨電費上漲與淨零排放雙重壓力的今天，空調系統（HVAC）往往佔據辦公與商業空間 40% 以上的能耗。**MSRDK (MS-RDK)** 提供了一種無需施工、即插即用的革命性解決方案，協助企業在最短時間內達成顯著的減碳目標。
@@ -13,7 +13,7 @@ image: "/images/articles/article-msrdk.png"
 
 ### 一、 物理原理：氣流整流與分子微細化
 
-![MS-RDK 陶瓷塗層微觀效應](/images/articles/article-msrdk-inline.png)
+![MS-RDK 陶瓷塗層微觀效應](/images/articles/article-msrdk-inline.webp)
 
 MSRDK 並非傳統的物理過濾網，而是一種「能量調節板」。其作用機制包含兩大核心：
 

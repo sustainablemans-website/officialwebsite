@@ -3,7 +3,7 @@ title: "【策略升級】超越漂綠：將 ESG 從成本中心轉化為創新�
 category: "策略升級"
 description: "許多企業仍將 ESG 視為昂貴的「成本中心」或公關活動。然而，成功的企業已將 ESG 視為驅動「創新」、「人才磁吸」與「國際競爭力」的核心策略。關鍵在於，如何將 ESG 理念高效且有趣地滲透到組織的每一個角落。"
 accent: "emerald"
-image: "/images/articles/article-2.png"
+image: "/images/articles/article-2.webp"
 ---
 
 許多企業仍將 ESG 視為昂貴的「成本中心」或公關活動。然而，成功的企業已將 ESG 視為驅動「創新」、「人才磁吸」與「國際競爭力」的核心策略。關鍵在於，如何將 ESG 理念高效且有趣地滲透到組織的每一個角落。
@@ -22,7 +22,7 @@ image: "/images/articles/article-2.png"
 - **降低門檻：** 透過遊戲的模擬和互動性，將複雜的碳管理、供應鏈責任等概念，轉化為易於理解的策略挑戰。
 - **提升參與度：** 遊戲化的培訓方式，能顯著提升員工和潛在「永續人才」的學習意願與記憶深度。
 
-![ESG 策略桌遊實體意象](/images/articles/article-2-inline.png)
+![ESG 策略桌遊實體意象](/images/articles/article-2-inline.webp)
 
 - **人才磁吸：** 年輕世代（Z 世代）特別重視企業的 ESG 表現與社會回饋，創新的永續教育能有效吸引和留住這些關鍵人才。
 

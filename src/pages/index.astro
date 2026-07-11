@@ -37,7 +37,7 @@ import Layout from '../layouts/Layout.astro';
 
 		<!-- 中央 Logo -->
 		<div class="portal-brand" aria-hidden="true">
-			<img src="/images/logo.png" alt="" class="portal-logo" />
+			<img src="/images/logo.webp" alt="" width="64" height="64" fetchpriority="high" class="portal-logo" />
 			<span class="portal-name">SUSTAINABLE MAN</span>
 		</div>
 
@@ -73,16 +73,16 @@ import Layout from '../layouts/Layout.astro';
 		overflow: hidden;
 		transition: flex-grow 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
 		opacity: 0;
-		animation: panel-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+		animation: panel-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 	}
 	.panel-green {
 		background: radial-gradient(circle at 40% 40%, #064e3b, #022c22 70%, #021a15);
-		animation-delay: 0.35s;
+		animation-delay: 0.08s;
 		transform: translateX(-4%);
 	}
 	.panel-digital {
 		background: radial-gradient(circle at 60% 40%, #1a1d3d, #06060f 62%, #010102);
-		animation-delay: 0.45s;
+		animation-delay: 0.14s;
 		transform: translateX(4%);
 	}
 	@keyframes panel-in {
@@ -159,7 +159,7 @@ import Layout from '../layouts/Layout.astro';
 		gap: 0.5rem;
 		pointer-events: none;
 		opacity: 0;
-		animation: brand-in 0.8s ease 0.05s forwards;
+		animation: brand-in 0.5s ease 0.05s forwards;
 	}
 	.portal:hover .portal-brand { opacity: 0.15; transition: opacity 0.5s ease; }
 	@keyframes brand-in { to { opacity: 1; } }

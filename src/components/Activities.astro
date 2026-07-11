@@ -26,11 +26,14 @@ const activities = activitiesData.activities;
             {activities.map((activity, index) => (
                 <div class="group relative overflow-hidden bg-zinc-900/80 border border-white/5 hover:border-emerald-500/30 transition-all duration-500 stagger-reveal" style={`transition-delay: ${index * 100}ms`}>
                     <div class="aspect-[4/3] overflow-hidden relative">
-                        <img 
-                            src={activity.image} 
-                            alt={activity.title} 
+                        <img
+                            src={activity.image}
+                            alt={activity.title}
+                            width={activity.imageWidth}
+                            height={activity.imageHeight}
                             class="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                             loading="lazy"
+                            decoding="async"
                         />
                         <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent"></div>
                     </div>

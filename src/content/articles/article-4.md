@@ -3,7 +3,7 @@ title: "【碳管理入門】ISO 14064-1 組織溫室氣體盤查的五大核心
 category: "碳管理入門"
 description: "ISO 14064-1:2018 是國際間用於量化和報告組織溫室氣體（GHG）排放與移除量的權威標準。它為企業提供了一個系統化的框架，是企業應對氣候變遷的第一步。"
 accent: "blue"
-image: "/images/articles/article-4.png"
+image: "/images/articles/article-4.webp"
 ---
 
 ISO 14064-1:2018 是國際間用於量化和報告組織溫室氣體（GHG）排放與移除量的權威標準。它為企業提供了一個系統化的框架，是企業應對氣候變遷、制定減碳策略和提升國際競爭力的第一步。

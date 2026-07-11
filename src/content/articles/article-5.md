@@ -3,7 +3,7 @@ title: "【資源永續】從線性到循環：台灣企業推動循環經濟的
 category: "資源永續"
 description: "循環經濟（Circular Economy）是全球應對資源枯竭和氣候變遷的重大趨勢。它挑戰了傳統「開採-製造-使用-丟棄」的線性經濟模式，強調通過設計來恢復或再生資源。"
 accent: "emerald"
-image: "/images/articles/article-5.png"
+image: "/images/articles/article-5.webp"
 ---
 
 循環經濟（Circular Economy）是全球應對資源枯竭和氣候變遷的重大趨勢。它挑戰了傳統「開採-製造-使用-丟棄」的線性經濟模式，強調通過設計和意圖來恢復或再生資源，實現資源利用的「最大效益」。

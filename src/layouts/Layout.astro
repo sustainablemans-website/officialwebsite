@@ -30,15 +30,17 @@ const themeColor = wing === 'digital' ? '#5e6ad2' : '#10b981';
 ---
 
 <!doctype html>
-<html lang="zh-TW" data-wing={wing}>
+<html lang="zh-TW" data-wing={wing} class="no-js">
 	<head>
 		<meta charset="UTF-8" />
+		<!-- JS 可用時立刻移除 no-js（stagger-reveal 的無 JS fallback 開關） -->
+		<script is:inline data-astro-rerun>document.documentElement.classList.remove('no-js');</script>
 		<meta name="description" content={description} />
 		<meta name="keywords" content="AI 碳盤查, 淨零轉型顧問, 數位綠色雙軸轉型, 2026 永續趨勢, CBAM 應對方案, ISO 14064 輔導, MSRDK 空調節能專利, 杉蔓有限公司, Sustainable Man" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-		<link rel="icon" type="image/png" sizes="192x192" href="/logo.png" />
-		<link rel="apple-touch-icon" href="/logo.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="/logo-192.png" />
+		<link rel="apple-touch-icon" href="/logo-192.png" />
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content={themeColor} />
@@ -58,14 +60,16 @@ const themeColor = wing === 'digital' ? '#5e6ad2' : '#10b981';
 		<meta property="og:url" content={canonical} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={`${SITE_URL}/images/hero_2026.png`} />
+		<meta property="og:image" content={`${SITE_URL}/images/og.jpg`} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={canonical} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={`${SITE_URL}/images/hero_2026.png`} />
+		<meta property="twitter:image" content={`${SITE_URL}/images/og.jpg`} />
 
 		<!-- JSON-LD Structured Data：全站 Organization + LocalBusiness -->
 		<script type="application/ld+json" is:inline set:html={JSON.stringify(organizationSchema())}></script>
@@ -74,8 +78,8 @@ const themeColor = wing === 'digital' ? '#5e6ad2' : '#10b981';
 			<script type="application/ld+json" is:inline set:html={JSON.stringify(ld)}></script>
 		))}
 
-		<!-- Lucide: async/defer to avoid render-blocking -->
-		<script src="https://unpkg.com/lucide@latest" defer></script>
+		<!-- Lucide: 鎖定版本 + 直接指向 UMD 檔（避免 @latest 的 CDN redirect），defer 避免阻塞渲染 -->
+		<script src="https://unpkg.com/lucide@1.24.0/dist/umd/lucide.min.js" defer></script>
         <ClientRouter />
 	</head>
 	<body class="flex flex-col min-h-screen">
@@ -110,7 +114,7 @@ const themeColor = wing === 'digital' ? '#5e6ad2' : '#10b981';
 			setTimeout(() => {
 				initIcons();
 				initReveals();
-			}, 500);
+			}, 150);
 		</script>
 	</body>
 </html>

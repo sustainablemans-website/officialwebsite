@@ -49,7 +49,7 @@ const carouselImages = galleryImages.filter(img => img !== coverImage);
             <div>
                 {coverImage ? (
                     <div class="relative aspect-[4/3] overflow-hidden rounded-2xl card-wing">
-                        <img src={coverImage} alt={service.title} class="w-full h-full object-cover" loading="eager" />
+                        <img src={coverImage} alt={service.title} width="1200" height="900" class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
                     </div>
                 ) : service.stats ? (
                     <div class="grid grid-cols-3 gap-4">
@@ -108,7 +108,7 @@ const carouselImages = galleryImages.filter(img => img !== coverImage);
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {carouselImages.map((src, i) => (
                     <div class="aspect-[4/3] overflow-hidden rounded-xl card-wing">
-                        <img src={src} alt={`${service.title} 案例 ${i + 1}`} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+                        <img src={src} alt={`${service.title} 案例 ${i + 1}`} width="1000" height="750" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" decoding="async" />
                     </div>
                 ))}
             </div>

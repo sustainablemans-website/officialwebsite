@@ -3,7 +3,7 @@ title: "【智慧農業】AI 科技如何解決農業缺工、氣候挑戰並實
 category: "智慧農業"
 description: "台灣農業正面臨人口高齡化、勞動力短缺以及極端氣候帶來的雙重衝擊。導入 AI、IoT 和 Big Data 實現智慧農業已成為趨勢。"
 accent: "yellow"
-image: "/images/articles/article-6.png"
+image: "/images/articles/article-6.webp"
 ---
 
 台灣農業正面臨人口高齡化、勞動力短缺以及極端氣候帶來的雙重衝擊。導入 AI（人工智慧）、IoT（物聯網）和 Big Data 實現智慧農業，已成為提高效率、降低成本並邁向永續發展的必然趨勢。

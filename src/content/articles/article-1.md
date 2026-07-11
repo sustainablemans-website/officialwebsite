@@ -4,7 +4,7 @@ category: "碳管理入門"
 description: "全球淨零已不再是企業的「加分題」，而是攸關生存的「必考題」。面對國際標準與強制性機制接踵而來，特別是資源相對有限的中小企業（SMEs），必須立即將碳管理視為核心競爭力。"
 isFeatured: true
 accent: "emerald"
-image: "/images/articles/article-1.png"
+image: "/images/articles/article-1.webp"
 ---
 
 全球淨零已不再是企業的「加分題」，而是攸關生存的「必考題」。面對國際標準與強制性機制接踵而來，特別是資源相對有限的中小企業（SMEs），必須立即將碳管理視為核心競爭力。
@@ -17,7 +17,7 @@ IWA 48 透過標準化的關鍵績效指標（KPI）框架，指導企業從傳�
 
 ### 二、 歐盟壓力：CBAM 對供應鏈的實質衝擊
 
-![碳管理數據化分析](/images/articles/article-1-inline.png)
+![碳管理數據化分析](/images/articles/article-1-inline.webp)
 
 歐盟的「碳邊境調整機制」（CBAM，Carbon Border Adjustment Mechanism）對以製造出口為導向的台灣產業構成直接的「綠色成本」挑戰。CBAM 透過對高碳排產品課徵進口碳費，有效地將歐洲的淨零壓力傳導到全球供應鏈。
 

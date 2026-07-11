@@ -3,7 +3,7 @@ title: "【永續行動方程式】中小企業如何串聯 SDGs、在地創生�
 category: "永續行動"
 description: "聯合國 17 項永續發展目標（SDGs）為企業提供了一個全球性的藍圖。對於杉蔓這樣以「地方創生」為核心的公司，如何將其業務與 SDGs 連結，並創造可量化的社會影響力，是社會責任的關鍵。"
 accent: "yellow"
-image: "/images/articles/article-3.png"
+image: "/images/articles/article-3.webp"
 ---
 
 聯合國 17 項永續發展目標（SDGs）為企業提供了一個全球性的藍圖。對於杉蔓這樣以「地方創生」為核心的公司，如何將其業務與 SDGs 連結，並創造可量化的社會影響力，是社會責任的關鍵。
@@ -22,7 +22,7 @@ image: "/images/articles/article-3.png"
 
 1. **農友輔導：** 提供永續農業培訓，協助農友導入永續耕作模式。
 
-![在地永續農產品](/images/articles/article-3-inline.png)
+![在地永續農產品](/images/articles/article-3-inline.webp)
 
 2. **品質保證：** 確保農產品符合永續標準，成為企業可信賴的供應源。
 3. **經濟效益：** 建立穩定的銷售管道，協助農友獲得更合理的利潤，目標提升「20%」的經濟收入，避免中間商剝削。

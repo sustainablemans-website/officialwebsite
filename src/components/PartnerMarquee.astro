@@ -12,7 +12,7 @@ const duplicatedPartners = [...partners, ...partners];
 		<div class="animate-marquee flex gap-16 items-center">
 			{duplicatedPartners.map((partner) => (
 				<div class="flex-shrink-0 transition-all duration-500 hover:scale-110 grayscale hover:grayscale-0 opacity-40 hover:opacity-100">
-					<img src={partner.logo} alt={partner.name} class="h-9 md:h-12 w-auto object-contain" loading="lazy" />
+					<img src={partner.logo} alt={partner.name} width={partner.logoWidth} height={partner.logoHeight} class="h-9 md:h-12 w-auto object-contain" loading="lazy" decoding="async" />
 				</div>
 			))}
 		</div>

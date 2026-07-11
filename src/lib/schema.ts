@@ -13,8 +13,8 @@ export function organizationSchema() {
 		name: `${site.companyName} (${site.companyEnglishName})`,
 		alternateName: site.companyEnglishName,
 		url: `${SITE_URL}/`,
-		logo: `${SITE_URL}/logo.png`,
-		image: `${SITE_URL}/logo.png`,
+		logo: `${SITE_URL}/logo-192.png`,
+		image: `${SITE_URL}/logo-192.png`,
 		description: site.description,
 		slogan: site.slogan,
 		email: site.contact.email,
@@ -118,7 +118,7 @@ export function articleSchema(article: {
 			'@type': 'Organization',
 			'@id': `${SITE_URL}/#organization`,
 			name: `${site.companyName} (${site.companyEnglishName})`,
-			logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` }
+			logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo-192.png` }
 		}
 	};
 	if (article.pubDate) ld.datePublished = article.pubDate.toISOString();

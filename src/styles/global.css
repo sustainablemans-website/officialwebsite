@@ -181,14 +181,21 @@
     border-radius: 9999px;
   }
 
-  /* stagger-reveal：初始幾乎不可見（非全透明，避免 JS 失效內容消失） */
+  /* stagger-reveal：初始透明、位移縮小、動畫縮短（600ms），提升感知速度。
+     fallback 可靠性：<html> 預設帶 no-js（JS 可用時由 Layout 內 inline script 立即移除），
+     no-js 情境下內容直接完整可見，確保 JS 失效時內容永不消失。 */
   .stagger-reveal {
-    @apply transition-all duration-[1000ms] translate-y-6;
-    opacity: 0.05;
+    @apply transition-all duration-[600ms] translate-y-4;
+    opacity: 0;
     transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
   .stagger-reveal.active {
     @apply opacity-100 translate-y-0;
+  }
+  html.no-js .stagger-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   /* 舊版按鈕保留相容（收斂為系統化樣式） */

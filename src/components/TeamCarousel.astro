@@ -36,11 +36,14 @@ const team = teamData.team;
                     <!-- Hover Aura Glow -->
                     <div class="absolute -inset-2 bg-emerald-500/0 group-hover:bg-emerald-500/5 blur-2xl transition-all duration-700"></div>
                     
-                    <img 
-                        src={member.image} 
-                        alt={member.name} 
-                        class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out" 
+                    <img
+                        src={member.image}
+                        alt={member.name}
+                        width={member.imageWidth}
+                        height={member.imageHeight}
+                        class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
                         loading="lazy"
+                        decoding="async"
                     />
                     
                     <!-- Gradient Shadow -->
