@@ -22,8 +22,8 @@ export function organizationSchema() {
 		address: {
 			'@type': 'PostalAddress',
 			addressCountry: 'TW',
-			addressLocality: '高雄市',
-			addressRegion: '楠梓區',
+			addressLocality: '楠梓區',
+			addressRegion: '高雄市',
 			streetAddress: '秀群路499巷28號'
 		},
 		areaServed: 'Taiwan',
