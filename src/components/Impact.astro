@@ -41,12 +41,12 @@ const sdgs = [
     <div class="max-w-7xl mx-auto relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
             <div class="lg:sticky lg:top-40">
-                <h2 class="text-[10px] font-black uppercase tracking-[0.5em] text-emerald-500 mb-8 stagger-reveal flex items-center gap-4">
+                <h2 class="eyebrow mb-8 stagger-reveal flex items-center gap-4">
                     <span class="w-12 h-[1px] bg-emerald-500/30"></span>
-                    Impact & Commitment / 我們的承諾
+                    我們的承諾 · Impact & Commitment
                 </h2>
-                <h3 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-12 stagger-reveal delay-200 text-white leading-[0.8]">
-                    AI 賦能 <br/> <span class="text-emerald-300/60">永續確信</span>
+                <h3 class="text-4xl md:text-6xl font-semibold tracking-tight mb-12 stagger-reveal delay-200 text-white leading-tight">
+                    AI 賦能，<span class="text-wing">永續確信</span>
                 </h3>
                 <p class="text-xl md:text-2xl text-zinc-300 mb-16 stagger-reveal delay-400 leading-relaxed max-w-lg font-medium">
                     杉蔓的核心使命是：「結合 <strong class="text-emerald-400">AI 數據治理</strong> 與 <strong class="text-emerald-400">數位雙軸轉型策略</strong>，將 ESG 實踐從合規壓力轉化為企業競爭力，接軌全球綠色供應鏈。」
@@ -56,7 +56,7 @@ const sdgs = [
                     {sdgs.map(sdg => (
                         <div class={`w-32 h-28 ${sdg.color} p-5 flex flex-col justify-between group hover:-translate-y-2 transition-all duration-500 shadow-2xl rounded-sm relative overflow-hidden`}>
                             <div class="absolute inset-0 bg-black/10 transition-opacity opacity-0 group-hover:opacity-100"></div>
-                            <span class="text-white font-black text-2xl italic uppercase relative z-10">SDG {sdg.id}</span>
+                            <span class="text-white font-semibold text-2xl relative z-10">SDG {sdg.id}</span>
                             <span class="text-white font-bold text-[10px] uppercase tracking-widest relative z-10">{sdg.name}</span>
                         </div>
                     ))}
@@ -67,14 +67,14 @@ const sdgs = [
                 {goals.map((goal, index) => (
                     <div class="p-12 bg-zinc-900/80 border border-white/5 border-l-4 border-l-emerald-500 shadow-3xl stagger-reveal" style={`transition-delay: ${400 + index * 150}ms`}>
                         <header class="flex gap-10 items-start mb-10">
-                            <span class="text-5xl font-black text-zinc-800 italic shrink-0">{goal.id}</span>
-                            <h4 class="text-3xl font-black uppercase tracking-tighter text-white leading-tight">{goal.title}</h4>
+                            <span class="text-5xl font-semibold shrink-0" style="color: var(--wing-hairline-strong);">{goal.id}</span>
+                            <h4 class="text-2xl font-semibold tracking-tight text-white leading-tight">{goal.title}</h4>
                         </header>
                         <p class="text-zinc-300 font-medium tracking-wide text-md leading-relaxed mb-10">
                             {goal.description}
                         </p>
                         <div class="bg-emerald-500/5 p-6 border border-emerald-500/20 relative group rounded-sm shadow-inner">
-                             <p class="text-xs font-black uppercase tracking-[0.2em] text-emerald-500 relative z-10">
+                             <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-500 relative z-10">
                                 {goal.target}
                              </p>
                         </div>

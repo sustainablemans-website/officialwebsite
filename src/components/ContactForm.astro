@@ -11,11 +11,11 @@ const telHref = `tel:+886${site.contact.phone.replace(/-/g, '').replace(/^0/, ''
 
     <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 items-center relative z-10">
         <div class="flex-1 flex flex-col justify-center">
-            <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-500 mb-8 stagger-reveal flex items-center gap-4">
+            <h2 class="text-[10px] font-semibold uppercase tracking-[0.4em] text-emerald-500 mb-8 stagger-reveal flex items-center gap-4">
                 <span class="w-12 h-[1px] bg-emerald-500/30"></span>
                 Connect With Us / 聯絡我們
             </h2>
-            <h3 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-12 stagger-reveal delay-200 text-white leading-[0.8]">
+            <h3 class="text-6xl md:text-8xl font-semibold uppercase tracking-tighter mb-12 stagger-reveal delay-200 text-white leading-[0.8]">
                 啟動您的 <br/> <span class="text-emerald-300/60">永續計畫</span>
             </h3>
             
@@ -25,8 +25,8 @@ const telHref = `tel:+886${site.contact.phone.replace(/-/g, '').replace(/^0/, ''
                         <i data-lucide="mail" class="w-6 h-6 text-zinc-400 group-hover:text-black transition-colors"></i>
                     </div>
                     <div>
-                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-1 block">電子信箱 / EMAIL</span>
-                        <a href={`mailto:${site.contact.email}`} class="block text-2xl font-black text-white hover:text-emerald-500 transition-colors tracking-tighter italic">{site.contact.email}</a>
+                        <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-1 block">電子信箱 / EMAIL</span>
+                        <a href={`mailto:${site.contact.email}`} class="block text-2xl font-semibold text-white hover:text-emerald-500 transition-colors tracking-tighter italic">{site.contact.email}</a>
                     </div>
                 </div>
                 
@@ -35,8 +35,8 @@ const telHref = `tel:+886${site.contact.phone.replace(/-/g, '').replace(/^0/, ''
                         <i data-lucide="phone" class="w-6 h-6 text-zinc-400 group-hover:text-black transition-colors"></i>
                     </div>
                     <div>
-                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-1 block">聯絡電話 / PHONE</span>
-                        <a href={telHref} class="block text-2xl font-black text-white hover:text-emerald-500 transition-colors tracking-tighter italic">{site.contact.phone}</a>
+                        <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-1 block">聯絡電話 / PHONE</span>
+                        <a href={telHref} class="block text-2xl font-semibold text-white hover:text-emerald-500 transition-colors tracking-tighter italic">{site.contact.phone}</a>
                     </div>
                 </div>
                 
@@ -45,8 +45,8 @@ const telHref = `tel:+886${site.contact.phone.replace(/-/g, '').replace(/^0/, ''
                         <i data-lucide="map-pin" class="w-6 h-6 text-zinc-400 group-hover:text-black transition-colors"></i>
                     </div>
                     <div>
-                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-1 block">公司地址 / ADDRESS</span>
-                        <p class="text-2xl font-black text-white tracking-tighter italic">{site.contact.address}</p>
+                        <span class="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 mb-1 block">公司地址 / ADDRESS</span>
+                        <p class="text-2xl font-semibold text-white tracking-tighter italic">{site.contact.address}</p>
                     </div>
                 </div>
             </div>
@@ -55,9 +55,9 @@ const telHref = `tel:+886${site.contact.phone.replace(/-/g, '').replace(/^0/, ''
         <div class="flex-1 w-full bg-zinc-900/40 backdrop-blur-3xl p-12 md:p-16 border border-white/5 border-t-4 border-t-emerald-500 shadow-3xl stagger-reveal delay-600">
             <form id="contact-form" class="space-y-10">
                 <div class="space-y-3">
-                    <label class="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500">合作類型 / Project Type</label>
+                    <label class="text-[9px] font-semibold uppercase tracking-[0.3em] text-zinc-500">合作類型 / Project Type</label>
                     <div class="relative group">
-                        <select name="project_type" required class="w-full bg-zinc-950/50 border border-white/5 p-5 font-black text-xs uppercase tracking-[0.2em] text-white focus:border-emerald-500 focus:bg-zinc-950 outline-none appearance-none cursor-pointer hover:border-white/10 transition-all decoration-none">
+                        <select name="project_type" required class="w-full bg-zinc-950/50 border border-white/5 p-5 font-semibold text-xs uppercase tracking-[0.2em] text-white focus:border-emerald-500 focus:bg-zinc-950 outline-none appearance-none cursor-pointer hover:border-white/10 transition-all decoration-none">
                             <option value="">請選擇合作項目 / Select...</option>
                             <option value="msrdk">空調專利節能解決方案 (MS-RDK)</option>
                             <option value="training">桌遊種子教師培訓</option>
@@ -70,30 +70,30 @@ const telHref = `tel:+886${site.contact.phone.replace(/-/g, '').replace(/^0/, ''
                 </div>
 
                 <div class="space-y-3">
-                    <label class="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500">單位名稱 / Organization</label>
-                    <input type="text" name="organization" required placeholder="王小明 / XX 科技公司" class="w-full bg-zinc-950/50 border border-white/5 p-5 font-black text-white text-xs uppercase tracking-[0.2em] focus:border-emerald-500 focus:bg-zinc-950 outline-none transition-all hover:border-white/10" />
+                    <label class="text-[9px] font-semibold uppercase tracking-[0.3em] text-zinc-500">單位名稱 / Organization</label>
+                    <input type="text" name="organization" required placeholder="王小明 / XX 科技公司" class="w-full bg-zinc-950/50 border border-white/5 p-5 font-semibold text-white text-xs uppercase tracking-[0.2em] focus:border-emerald-500 focus:bg-zinc-950 outline-none transition-all hover:border-white/10" />
                 </div>
 
                 <div class="space-y-3">
-                    <label class="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500">聯絡信箱 / Email (Optional)</label>
-                    <input type="email" name="email" placeholder="your@email.com" class="w-full bg-zinc-950/50 border border-white/5 p-5 font-black text-white text-xs uppercase tracking-[0.2em] focus:border-emerald-500 focus:bg-zinc-950 outline-none transition-all hover:border-white/10" />
+                    <label class="text-[9px] font-semibold uppercase tracking-[0.3em] text-zinc-500">聯絡信箱 / Email (Optional)</label>
+                    <input type="email" name="email" placeholder="your@email.com" class="w-full bg-zinc-950/50 border border-white/5 p-5 font-semibold text-white text-xs uppercase tracking-[0.2em] focus:border-emerald-500 focus:bg-zinc-950 outline-none transition-all hover:border-white/10" />
                 </div>
 
                 <div class="space-y-3">
-                    <label class="text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500">需求描述 / Message</label>
-                    <textarea name="message" required rows="4" placeholder="請簡述您的需求內容 / Describe your goals..." class="w-full bg-zinc-950/50 border border-white/5 p-5 font-black text-white text-xs uppercase tracking-[0.2em] focus:border-emerald-500 focus:bg-zinc-950 outline-none transition-all hover:border-white/10 resize-none"></textarea>
+                    <label class="text-[9px] font-semibold uppercase tracking-[0.3em] text-zinc-500">需求描述 / Message</label>
+                    <textarea name="message" required rows="4" placeholder="請簡述您的需求內容 / Describe your goals..." class="w-full bg-zinc-950/50 border border-white/5 p-5 font-semibold text-white text-xs uppercase tracking-[0.2em] focus:border-emerald-500 focus:bg-zinc-950 outline-none transition-all hover:border-white/10 resize-none"></textarea>
                 </div>
 
                 <!-- Web3Forms Config -->
                 <input type="hidden" name="subject" value="【官網通知】您有一封新的合作洽詢">
                 <input type="hidden" name="from_name" value="永續行動官方網站">
 
-                <button id="submit-button" type="submit" class="w-full py-6 bg-emerald-500 text-black font-black uppercase text-xs tracking-[0.3em] hover:bg-white transition-all duration-500 shadow-3xl shadow-emerald-500/20 active:scale-95 flex items-center justify-center gap-3">
+                <button id="submit-button" type="submit" class="w-full py-6 bg-emerald-500 text-black font-semibold uppercase text-xs tracking-[0.3em] hover:bg-white transition-all duration-500 shadow-3xl shadow-emerald-500/20 active:scale-95 flex items-center justify-center gap-3">
                     <span id="btn-text">送出洽詢表單 / SEND MESSAGE</span>
                     <i data-lucide="loader-2" id="btn-spinner" class="w-4 h-4 animate-spin hidden"></i>
                 </button>
 
-                <div id="form-result" class="text-xs font-black tracking-widest text-center min-h-[24px]"></div>
+                <div id="form-result" class="text-xs font-semibold tracking-widest text-center min-h-[24px]"></div>
             </form>
         </div>
     </div>

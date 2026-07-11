@@ -11,14 +11,14 @@ const team = teamData.team;
     </div>
 
     <!-- Background Watermark -->
-    <div class="absolute top-1/2 left-0 w-full text-[15vw] font-black text-white/[0.01] tracking-tighter leading-none select-none pointer-events-none -translate-y-1/2 whitespace-nowrap uppercase">
+    <div class="absolute top-1/2 left-0 w-full text-[15vw] font-semibold text-white/[0.01] tracking-tighter leading-none select-none pointer-events-none -translate-y-1/2 whitespace-nowrap uppercase">
         Consultants
     </div>
 
     <div class="max-w-7xl mx-auto w-full px-6 mb-10 flex justify-between items-end relative z-10">
         <div>
-            <h2 class="text-[10px] font-black uppercase tracking-[0.5em] text-emerald-500 mb-3 stagger-reveal">Elite Experts</h2>
-            <h3 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none stagger-reveal delay-200">
+            <h2 class="text-[10px] font-semibold uppercase tracking-[0.5em] text-emerald-500 mb-3 stagger-reveal">Elite Experts</h2>
+            <h3 class="text-4xl md:text-6xl font-semibold uppercase tracking-tighter leading-none stagger-reveal delay-200">
                 專業顧問 <span class="text-zinc-800">團隊</span>
             </h3>
         </div>
@@ -48,13 +48,13 @@ const team = teamData.team;
 
                     <!-- Name/Role Info -->
                     <div class="absolute bottom-0 left-0 right-0 p-4 z-20 transition-all duration-500 group-hover:translate-y-[-110px]">
-                        <p class="text-[8px] font-black uppercase tracking-[0.3em] text-emerald-500 mb-1">{member.role}</p>
-                        <h4 class="text-base font-black uppercase tracking-tighter text-white leading-tight">{member.name}</h4>
+                        <p class="text-[8px] font-semibold uppercase tracking-[0.3em] text-emerald-500 mb-1">{member.role}</p>
+                        <h4 class="text-base font-semibold uppercase tracking-tighter text-white leading-tight">{member.name}</h4>
                     </div>
 
                     <!-- Hover Reveal: Specialties -->
                     <div class="absolute inset-x-0 bottom-0 p-4 bg-black/80 backdrop-blur-xl border-t border-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-30 h-[120px] flex flex-col justify-center">
-                        <p class="text-[7px] font-black uppercase tracking-widest text-zinc-500 mb-2">核心專長 / Expertise</p>
+                        <p class="text-[7px] font-semibold uppercase tracking-widest text-zinc-500 mb-2">核心專長 / Expertise</p>
                         <ul class="space-y-1">
                             {member.specialties.slice(0, 3).map(spec => (
                                 <li class="flex items-center gap-2 text-[9px] font-bold text-zinc-300">
