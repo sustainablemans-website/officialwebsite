@@ -4,6 +4,7 @@ import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import ServiceDetail from '../../../components/ServiceDetail.astro';
 import servicesData from '../../../data/services.json';
+import { serviceSchema, faqSchema, breadcrumbSchema } from '../../../lib/schema';
 
 export function getStaticPaths() {
     return servicesData.services.map(s => ({
@@ -12,9 +13,19 @@ export function getStaticPaths() {
     }));
 }
 const { service } = Astro.props;
+
+const jsonLd = [
+    serviceSchema(service, '/green/services'),
+    breadcrumbSchema([
+        { name: '首頁', path: '/' },
+        { name: '永續綠色服務', path: '/green/' },
+        { name: service.title, path: `/green/services/${service.slug}/` }
+    ]),
+    ...(service.faqs && service.faqs.length ? [faqSchema(service.faqs)] : [])
+];
 ---
 
-<Layout wing="green" title={`${service.title} | 杉蔓有限公司`} description={service.description}>
+<Layout wing="green" title={`${service.title} | 杉蔓有限公司`} description={service.description} jsonLd={jsonLd}>
     <Header wing="green" />
     <ServiceDetail service={service} base="/green/services" backLabel="返回永續服務" />
     <Footer wing="green" />

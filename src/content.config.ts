@@ -10,7 +10,9 @@ const articles = defineCollection({
 		category: z.string(),
 		image: z.string().optional(),
 		accent: z.string().optional(),
-		isFeatured: z.boolean().default(false)
+		isFeatured: z.boolean().default(false),
+		// 草稿：true 時不出現在列表、路由、RSS、llms.txt（供 AI 草稿管線使用）
+		draft: z.boolean().default(false)
 	}),
 });
 

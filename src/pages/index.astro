@@ -1,18 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import site from '../data/site.json';
-
-const jsonLd = {
-	"@context": "https://schema.org",
-	"@type": "Organization",
-	"name": `${site.companyName} (${site.companyEnglishName})`,
-	"description": site.description,
-	"url": "https://www.sustainablemans.com/",
-	"logo": "https://www.sustainablemans.com/images/logo.png",
-	"email": site.contact.email,
-	"telephone": site.contact.phone,
-	"address": { "@type": "PostalAddress", "addressLocality": "高雄市", "addressCountry": "TW", "streetAddress": site.contact.address }
-};
+// Organization/LocalBusiness JSON-LD 已由 Layout 全站注入（src/lib/schema.ts），此處不再重複
 ---
 
 <Layout
@@ -226,8 +214,6 @@ const jsonLd = {
 		.portal-logo { animation: none; }
 	}
 </style>
-
-<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>
 
 <script is:inline>
 	// 記憶使用者選擇的翼

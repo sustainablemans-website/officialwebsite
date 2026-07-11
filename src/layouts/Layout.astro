@@ -2,15 +2,16 @@
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import site from '../data/site.json';
+import { SITE_URL, organizationSchema } from '../lib/schema';
 
 interface Props {
 	title: string;
 	description?: string;
 	canonical?: string;
 	wing?: 'green' | 'digital';
+	/** 頁面專屬 JSON-LD（單一物件或陣列），由各頁面傳入 */
+	jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
-
-const SITE_URL = "https://www.sustainablemans.com";
 
 const {
   title,
@@ -18,8 +19,12 @@ const {
   // 預設依當前頁面路徑自動生成 canonical，避免全站指向同一網址
   canonical = new URL(Astro.url.pathname, SITE_URL).href,
   // 翼主題：共用頁預設綠翼；數位翼頁面傳入 'digital'
-  wing = 'green'
+  wing = 'green',
+  jsonLd
 } = Astro.props;
+
+// 頁面專屬 JSON-LD 統一轉為陣列處理
+const pageJsonLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
 const themeColor = wing === 'digital' ? '#5e6ad2' : '#10b981';
 ---
@@ -39,6 +44,8 @@ const themeColor = wing === 'digital' ? '#5e6ad2' : '#10b981';
     <meta name="theme-color" content={themeColor} />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="杉蔓永續知識庫 RSS" href={`${SITE_URL}/rss.xml`} />
     <!-- Google Fonts: preconnect to avoid render-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,18 +67,12 @@ const themeColor = wing === 'digital' ? '#5e6ad2' : '#10b981';
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content={`${SITE_URL}/images/hero_2026.png`} />
 
-		<!-- JSON-LD Structured Data -->
-		<script type="application/ld+json" is:inline set:html={JSON.stringify({
-			  "@context": "https://schema.org",
-			  "@type": "ConsultingService",
-			  "name": `${site.companyName} (${site.companyEnglishName})`,
-			  "description": site.description,
-			  "url": `${SITE_URL}/`,
-			  "logo": `${SITE_URL}/images/logo.png`,
-			  "serviceType": ["Carbon Management", "ESG Consultancy", "Digital Transformation"],
-			  "areaServed": "Taiwan"
-		})}>
-		</script>
+		<!-- JSON-LD Structured Data：全站 Organization + LocalBusiness -->
+		<script type="application/ld+json" is:inline set:html={JSON.stringify(organizationSchema())}></script>
+		<!-- 頁面專屬 JSON-LD（由各頁面透過 jsonLd prop 傳入） -->
+		{pageJsonLd.map((ld) => (
+			<script type="application/ld+json" is:inline set:html={JSON.stringify(ld)}></script>
+		))}
 
 		<!-- Lucide: async/defer to avoid render-blocking -->
 		<script src="https://unpkg.com/lucide@latest" defer></script>

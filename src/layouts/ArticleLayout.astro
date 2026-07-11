@@ -3,10 +3,10 @@ import Layout from './Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const { title, description, category } = Astro.props;
+const { title, description, category, jsonLd } = Astro.props;
 ---
 
-<Layout wing="green" title={`${title} | 杉蔓有限公司`} description={description}>
+<Layout wing="green" title={`${title} | 杉蔓有限公司`} description={description} jsonLd={jsonLd}>
 	<Header wing="green" />
 
 	<main class="pt-32 pb-20 min-h-screen">

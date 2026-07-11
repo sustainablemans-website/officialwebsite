@@ -19,14 +19,7 @@ const galleryImages = Object.entries(allImages)
     .sort();
 const coverImage = service.image || galleryImages[0] || null;
 const carouselImages = galleryImages.filter(img => img !== coverImage);
-
-const faqLd = service.faqs && service.faqs.length ? {
-    "@context": "https://schema.org", "@type": "FAQPage",
-    "mainEntity": service.faqs.map(f => ({
-        "@type": "Question", "name": f.q,
-        "acceptedAnswer": { "@type": "Answer", "text": f.a }
-    }))
-} : null;
+// FAQPage JSON-LD 已改由各服務頁面透過 Layout 的 jsonLd prop 注入（src/lib/schema.ts）
 ---
 
 <main class="pt-28 pb-20 min-h-screen">
@@ -152,5 +145,4 @@ const faqLd = service.faqs && service.faqs.length ? {
     </section>
 </main>
 
-{faqLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(faqLd)}></script>}
 <style>@reference "../styles/global.css";</style>

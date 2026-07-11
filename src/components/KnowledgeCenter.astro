@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 
 const { limit } = Astro.props;
-const allArticles = await getCollection('articles');
+const allArticles = await getCollection('articles', ({ data }) => !data.draft);
 
 let articles = allArticles.map(article => {
     const cleanId = article.id
