@@ -2,22 +2,73 @@
 
 @import "tailwindcss";
 
+/* =====================================================================
+   杉蔓 2.0 — 雙翼設計系統（同底盤、雙靈魂）
+   兩翼共用同一套版面/字階/元件，僅以 data-wing 切換 CSS variables 換膚。
+   - 永續翼 green ：深色 × 翡翠綠（Supabase 風格：hairline 邊框、克制強調）
+   - 數位翼 digital：極黑 × 薰衣草藍紫 #5e6ad2（Linear 風格：surface 階梯）
+   ===================================================================== */
+
 @theme {
+  /* Tailwind emerald 三階直接指向翼主色 → 既有元件的 emerald 類別自動換膚 */
+  --color-emerald-400: var(--wing-primary-soft);
+  --color-emerald-500: var(--wing-primary);
+  --color-emerald-600: var(--wing-primary-strong);
+
   --color-white: #ffffff;
-  --color-emerald-400: #34d399;
-  --color-emerald-500: #10b981;
-  --color-emerald-600: #059669;
-  --color-primary-dark: #050505;
   --color-accent-neon: #facc15;
   --color-zinc-100: #f4f4f5;
   --color-zinc-200: #e4e4e7;
   --color-zinc-300: #d4d4d8;
   --color-zinc-400: #a1a1aa;
+  --color-zinc-500: #71717a;
   --color-zinc-800: #27272a;
   --color-zinc-900: #18181b;
   --color-zinc-950: #09090b;
   --color-stone-100: #f5f5f4;
   --color-stone-300: #d6d3d1;
+
+  --font-display: 'Inter', 'Montserrat', system-ui, sans-serif;
+}
+
+/* ---------- 翼主題變數 ---------- */
+/* 永續翼（預設）：深色 × 翡翠綠 */
+:root,
+[data-wing="green"] {
+  --wing-primary: #3ecf8e;
+  --wing-primary-soft: #4ade80;
+  --wing-primary-strong: #24b47e;
+  --wing-on-primary: #04140d;
+  --wing-canvas: #04130d;
+  --wing-surface-1: rgba(255, 255, 255, 0.03);
+  --wing-surface-2: rgba(255, 255, 255, 0.06);
+  --wing-ink: #eaf2ed;
+  --wing-ink-muted: #b3c5ba;
+  --wing-ink-subtle: #7f9187;
+  --wing-hairline: rgba(255, 255, 255, 0.09);
+  --wing-hairline-strong: rgba(255, 255, 255, 0.16);
+  --wing-glow: rgba(62, 207, 142, 0.14);
+  --wing-bg: radial-gradient(circle at 50% 0%, #064e3b 0%, #022c22 62%, #021a15 100%);
+  --wing-label: '永續轉型';
+}
+
+/* 數位翼：極黑 × 薰衣草藍紫（Linear） */
+[data-wing="digital"] {
+  --wing-primary: #5e6ad2;
+  --wing-primary-soft: #828fff;
+  --wing-primary-strong: #5e69d1;
+  --wing-on-primary: #ffffff;
+  --wing-canvas: #010102;
+  --wing-surface-1: #0f1011;
+  --wing-surface-2: #141516;
+  --wing-ink: #f7f8f8;
+  --wing-ink-muted: #d0d6e0;
+  --wing-ink-subtle: #8a8f98;
+  --wing-hairline: #23252a;
+  --wing-hairline-strong: #34343a;
+  --wing-glow: rgba(94, 106, 210, 0.18);
+  --wing-bg: radial-gradient(circle at 50% -8%, #12142e 0%, #06060f 46%, #010102 100%);
+  --wing-label: '數位轉型';
 }
 
 @layer base {
@@ -25,52 +76,137 @@
     @apply scroll-smooth;
   }
   body {
-    background: radial-gradient(circle at 50% 0%, #064e3b 0%, #022c22 70%, #032d25 100%);
+    background: var(--wing-bg);
     background-attachment: fixed;
-    /* 基礎文字色調升為 zinc-200，確保深色背景上可讀 */
-    color: #e4e4e7;
-    font-family: 'Inter', sans-serif;
-    @apply antialiased bg-zinc-950;
+    color: var(--wing-ink-muted);
+    font-family: 'Inter', system-ui, sans-serif;
+    /* 翼主題切換時的顏色交叉淡變 */
+    transition: background 0.6s ease, color 0.6s ease;
+    @apply antialiased;
   }
+  /* 系統化字階：Inter 600、負字距、去除全域 uppercase 與誇張 tracking */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
-    @apply font-black leading-tight tracking-tighter text-white;
+    font-family: var(--font-display);
+    color: var(--wing-ink);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
   }
   p {
-    /* 預設段落文字確保可讀 */
-    color: #d4d4d8;
+    color: var(--wing-ink-muted);
+  }
+  ::selection {
+    background: var(--wing-primary);
+    color: var(--wing-on-primary);
   }
 }
 
 @layer components {
-  /* stagger-reveal: 初始為幾乎不可見，但非完全透明，避免 JS 失效時內容消失 */
+  /* ---------- 翼語彙工具類（新元件使用，語意隨翼換膚） ---------- */
+  .text-wing { color: var(--wing-primary); }
+  .bg-wing { background-color: var(--wing-primary); }
+  .border-wing { border-color: var(--wing-primary); }
+  .ink { color: var(--wing-ink); }
+  .ink-muted { color: var(--wing-ink-muted); }
+  .ink-subtle { color: var(--wing-ink-subtle); }
+
+  /* eyebrow：小標，正字距，取代舊版誇張的 0.4em uppercase */
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--wing-primary);
+  }
+
+  /* hairline 卡片：surface-1 + 1px 細邊 */
+  .card-wing {
+    background: var(--wing-surface-1);
+    border: 1px solid var(--wing-hairline);
+    border-radius: 0.875rem;
+  }
+  .card-wing:hover {
+    border-color: var(--wing-hairline-strong);
+  }
+
+  /* 主要 CTA：翼主色填底，on-primary 文字 */
+  .btn-wing {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--wing-primary);
+    color: var(--wing-on-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0;
+    padding: 0.65rem 1.25rem;
+    border-radius: 0.5rem;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .btn-wing:hover {
+    background: var(--wing-primary-soft);
+    transform: translateY(-1px);
+  }
+
+  /* 次要 CTA：surface + hairline */
+  .btn-wing-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--wing-surface-1);
+    color: var(--wing-ink);
+    border: 1px solid var(--wing-hairline-strong);
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: 0.5rem;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+  .btn-wing-ghost:hover {
+    border-color: var(--wing-primary);
+    background: var(--wing-surface-2);
+  }
+
+  /* chip / pill 標籤 */
+  .chip-wing {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: var(--wing-surface-2);
+    color: var(--wing-ink-muted);
+    border: 1px solid var(--wing-hairline);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+  }
+
+  /* stagger-reveal：初始幾乎不可見（非全透明，避免 JS 失效內容消失） */
   .stagger-reveal {
-    @apply transition-all duration-[1200ms] translate-y-8;
+    @apply transition-all duration-[1000ms] translate-y-6;
     opacity: 0.05;
-    transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
-}
-
-@layer components {
-  .huemor-btn-primary {
-    @apply px-8 py-4 bg-yellow-400 text-black font-black uppercase tracking-widest text-sm transition-all duration-300 transform hover:scale-105 hover:bg-white focus:outline-none;
-  }
-  
-  .huemor-btn-outline {
-    @apply px-8 py-4 border-2 border-emerald-500 text-emerald-500 font-bold uppercase tracking-widest text-sm transition-all duration-300 hover:bg-emerald-500 hover:text-black;
-  }
-
   .stagger-reveal.active {
     @apply opacity-100 translate-y-0;
   }
 
-  /* 可讀性輔助 utility */
-  .text-readable {
-    color: #d4d4d8;
+  /* 舊版按鈕保留相容（收斂為系統化樣式） */
+  .huemor-btn-primary {
+    @apply px-6 py-3.5 text-sm font-semibold transition-all duration-300 rounded-lg;
+    background: var(--wing-primary);
+    color: var(--wing-on-primary);
   }
-  .text-readable-muted {
-    color: #a1a1aa;
+  .huemor-btn-primary:hover { background: var(--wing-primary-soft); }
+  .huemor-btn-outline {
+    @apply px-6 py-3.5 text-sm font-semibold transition-all duration-300 rounded-lg;
+    border: 1px solid var(--wing-hairline-strong);
+    color: var(--wing-ink);
   }
+  .huemor-btn-outline:hover { border-color: var(--wing-primary); }
+
+  .text-readable { color: var(--wing-ink-muted); }
+  .text-readable-muted { color: var(--wing-ink-subtle); }
 }
 
 /* Custom Animation for Marquee */
@@ -78,34 +214,35 @@
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
 .animate-marquee {
   display: flex;
   width: max-content;
   animation: marquee 40s linear infinite;
 }
-
 .animate-marquee:hover {
   animation-play-state: paused;
 }
 
 /* ---------------------------------------------------
-   Remotion-style View Transitions (Spring Physics)
+   View Transitions（頁面 + 翼主題交叉淡變）
    --------------------------------------------------- */
 @keyframes page-fade-out {
   from { opacity: 1; transform: translateY(0); }
   to   { opacity: 0; transform: translateY(-12px); }
 }
-
 @keyframes page-fade-in {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 ::view-transition-old(root) {
   animation: page-fade-out 0.2s ease-in both;
 }
-
 ::view-transition-new(root) {
   animation: page-fade-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 入口頁全屏過場：點擊某翼時該側擴張 */
+@keyframes wing-expand {
+  from { clip-path: inset(0 0 0 0); opacity: 1; }
+  to   { opacity: 1; }
 }

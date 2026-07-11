@@ -1,62 +1,139 @@
 ---
-const { 
-	isDark = false,
-	navItems = [
-		{ label: '首頁', href: '/' },
+// 共用 Header — 依 wing 顯示對應導覽與翼切換器
+const { wing = 'green' } = Astro.props;
+
+const navByWing: Record<string, { label: string; href: string }[]> = {
+	green: [
+		{ label: '首頁', href: '/green/' },
 		{ label: '關於我們', href: '/about/' },
-		{ label: '服務項目', href: '/services/' },
-		{ label: '影響力', href: '/impact/' }
-	] 
-} = Astro.props;
+		{ label: '服務項目', href: '/green/services/' },
+		{ label: '知識庫', href: '/knowledge/' },
+		{ label: '影響力', href: '/impact/' },
+	],
+	digital: [
+		{ label: '首頁', href: '/digital/' },
+		{ label: '服務項目', href: '/digital/services/' },
+		{ label: '建置流程', href: '/digital/#process' },
+		{ label: '關於我們', href: '/about/' },
+	],
+};
+const navItems = navByWing[wing] ?? navByWing.green;
+const homeHref = wing === 'digital' ? '/digital/' : '/green/';
 ---
 
-<header class="fixed top-8 left-0 w-full z-50 px-6 transition-all duration-500" id="main-header">
-	<div class="max-w-5xl mx-auto flex justify-between items-center bg-white/5 backdrop-blur-2xl border border-white/10 px-10 py-4 rounded-full shadow-2xl transition-all duration-500" id="header-pill">
-		<!-- Logo Section -->
-		<a href="/" class="flex items-center gap-3 group">
+<header class="fixed top-6 left-0 w-full z-50 px-5 transition-all duration-500" id="main-header">
+	<div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-3 rounded-2xl transition-all duration-500 header-pill" id="header-pill">
+		<!-- Logo -->
+		<a href={homeHref} class="flex items-center gap-2.5 group flex-shrink-0">
 			<img src="/images/logo.png" alt="杉蔓有限公司" class="w-8 h-8 object-contain transition-transform duration-500 group-hover:scale-110" />
-			<span class="text-sm font-black uppercase tracking-tighter text-white group-hover:text-emerald-500 transition-colors duration-300">
-				Sustainable Man
+			<span class="text-sm font-semibold tracking-tight ink group-hover:text-wing transition-colors duration-300">
+				Sustainable&nbsp;Man
 			</span>
 		</a>
 
 		<!-- Desktop Navigation -->
-		<nav class="hidden md:flex items-center gap-8">
-			{navItems.map((item: any) => (
-				<a href={item.href} class="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-200 hover:text-emerald-400 transition-colors duration-300 nav-link">
+		<nav class="hidden lg:flex items-center gap-7">
+			{navItems.map((item) => (
+				<a href={item.href} class="text-[13px] font-medium ink-muted hover:text-wing transition-colors duration-300">
 					{item.label}
 				</a>
 			))}
-			<a href="/contact/" class="ml-4 px-6 py-2.5 bg-emerald-500 text-black text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white transition-all duration-500 rounded-full shadow-lg shadow-emerald-500/20">
-				Get Started
-			</a>
 		</nav>
 
-		<!-- Mobile Menu Toggle -->
-		<button class="md:hidden p-2 text-white hover:text-emerald-500 transition-colors duration-300" aria-label="Toggle Menu" id="menu-btn">
-			<i data-lucide="menu" class="w-6 h-6"></i>
-		</button>
+		<!-- Right cluster: Wing switcher + CTA -->
+		<div class="flex items-center gap-3">
+			<!-- 翼切換器（永續 ⇄ 數位） -->
+			<div class="hidden sm:flex items-center p-1 rounded-full border wing-switch" role="tablist" aria-label="切換轉型翼">
+				<a href="/green/" data-wing-choice="green"
+				   class={`wing-seg ${wing === 'green' ? 'wing-seg-active' : ''}`}
+				   aria-selected={wing === 'green'}>永續</a>
+				<a href="/digital/" data-wing-choice="digital"
+				   class={`wing-seg ${wing === 'digital' ? 'wing-seg-active' : ''}`}
+				   aria-selected={wing === 'digital'}>數位</a>
+			</div>
+
+			<a href="/contact/" class="hidden sm:inline-flex btn-wing text-[13px] py-2 px-4">
+				聯絡我們
+			</a>
+
+			<!-- Mobile Menu Toggle -->
+			<button class="lg:hidden p-2 ink hover:text-wing transition-colors duration-300" aria-label="開啟選單" id="menu-btn">
+				<i data-lucide="menu" class="w-6 h-6"></i>
+			</button>
+		</div>
+	</div>
+
+	<!-- Mobile Menu Panel -->
+	<div class="lg:hidden hidden max-w-6xl mx-auto mt-2 p-4 rounded-2xl mobile-panel" id="mobile-panel">
+		<nav class="flex flex-col gap-1">
+			{navItems.map((item) => (
+				<a href={item.href} class="px-3 py-2.5 rounded-lg text-sm font-medium ink-muted hover:text-wing hover:bg-white/5 transition-colors">
+					{item.label}
+				</a>
+			))}
+		</nav>
+		<div class="flex items-center gap-2 mt-3 pt-3 border-t" style="border-color: var(--wing-hairline);">
+			<a href="/green/" class="flex-1 text-center py-2 rounded-lg text-sm font-medium border" data-wing-choice="green" style="border-color: var(--wing-hairline-strong); color: var(--wing-ink);">永續翼</a>
+			<a href="/digital/" class="flex-1 text-center py-2 rounded-lg text-sm font-medium border" data-wing-choice="digital" style="border-color: var(--wing-hairline-strong); color: var(--wing-ink);">數位翼</a>
+		</div>
+		<a href="/contact/" class="btn-wing w-full justify-center mt-3">聯絡我們</a>
 	</div>
 </header>
 
 <style>
 	@reference "../styles/global.css";
+	.header-pill {
+		background: color-mix(in srgb, var(--wing-canvas) 55%, transparent);
+		border: 1px solid var(--wing-hairline);
+		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
+	}
+	.mobile-panel {
+		background: color-mix(in srgb, var(--wing-canvas) 92%, transparent);
+		border: 1px solid var(--wing-hairline);
+		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
+	}
+	.wing-switch { border-color: var(--wing-hairline-strong); }
+	.wing-seg {
+		font-size: 12px;
+		font-weight: 600;
+		padding: 4px 12px;
+		border-radius: 9999px;
+		color: var(--wing-ink-subtle);
+		transition: all 0.3s ease;
+	}
+	.wing-seg-active {
+		background: var(--wing-primary);
+		color: var(--wing-on-primary);
+	}
 </style>
 
 <script is:inline>
+	// 捲動時 header 收縮
 	const header = document.getElementById('main-header');
 	const pill = document.getElementById('header-pill');
-	window.addEventListener('scroll', () => {
-		if (window.scrollY > 50) {
-			header.classList.remove('top-8');
-			header.classList.add('top-4');
-			pill.classList.add('bg-zinc-950/80', 'backdrop-blur-3xl', 'border-white/20', 'py-3');
-			pill.classList.remove('bg-white/5', 'py-4');
+	function onScroll() {
+		if (!header || !pill) return;
+		if (window.scrollY > 40) {
+			header.classList.remove('top-6'); header.classList.add('top-3');
+			pill.classList.add('py-2'); pill.classList.remove('py-3');
 		} else {
-			header.classList.remove('top-4');
-			header.classList.add('top-8');
-			pill.classList.remove('bg-zinc-950/80', 'backdrop-blur-3xl', 'border-white/20', 'py-3');
-			pill.classList.add('bg-white/5', 'py-4');
+			header.classList.remove('top-3'); header.classList.add('top-6');
+			pill.classList.remove('py-2'); pill.classList.add('py-3');
 		}
+	}
+	window.addEventListener('scroll', onScroll);
+
+	// 行動選單開合
+	const menuBtn = document.getElementById('menu-btn');
+	const mobilePanel = document.getElementById('mobile-panel');
+	menuBtn?.addEventListener('click', () => mobilePanel?.classList.toggle('hidden'));
+
+	// 記憶使用者選擇的翼（localStorage）
+	document.querySelectorAll('[data-wing-choice]').forEach((el) => {
+		el.addEventListener('click', () => {
+			try { localStorage.setItem('sm-wing', el.getAttribute('data-wing-choice')); } catch (e) {}
+		});
 	});
 </script>
