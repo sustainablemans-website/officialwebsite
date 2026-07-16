@@ -11,6 +11,8 @@ interface Props {
 	wing?: 'green' | 'digital';
 	/** 頁面專屬 JSON-LD（單一物件或陣列），由各頁面傳入 */
 	jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+	/** 頁面專屬分享圖（相對路徑），未傳則用全站預設 og.jpg */
+	ogImage?: string;
 }
 
 const {
@@ -20,8 +22,12 @@ const {
   canonical = new URL(Astro.url.pathname, SITE_URL).href,
   // 翼主題：共用頁預設綠翼；數位翼頁面傳入 'digital'
   wing = 'green',
-  jsonLd
+  jsonLd,
+  ogImage
 } = Astro.props;
+
+// 分享圖：頁面自帶優先，否則用全站預設；相對路徑補上正式網域
+const ogImageUrl = new URL(ogImage || '/images/og.jpg', SITE_URL).href;
 
 // 頁面專屬 JSON-LD 統一轉為陣列處理
 const pageJsonLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
@@ -60,7 +66,7 @@ const themeColor = wing === 'digital' ? '#5e6ad2' : '#10b981';
 		<meta property="og:url" content={canonical} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={`${SITE_URL}/images/og.jpg`} />
+		<meta property="og:image" content={ogImageUrl} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
 
@@ -69,7 +75,7 @@ const themeColor = wing === 'digital' ? '#5e6ad2' : '#10b981';
 		<meta property="twitter:url" content={canonical} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={`${SITE_URL}/images/og.jpg`} />
+		<meta property="twitter:image" content={ogImageUrl} />
 
 		<!-- JSON-LD Structured Data：全站 Organization + LocalBusiness -->
 		<script type="application/ld+json" is:inline set:html={JSON.stringify(organizationSchema())}></script>

@@ -3,10 +3,10 @@ import Layout from './Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const { title, description, category, jsonLd } = Astro.props;
+const { title, description, category, image, jsonLd } = Astro.props;
 ---
 
-<Layout wing="green" title={`${title} | 杉蔓有限公司`} description={description} jsonLd={jsonLd}>
+<Layout wing="green" title={`${title} | 杉蔓有限公司`} description={description} ogImage={image} jsonLd={jsonLd}>
 	<Header wing="green" />
 
 	<main class="pt-32 pb-20 min-h-screen">
@@ -30,6 +30,13 @@ const { title, description, category, jsonLd } = Astro.props;
 					{description}
 				</p>
 			</header>
+
+			<!-- Cover Image -->
+			{image && (
+				<figure class="mb-16 stagger-reveal delay-300 rounded-2xl overflow-hidden border" style="border-color: var(--wing-hairline);">
+					<img src={image} alt={title} width="1600" height="900" fetchpriority="high" decoding="async" class="w-full h-auto object-cover" />
+				</figure>
+			)}
 
 			<!-- Content Section -->
 			<div class="prose prose-invert max-w-none
