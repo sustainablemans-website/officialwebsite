@@ -49,6 +49,9 @@ collections:
       - { label: "設為精選文章", name: "isFeatured", widget: "boolean",
           required: false, default: false,
           hint: "開啟後此文章會顯示在專刊頁最上方的大圖區（建議只設 1 篇）" }
+      - { label: "草稿（不公開）", name: "draft", widget: "boolean",
+          required: false, default: false,
+          hint: "開啟＝草稿，不會出現在官網/RSS/搜尋。AI 每週自動產生的文章會是草稿，審核後把此開關關閉即發布" }
       - { label: "強調色", name: "accent", widget: "select",
           options: ["emerald", "blue", "yellow", "green-primary", "blue-accent"],
           default: "emerald", required: false,
