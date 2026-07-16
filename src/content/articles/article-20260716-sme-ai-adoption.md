@@ -4,6 +4,7 @@ category: 數位轉型
 description: 根據經濟部 2025 年調查，高達 92% 的台灣中小企業對 AI 不了解或僅大致了解，但產業 AI 化的腳步並不會等人。本文整理中小企業 AI 導入的三步驟實務路徑與可申請的政府補助資源，協助決策者用最小成本跨出第一步。
 pubDate: 2026-07-16
 accent: blue
+image: "/images/articles/article-20260716-sme-ai-adoption.webp"
 draft: false
 ---
 
